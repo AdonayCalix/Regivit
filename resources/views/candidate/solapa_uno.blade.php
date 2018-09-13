@@ -148,10 +148,6 @@
 
             this.on("complete", function (file) {
                 $("#modal_formulario").modal('hide');
-                location.reload();
-                setTimeout(function(){
-                    $.notify("Documento subido exitosamente", "success");
-                },2000);
             })
         }
     };
