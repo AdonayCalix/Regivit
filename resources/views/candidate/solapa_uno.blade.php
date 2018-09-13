@@ -68,7 +68,7 @@
             <!--Cuerpo para el modal -->
             <div class="modal-body">
                 <form action="{{route('tab_one.store')}}" class="dropzone" method="post"
-                      id="my-awesome-dropzone" enctype="multipart/form-data" accept="image/gif,image/jpeg">
+                      id="my-awesome-dropzone" enctype="multipart/form-data">
                     {{csrf_field()}}
                     <input type="hidden" name="document_type" class="document_type" value="">
                 </form>
@@ -79,7 +79,7 @@
             </div>
             <div class="modal-footer">
                 <button type="button" class="btn btn-secondary" data-dismiss="modal" id="cancelar">Cancelar</button>
-                <button type="button" class="btn btn-success" id="crear">Guardar</button>
+                <button type="submit" class="btn btn-success" id="crear">Guardar</button>
             </div>
         </div>
     </div>
