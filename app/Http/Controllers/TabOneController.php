@@ -48,11 +48,7 @@ class TabOneController extends Controller
         $users_document->path = $file_name;
         $users_document->status = 1;
         $users_document->document_id = $request->document_type;
-        if ($users_document->save()) {
-            return Response::json('success', 200);
-        } else {
-            return Response::json('error', 400);
-        }
+        return response()->json(['status' => $users_document->save()]);
     }
 
     public
