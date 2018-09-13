@@ -22,7 +22,7 @@ TabTwoController extends Controller
     public function getDocumentListUser()
     {
         return DB::select("
-            select documents.id, documents.name, " .
+            select documents.id, documents.name, documents.visibility," .
             "case " .
             "when (select status from users_documents where document_id = documents.id and users_documents.users_id = ?) = '1' then 'Upload' " .
             "when (select status from users_documents where document_id = documents.id and users_documents.users_id = ?) is null then 'No Upload' " .
