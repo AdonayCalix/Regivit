@@ -24,11 +24,12 @@
 
                         <div class="list-group hover">
                             @foreach($document_list as $list)
-                                <li data-toggle="modal"
-                                    data-target="#modal_formulario"
-                                    class="list-group-item list-group-item-action click"
-                                    data-flag="{{$list['id']}}">{{$list['name']}}
-                                    @if($list['visibility'] != 2)
+                                @if($list['visibility'] != 2)
+                                    <li data-toggle="modal"
+                                        data-target="#modal_formulario"
+                                        class="list-group-item list-group-item-action click"
+                                        data-flag="{{$list['id']}}">{{$list['name']}}
+
                                         @if ($list['status'] === 'Upload')
                                             <div class="col-sm-2 justify-content-center float-right">
                                                 <a class="item fas fa-check-circle font-sm text-success col-sm-1 float-right"></a>
@@ -38,8 +39,8 @@
                                                 <a class="item fas fa-upload font-sm text-info col-sm-1 float-right"></a>
                                             </div>
                                         @endif
-                                    @endif
-                                </li>
+                                    </li>
+                                @endif
                             @endforeach
                         </div>
                     </div>
