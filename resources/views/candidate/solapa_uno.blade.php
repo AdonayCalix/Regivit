@@ -138,7 +138,7 @@
         dictDefaultMessage: "De click o arrastre el archivo para subirlo",
         dictInvalidFileType: "Solo se permiten archivos con extension pdf o imagenes",
         dictRemoveFile: "Remover archivo",
-        timeout: "5000",
+        timeout: 13000,
 
         init: function () {
             myAwesomeDropzone = this;
