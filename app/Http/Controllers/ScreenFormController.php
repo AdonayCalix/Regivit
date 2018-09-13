@@ -4,13 +4,14 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
+use App\UserDocument;
 
 class ScreenFormController extends Controller
 {
     public function savePersonalData(Request $request)
     {
             $user_document = new UserDocument;
-            $user_document->document_id = 2;
+            $user_document->document_id = $this->findJobFormId($this->findCoordinatorId());
             $user_document->users_id = auth()->user()->id;
             $user_document->path = $this->saveSignature($request->data_uri);
             $user_document->status = 1;
@@ -33,5 +34,20 @@ class ScreenFormController extends Controller
         file_put_contents(public_path() . '/uploades/' . $file_name, $decoded_image);
 
         return $file_name;
+    }
+
+    public function findCoordinatorId()
+    {
+        return DB::table('users_faculties')
+            ->where('users_id', '=', auth()->user()->id)
+            ->value('coordinator_id');
+    }
+
+    public function findJobFormId($coordinator_id)
+    {
+        return DB::table('documents')
+            ->where('users_id', '=', $coordinator_id)
+            ->where('name', '=', 'Solicitud de empleo REG-RH.102')
+            ->value('id');
     }
 }

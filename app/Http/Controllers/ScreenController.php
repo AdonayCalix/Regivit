@@ -85,6 +85,6 @@ class ScreenController extends Controller
         return DB::table('documents')
             ->where('users_id', '=', $coordinator_id)
             ->where('name', '=', 'Solicitud de empleo REG-RH.102')
-            ->get('id');
+            ->value('id');
     }
 }
