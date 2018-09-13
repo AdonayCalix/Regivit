@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\CoordinadorFaculties;
+use App\Document;
 use Illuminate\Http\Request;
 use App\Http\Requests\CreateUserRequest;
 use Illuminate\Support\Facades\Auth;
@@ -43,6 +44,23 @@ class MasterUserController extends Controller
                     $coordinator_faculties->users_id = $this->getIdUser($request->identity);
                     $coordinator_faculties->faculties_code = $request->input('faculty')[$i];
                     $status = $coordinator_faculties->save();
+
+                    $document = new Document;
+                    $document->name = 'Solicitud de empleo REG-RH.102';
+                    $document->tab = 1;
+                    $document->visibility = 2;
+                    $document->faculties_code = $request->input('faculty')[$i];
+                    $document->users_id = $this->getIdUser($request->identity);
+                    $document->save();
+
+                    $document = new Document;
+                    $document->name = 'Ficha de datos personales RG-RH.120';
+                    $document->tab = 2;
+                    $document->visibility = 2;
+                    $document->faculties_code = $request->input('faculty')[$i];
+                    $document->users_id = $this->getIdUser($request->identity);
+                    $document->save();
+
                 }
             }
             if ($request->user_type == 3 || $request->user_type == 4) {
