@@ -150,9 +150,6 @@
 
             this.on("complete", function (file) {
                 $("#modal_formulario").modal('hide');
-                location.reload(true);
-                $.notify("Documento subido exitosamente", "success");
-
             })
         }
     };
