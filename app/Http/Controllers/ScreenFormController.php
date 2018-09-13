@@ -48,7 +48,7 @@ class ScreenFormController extends Controller
     {
         return DB::table('documents')
             ->where('users_id', '=', $coordinator_id)
-            ->where('name', '=', 'Solicitud de empleo REG-RH.102')
+            ->where('name', '=', 'Ficha de datos personales RG-RH.120')
             ->value('id');
     }
 }
