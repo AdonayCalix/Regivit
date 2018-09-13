@@ -28,14 +28,16 @@
                                     data-target="#modal_formulario"
                                     class="list-group-item list-group-item-action click"
                                     data-flag="{{$list['id']}}">{{$list['name']}}
-                                    @if ($list['status'] === 'Upload' && $list['visibility'] == 1)
-                                        <div class="col-sm-2 justify-content-center float-right">
-                                            <a class="item fas fa-check-circle font-sm text-success col-sm-1 float-right"></a>
-                                        </div>
-                                    @else
-                                        <div class="col-sm-2 justify-content-center float-right">
-                                            <a class="item fas fa-upload font-sm text-info col-sm-1 float-right"></a>
-                                        </div>
+                                    @if($list['visibility'] != 2)
+                                        @if ($list['status'] === 'Upload')
+                                            <div class="col-sm-2 justify-content-center float-right">
+                                                <a class="item fas fa-check-circle font-sm text-success col-sm-1 float-right"></a>
+                                            </div>
+                                        @else
+                                            <div class="col-sm-2 justify-content-center float-right">
+                                                <a class="item fas fa-upload font-sm text-info col-sm-1 float-right"></a>
+                                            </div>
+                                        @endif
                                     @endif
                                 </li>
                             @endforeach
