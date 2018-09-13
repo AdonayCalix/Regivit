@@ -37,7 +37,7 @@ class ScreenController extends Controller
         $result = $this->validateIfExit(2);
         if ($result->isEmpty()) {
             $user_document = new UserDocument;
-            $user_document->document_id = $this->findCoordinatorId();
+            $user_document->document_id =$this->findCoordinatorId($this->findCoordinatorId());
             $user_document->users_id = auth()->user()->id;
             $user_document->path = $this->saveSignature($request->data_uri);
             $user_document->status = 1;
