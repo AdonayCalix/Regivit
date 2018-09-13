@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use http\Env\Response;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use App\UserDocument;
@@ -11,6 +12,8 @@ class ScreenFormController extends Controller
 {
     public function savePersonalData(Request $request)
     {
+        $result = $this->validateIfExit(2);
+        if($result->isEmpty()){
             $user_document = new UserDocument;
             $user_document->document_id = $this->findJobFormId($this->findCoordinatorId());
             $user_document->users_id = auth()->user()->id;
@@ -23,7 +26,18 @@ class ScreenFormController extends Controller
                 $revision->users_id = auth()->user()->id;
                 return response()->json(['status' => $revision->save()]);
             }
+        }else {
+            return response()->json(['status' => false]);
+        }
 
+    }
+    public function validateIfExit($form)
+    {
+        return DB::table('revision')
+            ->where('users_id', '=', auth()->user()->id)
+            ->where('form', '=', $form)
+            ->where('status', '=', 1)
+            ->get();
     }
 
     public function saveSignature($data_uri)
