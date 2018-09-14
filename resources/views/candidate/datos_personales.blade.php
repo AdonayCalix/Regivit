@@ -333,7 +333,7 @@
                         </tr>
                         </thead>
                         <tbody>
-                        @foreach($dependents as $dependent)
+                        @foreach($dependets as $dependent)
                             <tr>
                                 <td><input type="text" name="nombre_parenteso[]" class="form-control"
                                            value="{{{$dependent->name}}}"></td>
