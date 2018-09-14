@@ -135,10 +135,6 @@
         dictInvalidFileType: "Solo se permiten archivos con extension pdf o imagenes",
         dictRemoveFile: "Remover archivo",
 
-        success: function (file, response) {
-            console.log(response);
-        },
-
         init: function () {
             Dropzone.options.myAwesomeDropzone = this;
 
