@@ -374,7 +374,7 @@
                                 </label><br>
                                 <div class="form-control align-content-center" id="contenedor_firma"
                                      style="height: 100px">
-                                    <img src="{{asset('uploades/' . $value['signature_path'])}}" alt="" id="img-firma" width="" height="">
+                                    <img src="{{asset('uploades/' . $personal_data->signature_path)}}" alt="" id="img-firma" width="" height="">
                                 </div>
                             </div>
                             <div class="form-group col">
