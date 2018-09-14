@@ -151,6 +151,7 @@
 
             this.on("complete", function (file) {
                 $("#modal_formulario").modal('hide');
+                location.reload();
                 $.notify("Archivo subido correctamente", "success");
             })
         }
