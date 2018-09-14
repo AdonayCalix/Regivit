@@ -144,7 +144,7 @@
                 $.notify("Archivo subido correctamente", "success");
                 window.setTimeout(function(){
                     location.reload();
-                } ,2000);
+                } ,1000);
 
             });
         }
