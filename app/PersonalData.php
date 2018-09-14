@@ -13,6 +13,7 @@ class PersonalData extends Model
         'campus_job', 'bamer_account_numer', 'spouse_name', 'emergency', 'emergency_number',
         'currendt_date', 'current_position', 'signature_path', 'general_data_id', 'parish_id',
         'parish_priest_id', 'vehiculo', 'marca', 'modelo_vehiculo', 'anio_vehiculo', 'posgrado',
+        'telefono_casa', 'telefono_oficina', 'telefono_otro'
     ];
 
     public $timestamps = false;

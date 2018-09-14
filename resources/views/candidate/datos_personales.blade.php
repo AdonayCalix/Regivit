@@ -129,21 +129,21 @@
                             <label for="">Telefono casa
                                 <small> *</small>
                             </label>
-                            <input type="text" class="form-control" name="number_home"
+                            <input type="text" class="form-control" name="telefono_casa"
                                    placeholder="Telefono casa...">
                         </div>
                         <div class="form-group col">
                             <label for="">Telefono oficina
                                 <small> *</small>
                             </label>
-                            <input type="text" class="form-control" name="number_office"
+                            <input type="text" class="form-control" name="telefono_oficina"
                                    placeholder="Telefono oficina...">
                         </div>
                         <div class="form-group col">
                             <label for="">Telefono otros
                                 <small> *</small>
                             </label>
-                            <input type="text" class="form-control" name="number_others"
+                            <input type="text" class="form-control" name="telefono_otro"
                                    placeholder="Telefono otros">
                         </div>
                         <div class="form-group col">
@@ -243,7 +243,7 @@
                                 <option value="">[Seleccione]</option>
                                 @foreach($campus as $campu)
                                     <option value="{{$campu->id}}">{{$campu->name}}</option>
-                                 @endforeach
+                                @endforeach
                             </select>
                         </div>
                     </div>
@@ -338,7 +338,7 @@
                                 <td><input type="text" name="nombre_parenteso[]" class="form-control"
                                            value="{{{$dependent->name}}}"></td>
                                 <td><input type="text" name="tipo_parentesco[]" class="form-control"
-                                    value="{{$dependent->relationship}}"></td>
+                                           value="{{$dependent->relationship}}"></td>
                                 <td><input type="date" name="fecha_nacimiento_parentesco[]"
                                            class="form-control">
                                 </td>
@@ -374,7 +374,7 @@
                 @endforeach
                 <div class="float-right">
                     <button type="button" class="btn btn-secondary">Cancelar</button>
-                    <button type="button" id="crear" class="btn btn-success">Guardar </button>
+                    <button type="button" id="crear" class="btn btn-success">Guardar</button>
                 </div>
             </form>
             <br><br>

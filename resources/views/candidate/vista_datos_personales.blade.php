@@ -136,21 +136,21 @@
 
                                 </label>
                                 <input type="text" class="form-control" name="number_home"
-                                       placeholder="Telefono casa...">
+                                       value="{{$personal_data->telefono_casa}}">
                             </div>
                             <div class="form-group col">
                                 <label for="">Telefono oficina
 
                                 </label>
                                 <input type="text" class="form-control" name="number_office"
-                                       placeholder="Telefono oficina...">
+                                       value="{{$personal_data->telefono_oficina}}">
                             </div>
                             <div class="form-group col">
                                 <label for="">Telefono otros
 
                                 </label>
                                 <input type="text" class="form-control" name="number_others"
-                                       placeholder="Telefono otros">
+                                       value="{{$personal_data->telefono_otro}}">
                             </div>
                             <div class="form-group col">
                                 <label for="">Nacionalidad

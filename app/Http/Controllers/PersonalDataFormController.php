@@ -56,6 +56,9 @@ class PersonalDataFormController extends Controller
             $personal_data->modelo_vehiculo = $request->modelo;
             $personal_data->anio_vehiculo = $request->anio;
             $personal_data->postgrado = $request->postgrade_education;
+            $personal_data->telefono_casa = $request->telefono_casa;
+            $personal_data->telefono_oficina = $request->telefono_oficina;
+            $personal_data->telefono_otro = $request->telefono_otro;
             $personal_data->general_data_id = $this->getGeneralDataId();
             $status = $personal_data->save();
 
