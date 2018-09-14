@@ -141,10 +141,9 @@
             this.on("complete", function (file) {
                 $("#modal_formulario").modal('hide');
                 myAwesomeDropzone.removeAllFiles(true);
-
-                location.reload();
+                $.notify("Archivo subido correctamente", "success");
                 window.setTimeout(function(){
-                    $.notify("Archivo subido correctamente", "success");
+                    location.reload();
                 } ,2000);
 
             });
