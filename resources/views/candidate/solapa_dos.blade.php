@@ -140,15 +140,13 @@
             this.on("complete", function (file) {
                 $("#modal_formulario").modal('hide');
                 myAwesomeDropzone.removeAllFiles(true);
-                window.onload = notify;
-
+                location.reload(function () {
+                    $.notify("Archivo subido correctamente", "success");
+                });
             })
         }
     };
 
-    function notify() {
-        $.notify("Archivo subido correctamente", "success");
-    }
 </script>
 
 <script>
