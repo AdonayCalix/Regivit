@@ -15,6 +15,5 @@
 <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/daterangepicker/daterangepicker.min.js"></script>
 <!-- Enlace para el css de Date range picker-->
 <script src="{{asset('js/signature_pad.js')}}"></script>
-<script src="{{asset('js/dropzone.js')}}"></script>
 <script src="{{asset('js/notify.js')}}"></script>
 

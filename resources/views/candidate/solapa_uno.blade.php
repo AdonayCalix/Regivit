@@ -2,6 +2,7 @@
 <html lang="es">
 
 @include('layouts.head')
+<script src="{{asset('js/dropzone.js')}}"></script>
 
 <body class="app header-fixed sidebar-fixed aside-menu-fixed sidebar-lg-show">
 
@@ -67,7 +68,7 @@
             </div>
             <!--Cuerpo para el modal -->
             <div class="modal-body">
-                <form action="{{route('tab_one.store')}}" class="dropzone" method="post"
+                <form action="{{route('tab_one.store')}}" class="dropzone" method="POST"
                       id="my-awesome-dropzone" enctype="multipart/form-data">
                     {{csrf_field()}}
                     <input type="hidden" name="document_type" class="document_type" value="">
