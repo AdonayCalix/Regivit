@@ -28,7 +28,7 @@
         </li>
         <li class="nav-item">
             <a class="nav-link" href="{{route('priest.index')}}">
-                <i class="fas fa-book-open"></i> Manual</a>
+                <i class="nav-icon fas fa-book-open"></i> Manual</a>
         </li>
     </ul>
 </nav>
