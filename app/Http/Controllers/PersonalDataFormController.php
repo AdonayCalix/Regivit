@@ -62,7 +62,7 @@ class PersonalDataFormController extends Controller
             $personal_data->general_data_id = $this->getGeneralDataId();
             $status = $personal_data->save();
 
-            for ($i = 0; $i < count($request->input('nombre_parentesco')); $i++) {
+            for ($i = 0; $i < 3; $i++) {
                 $dependent = Dependent::where('general_data_id', $this->getGeneralDataId())
                     ->update([
                        'birthdate' => $request->input('fecha_nacimiento_parentesco')[$i]
