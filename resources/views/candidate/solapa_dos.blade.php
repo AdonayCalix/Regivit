@@ -5,6 +5,7 @@
 @include('layouts.head')
 
 <body class="app header-fixed sidebar-fixed aside-menu-fixed sidebar-lg-show">
+<script src="{{asset('js/dropzone.js')}}"></script>
 
 @include('layouts.header')
 

@@ -146,12 +146,12 @@
         },
 
         init: function () {
-            myAwesomeDropzone = this;
+            Dropzone.options.myAwesomeDropzone = this;
 
             $("#crear").click(function (e) {
                 e.preventDefault();
                 e.stopPropagation();
-                myAwesomeDropzone.processQueue();
+                this.autoProcessQueue();
                 myAwesomeDropzone.removeAllFiles(true);
             });
 
