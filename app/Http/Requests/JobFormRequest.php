@@ -53,7 +53,9 @@ class JobFormRequest extends FormRequest
             'company_name' => 'nullable|string',
             'position' => 'nullable|string',
             'worked_years' => 'nullable|alpha_num',
-            'activity.*' => 'nullable|string'
+            'activity.*' => 'nullable|string',
+            'telefono' => 'nullable|alpha_num',
+            'celular' => 'required|alpha_num'
         ];
     }
 
@@ -72,7 +74,11 @@ class JobFormRequest extends FormRequest
             'age.required' => 'Debes de indicar tu edad',
             'parish.required' => 'Es necesario indicar la parroquia a la que asiste',
             'priest.required' => 'Debes de indicar el nombre del parroco',
-            'minimun_salary' => 'Debes de indicar el salario minimo'
+            'minimun_salary' => 'Debes de indicar el salario minimo',
+            'celular.required' => 'Debe de incluir tu número de celular',
+            'celular.alpha_num' => 'El número de telefono no debe incluir letras',
+            'telefono.alpha_num' => 'El número de telefono no debe incluir letras'
+
         ];
     }
 }

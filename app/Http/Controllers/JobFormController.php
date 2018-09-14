@@ -63,6 +63,8 @@ class JobFormController extends Controller
             $job_application->general_data_id = $this->getGeneralDataId();
             $job_application->blood_id = $request->blood;
             $job_application->place_date = $request->place_date;
+            $job_application->telefono = $request->telefono;
+            $job_application->celular = $request->celular;
             $job_application->save() ? $this->status = true : $this->status = false;
 
             $id_job_application = $this->getJobFormId($this->getGeneralDataId());

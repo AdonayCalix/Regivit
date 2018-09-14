@@ -97,12 +97,12 @@
                         <div class="form-group col">
                             <label for="">Telefono</label>
                             <input type="text" name="home_number" class="form-control"
-                            >
+                            value="{{$item->telefono}}">
                         </div>
                         <div class="form-group col">
                             <label for="">Celular</label>
                             <input type="text" name="cellphone_number" class="form-control"
-                            >
+                            value="{{$item->celular}}">
                         </div>
                         <div class="form-group col">
                             <label for="">E-mail</label>

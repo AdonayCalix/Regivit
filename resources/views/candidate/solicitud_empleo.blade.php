@@ -98,13 +98,13 @@
                     <div class="form-group col">
                         <label for="">Telefono</label>
                         <small> *</small>
-                        <input type="text" name="home_number" class="form-control"
+                        <input type="text" name="telefono" class="form-control"
                                placeholder="Ingrese su telefono" onkeypress="return valida(event)">
                     </div>
                     <div class="form-group col">
                         <label for="">Celular</label>
                         <small> *</small>
-                        <input type="text" name="cellphone_number" class="form-control"
+                        <input type="text" name="celular" class="form-control"
                                placeholder="celular" onkeypress="return valida(event)">
                     </div>
                     <div class="form-group col">
