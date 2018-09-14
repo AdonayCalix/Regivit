@@ -138,8 +138,6 @@
         dictDefaultMessage: "De click o arrastre el archivo para subirlo",
         dictInvalidFileType: "Solo se permiten archivos con extension pdf o imagenes",
         dictRemoveFile: "Remover archivo",
-        autoProcessQueue: false,
-        parallelUploads: 1,
 
         success: function (file, response) {
             console.log(response);

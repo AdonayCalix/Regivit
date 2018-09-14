@@ -132,7 +132,6 @@
     Dropzone.options.myAwesomeDropzone = {
         paramName: "file",
         addRemoveLinks: true,
-        autoProcessQueue: false,
         acceptedFiles: "application/pdf, image/*",
         maxFiles: 1,
         dictDefaultMessage: "De click o arrastre el archivo para subirlo",
