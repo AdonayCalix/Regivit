@@ -37,9 +37,5 @@
             </ul>
         </li>
 
-        <li class="nav-item">
-            <a class="nav-link" target="_blank" href="{{asset('manuales/Manual de Usuario Aspirante.pdf')}}">
-                <i class="nav-icon fas fa-book"></i> Manual</a>
-        </li>
     </ul>
 </nav>
