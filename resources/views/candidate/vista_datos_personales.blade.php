@@ -374,9 +374,8 @@
                                 </label><br>
                                 <div class="form-control align-content-center" id="contenedor_firma"
                                      style="height: 100px">
-                                    <img src="" alt="" id="img-firma" width="" height="">
+                                    <img src="{{asset('uploades/' . $value['signature_path'])}}" alt="" id="img-firma" width="" height="">
                                 </div>
-                                <input type="hidden" name="signature_path" id="firma" value="soylafirma">
                             </div>
                             <div class="form-group col">
                                 <label for="">Fecha
