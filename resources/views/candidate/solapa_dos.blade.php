@@ -137,16 +137,9 @@
         init: function () {
             myAwesomeDropzone = this;
 
-            $("#crear").click(function (e) {
-                e.preventDefault();
-                e.stopPropagation();
-                myAwesomeDropzone.processQueue();
-                myAwesomeDropzone.removeAllFiles(true);
-            });
-
             this.on("complete", function (file) {
                 $("#modal_formulario").modal('hide');
-
+                myAwesomeDropzone.removeAllFiles(true);
                 $.notify("Archivo subido correctamente", "success");
             })
         }

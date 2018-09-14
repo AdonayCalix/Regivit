@@ -34,7 +34,7 @@ class TabOneController extends Controller
             $status = UserDocument::where('document_id', $request->document_type)
                 ->where('users_id', auth()->user()->id)
                 ->update(['path' => $file_name]);
-            exit;
+            return response()->json('success', 200);
         }
         $file = $request->file('file');
         $path = public_path() . '/uploades';
@@ -49,9 +49,9 @@ class TabOneController extends Controller
         $users_document->status = 1;
         $users_document->document_id = $request->document_type;
         if ($users_document->save()) {
-            return Response::json('success', 200);
+            return response()->json('success', 200);
         } else {
-            return Response::json('error', 400);
+            return response()->json('error', 400);
         }
     }
 
