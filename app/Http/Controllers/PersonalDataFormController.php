@@ -14,6 +14,7 @@ use App\JobApplication;
 use App\ParihPriest;
 use App\Parish;
 use Carbon\Carbon;
+use App\Dependent;
 
 class PersonalDataFormController extends Controller
 {
@@ -31,8 +32,9 @@ class PersonalDataFormController extends Controller
         $values = json_decode(json_encode($result), true);
         $degree_education = $this->getEducation();
         $campus = Campus::all();
+        $dependets = $this->getDependet();
 
-        return view('candidate.datos_personales', compact('values', 'degree_education', 'campus'));
+        return view('candidate.datos_personales', compact('values', 'degree_education', 'campus', 'dependets'));
     }
 
     public function store(PersonalDataRequest $request)
@@ -55,7 +57,17 @@ class PersonalDataFormController extends Controller
             $personal_data->anio_vehiculo = $request->anio;
             $personal_data->postgrado = $request->postgrade_education;
             $personal_data->general_data_id = $this->getGeneralDataId();
-            return response()->json(['status' => $personal_data->save()]);
+            $status = $personal_data->save();
+
+            for ($i = 0; $i < count($request->input('nombre_parentesco')); $i++) {
+                $dependent = Dependent::where('general_data_id', $this->getGeneralDataId())
+                    ->update([
+                       'birthdate' => $request->input('fecha_nacimiento_parentesco')[$i]
+                    ]);
+                $status = true;
+            }
+
+            return response()->json(['status' => $status]);
         }
     }
 
@@ -87,5 +99,14 @@ class PersonalDataFormController extends Controller
             return 'No ok';
         }
         return $file_name;
+    }
+
+    public function getDependet()
+    {
+        return DB::table('general_data')
+            ->join('dependents', 'general_data.id', '=', 'dependents.general_data_id')
+            ->where('general_data.users_id', '=', auth()->user()->id)
+            ->select('dependents.name', 'dependents.relationship')
+            ->get();
     }
 }

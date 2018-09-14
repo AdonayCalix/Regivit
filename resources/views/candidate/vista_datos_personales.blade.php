@@ -341,27 +341,17 @@
                             </tr>
                             </thead>
                             <tbody>
-                            <tr>
-                                <td><input type="text" name="nombre_parenteso[]" class="form-control"></td>
-                                <td><input type="text" name="tipo_parentesco[]" class="form-control"></td>
-                                <td><input type="date" name="fecha_nacimiento_parentesco[]"
-                                           class="form-control">
-                                </td>
-                            </tr>
-                            <tr>
-                                <td><input type="text" name="nombre_parenteso[]" class="form-control"></td>
-                                <td><input type="text" name="tipo_parentesco[]" class="form-control"></td>
-                                <td><input type="date" name="fecha_nacimiento_parentesco[]"
-                                           class="form-control">
-                                </td>
-                            </tr>
-                            <tr>
-                                <td><input type="text" name="nombre_parenteso[]" class="form-control"></td>
-                                <td><input type="text" name="tipo_parentesco[]" class="form-control"></td>
-                                <td><input type="date" name="fecha_nacimiento_parentesco[]"
-                                           class="form-control">
-                                </td>
-                            </tr>
+                            @foreach($dependents as $dependent)
+                                <tr>
+                                    <td><input type="text" name="nombre_parenteso[]" class="form-control"
+                                               value="{{{$dependent->name}}}"></td>
+                                    <td><input type="text" name="tipo_parentesco[]" class="form-control"
+                                               value="{{$dependent->relationship}}"></td>
+                                    <td><input type="date" name="fecha_nacimiento_parentesco[]"
+                                               class="form-control" value="{{$dependent->birthdate}}">
+                                    </td>
+                                </tr>
+                            @endforeach
                             </tbody>
                             <br>
 

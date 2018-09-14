@@ -23,7 +23,8 @@ class ViewPersonalController extends Controller
         $degree_education = $this->getEducation();
         $campus = Campus::all();
         $personal_datas = $this->getPersonalData();
-        return view('candidate.vista_datos_personales', compact('values', 'degree_education', 'campus', 'personal_datas'));
+        $dependents = $this->getDependents();
+        return view('candidate.vista_datos_personales', compact('values', 'degree_education', 'campus', 'personal_datas', 'dependents'));
     }
 
     public function getEducation()
@@ -42,6 +43,14 @@ class ViewPersonalController extends Controller
             ->join('job_application', 'job_application.general_data_id', '=', 'general_data.id')
             ->join('personal_data', 'personal_data.general_data_id', '=', 'general_data.id')
             ->where('general_data.users_id', '=', auth()->user()->id)
+            ->get();
+    }
+
+    public function getDependents()
+    {
+        return DB::table('general_data')
+            ->join('dependents', 'general_data.id', '=', 'dependents.general_data_id')
+            ->where('general_data.users_id', auth()->user()->id)
             ->get();
     }
 
