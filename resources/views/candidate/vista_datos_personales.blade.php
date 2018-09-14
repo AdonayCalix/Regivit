@@ -362,9 +362,9 @@
                             <div class="form-group col">
                                 <label for="" data-toggle="modal" data-target="#modal_firma">Firma
                                 </label><br>
-                                <div class="form-control align-content-center" id="contenedor_firma"
-                                     style="height: 100px">
-                                    <img src="{{asset('uploades/' . $personal_data->signature_path)}}" alt="" id="img-firma" width="" height="">
+                                <div class="form-control align-content-center" id="contenedor_firma" style="height: 100px">
+                                    <img src="{{asset('/uploades/' . $personal_data->signature_path)}}" alt="" id="img-firma"
+                                         width="100%" height="100%">
                                 </div>
                             </div>
                             <div class="form-group col">
@@ -394,7 +394,7 @@
         function getScreen() {
             var data_uri;
             html2canvas(document.querySelector("#capture"), {
-                width: 860,
+                width: 1065,
                 height: 1729
             }).then(canvas => {
                 data_uri = canvas.toDataURL();
