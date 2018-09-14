@@ -35,8 +35,8 @@
             </ul>
         </li>
         <li class="nav-item">
-            <a class="nav-link" href="{{route('priest.index')}}">
-                <i class="nav-icon fas fa-book-open"></i> Manual</a>
+            <a class="nav-link" target="_blank" href="{{asset('manuales/Manual de Usuario Coordinador.pdf')}}">
+                <i class="nav-icon fas fa-book"></i> Manual</a>
         </li>
     </ul>
 </nav>
