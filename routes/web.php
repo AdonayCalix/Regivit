@@ -72,6 +72,7 @@ Route::middleware(['candidate_or_teacher'])->group(function () {
     Route::get('tab_one_disabled', 'TabDisabledController@index_tab_one')->name('tab_one_disabled');
     Route::get('tab_two_disabled', 'TabDisabledController@index_tab_two')->name('tab_two_disabled');
     Route::get('/preview_tab/{path}', 'ReportController@previewContentTab')->name('preview_tab');
+    Route::post('save_file', 'SaveFileController@saveFile')->name('save_file');
 });
 
 

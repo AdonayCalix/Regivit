@@ -68,7 +68,7 @@
             </div>
             <!--Cuerpo para el modal -->
             <div class="modal-body">
-                <form action="{{route('tab_one.store')}}" class="dropzone" method="POST"
+                <form action="{{route('save_file')}}" class="dropzone" method="POST"
                       id="my-awesome-dropzone" enctype="multipart/form-data">
                     {{csrf_field()}}
                     <input type="hidden" name="document_type" class="document_type" value="">
@@ -133,13 +133,17 @@
     Dropzone.options.myAwesomeDropzone = {
         paramName: "file",
         addRemoveLinks: true,
-        autoProcessQueue: false,
         acceptedFiles: "application/pdf, image/*",
         maxFiles: 1,
         dictDefaultMessage: "De click o arrastre el archivo para subirlo",
         dictInvalidFileType: "Solo se permiten archivos con extension pdf o imagenes",
         dictRemoveFile: "Remover archivo",
-        timeout: 13000,
+        autoProcessQueue: false,
+        parallelUploads: 1,
+
+        success: function (file, response) {
+            console.log(response);
+        },
 
         init: function () {
             myAwesomeDropzone = this;
