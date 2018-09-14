@@ -78,10 +78,6 @@
                     Nombre archivo subido: <a href="" id="path"><i class="far fa-file"></i></a>
                 </div>
             </div>
-            <div class="modal-footer">
-                <button type="button" class="btn btn-secondary" data-dismiss="modal" id="cancelar">Cancelar</button>
-                <button type="submit" class="btn btn-success" id="crear">Guardar</button>
-            </div>
         </div>
     </div>
 </div>
@@ -155,6 +151,7 @@
 
             this.on("complete", function (file) {
                 $("#modal_formulario").modal('hide');
+                $.notify("Archivo subido correctamente", "success");
             })
         }
     };
