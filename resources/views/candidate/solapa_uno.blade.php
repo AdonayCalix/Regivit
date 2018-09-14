@@ -136,14 +136,14 @@
         dictRemoveFile: "Remover archivo",
 
         init: function () {
-            Dropzone.options.myAwesomeDropzone = this;
+            myAwesomeDropzone = this;
 
             this.on("complete", function (file) {
                 $("#modal_formulario").modal('hide');
                 myAwesomeDropzone.removeAllFiles(true);
                 $.notify("Archivo subido correctamente", "success");
                 location.reload();
-            })
+            });
         }
     };
 </script>
