@@ -142,15 +142,9 @@
         init: function () {
             Dropzone.options.myAwesomeDropzone = this;
 
-            $("#crear").click(function (e) {
-                e.preventDefault();
-                e.stopPropagation();
-                this.autoProcessQueue();
-                myAwesomeDropzone.removeAllFiles(true);
-            });
-
             this.on("complete", function (file) {
                 $("#modal_formulario").modal('hide');
+                myAwesomeDropzone.removeAllFiles(true);
                 location.reload();
                 $.notify("Archivo subido correctamente", "success");
             })

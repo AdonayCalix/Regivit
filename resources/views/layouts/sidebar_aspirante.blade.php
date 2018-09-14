@@ -31,7 +31,7 @@
                             <i class="nav-icon far fa-folder-open"></i> Solapa N° 1</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link ajax-request" href="{{route('tab_two.index')}}">
+                        <a class="nav-link" href="{{route('tab_two.index')}}">
                             <i class="nav-icon far fa-folder-open"></i> Solapa N° 2</a>
                     </li>
             </ul>
