@@ -30,7 +30,8 @@ class PersonalDataRequest extends FormRequest
             'signature_path' => 'required|string',
             'dependent_name.*' => 'nullable|string',
             'dependent_relationship.*' => 'nullable|string',
-            'dependent_birthdate.*' => 'nullable|date'
+            'dependent_birthdate.*' => 'nullable|date',
+            'postgrado' => 'required|string'
         ];
     }
 

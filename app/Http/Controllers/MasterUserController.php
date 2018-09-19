@@ -114,6 +114,7 @@ class MasterUserController extends Controller
                     'second_surname' => $request->second_surname,
                     'user_type' => $request->user_type
                 ]);
+
             return response()->json(['status' => true]);
         }
     }

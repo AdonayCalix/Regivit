@@ -77,6 +77,9 @@
                 <div class="link" id="document_link" style="display: none">
                     Nombre archivo subido: <a href="" id="path"><i class="far fa-file"></i></a>
                 </div>
+                <span class="d-inline-block" tabindex="0" data-toggle="tooltip" title="Si desea sustituir el documento subido, solo cargue uno nuevo y sera reemplazado por el mas reciente">
+                        <i class="fas fa-question-circle"></i>
+                    </span>
             </div>
         </div>
     </div>

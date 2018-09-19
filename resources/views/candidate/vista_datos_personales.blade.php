@@ -381,39 +381,9 @@
                 </form>
             </div>
     </div>
+    <div class="card-body">
+        <button class="btn btn-success float-right">
+            Descargar <i class="fas fa-download"></i></button>&nbsp;&nbsp;&nbsp;&nbsp;
+    </div>
 </div>
 @endforeach
-
-
-<script src="{{asset('js/html2canvas.js')}}"></script>
-
-<script>
-    $(document).ready(function () {
-        getScreen();
-
-        function getScreen() {
-            var data_uri;
-            html2canvas(document.querySelector("#capture"), {
-                width: 1065,
-                height: 1729
-            }).then(canvas => {
-                data_uri = canvas.toDataURL();
-                saveScreen(data_uri);
-            });
-        }
-
-        function saveScreen(data_uri) {
-            var token = '{{csrf_token()}}';
-            $.ajax({
-                url: '{{route('screen_save_personal')}}',
-                headers: {'X-CSRF-TOKEN': token},
-                type: 'post',
-                dataType: 'json',
-                data: {'data_uri': data_uri},
-                success: function (data) {
-                    console.log("Funciona");
-                },
-            });
-        }
-    })
-</script>

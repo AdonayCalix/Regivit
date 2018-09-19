@@ -6,11 +6,11 @@
 <body class="app flex-row align-items-center">
 <div class="container">
     <div class="row justify-content-center">
-        <div class="col-md-6">
+        <div class="col-md-5">
             <form action="{{route('login')}}" method="post">
                 {{csrf_field()}}
                 <div class="card-group">
-                    <div class="card p-4">
+                    <div class="card p-3">
                         @if(session()->has('flash'))
                             <div class="alert alert-success alert-dismissible fade show" role="alert">
                                 <strong>{{ session('flash')  }}</strong>
@@ -21,8 +21,7 @@
                         @endif
 
                         <div class="card-body">
-                            <h1>Login</h1>
-                            <p class="text-muted">Inicia sesion para acceder a tu cuenta</p>
+                            <h2>Inicio de Sesión</h2>
                             <div class="form-group {{ $errors->has('identity') ? 'has-error' : ''}}">
                                 <div class="input-group-prepend">
                                 </div>

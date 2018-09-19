@@ -69,6 +69,14 @@
                                 <option value="4" selected>Catedratico</option>
                             </select>
                         </div>
+                        <div class="form-group col-md-6">
+                            <label for="">8. Facultad</label>
+                            <select class="form-control" name="faculty">
+                                @foreach($faculties as $faculty)
+                                    <option value="{{$faculty->code}}">{{$faculty->name}}</option>
+                                @endforeach
+                            </select>
+                        </div>
                     </div>
                 </form>
             </div>

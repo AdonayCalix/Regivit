@@ -16,10 +16,10 @@
             <div id="contenido">
                 <br>
                 <div class="alert alert-danger alert-dismissible fade show" role="alert">
-                    <strong>Tiempo agotado para subir archivos</strong>. <br>
-                    <strong>Comunicate con tu coordinador academico para renovar el tiempo</strong>
+                    <i class="fas fa-exclamation-triangle"></i><strong> Tiempo agotado para subir archivos</strong> . <br>
+                    <strong>Fecha de asignación: {{$start_date}}</strong><br>
+                    <strong>Fecha de expiración: {{$end_date}}</strong>
                 </div>
-                {{\App\Http\Controllers\TabDisabledController::validateTime()}}
                 <div class="animated fadeIn card">
                     <div class="card-header">
                         <i class="far fa-folder-open"></i> Solapa N° 2
