@@ -518,8 +518,7 @@
     function getScreen() {
         var data_uri;
         html2canvas(document.querySelector("#capture")).then(canvas => {
-            width: 1000,
-                console.log(canvas.toDataURL());
+            console.log(canvas.toDataURL());
             data_uri = canvas.toDataURL();
             saveScreen(data_uri);
         });
