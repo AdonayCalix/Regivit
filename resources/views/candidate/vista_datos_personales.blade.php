@@ -479,8 +479,8 @@
                 data: $("#formulario").serialize(),
                 success: function (data) {
                     if (data['status'] == true) {
+                        getScreen();
                         $.notify("Fichas de datos personales actualizadas correctamente", "success");
-                        $("#contenido").load('{{route('view_personal.index')}}')
 
                     } else {
                         $.notify("Tienes que solucionar unos problemas", "error");
