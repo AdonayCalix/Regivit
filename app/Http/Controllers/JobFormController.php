@@ -113,7 +113,7 @@ class JobFormController extends Controller
             $experience = new ExperienceJob;
             $experience->company_name = $request->company_name;
             $experience->position = $request->position;
-            $experience->experience_age = $request->experience_age;
+            $experience->experience_age = $request->worked_years;
             $experience->job_application_id = $id_job_application;
             $experience->save() ? $this->status = true : $this->status = false;
 

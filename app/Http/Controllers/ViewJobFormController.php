@@ -262,7 +262,7 @@ class ViewJobFormController extends Controller
                 ->update([
                     'company_name' => $request->company_name,
                     'position' => $request->position,
-                    'experience_age' => $request->experience_age,
+                    'experience_age' => $request->worked_years,
                 ]);
 
             $experience_id = $this->getActivitiesId($this->getExperienceJobId($job_form_id));
