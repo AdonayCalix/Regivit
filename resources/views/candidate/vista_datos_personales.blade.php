@@ -1,6 +1,6 @@
 <br>
 <div class="alert alert-secondary alert-dismissible fade show" role="alert">
-    <strong>Ya has llenado este formulario, no puedes editarlo nuevamente</strong>.
+    <strong>Ya has llenado este formulario</strong>.
     <button type="button" class="close" data-dismiss="alert" aria-label="Close">
         <span aria-hidden="true">&times;</span>
     </button>
@@ -16,11 +16,12 @@
             <div class="card-body">
                 <!-- PORTADA DE REG-R.120-->
                 <div class="row">
-                    <div class="col-md-2"></div>
-                    <div class="col-md-1 align-content-center align-items-center">
-                        <img src="https://upload.wikimedia.org/wikipedia/commons/2/24/UNICAH_logo.png"
-                             width="150" height="150"
-                             alt="">
+                    <div class="col-md-3 align-items-center">
+                        <div class="row justify-content-end">
+                            <img src="https://upload.wikimedia.org/wikipedia/commons/2/24/UNICAH_logo.png"
+                                 width="150"  class="img-fluid"
+                                 alt="">
+                        </div>
                     </div>
                     <div class="col-md-6 text-center font-weight-bold">
                         <br><h5>UNIVERSIDAD CATÓLICA DE HONDURAS</h5>
@@ -54,7 +55,7 @@
 
                                 </label>
                                 <input type="text" name="first_name" class="form-control"
-                                       value="{{auth()->user()->first_name}}">
+                                       id="first_name" value="{{auth()->user()->first_name}}">
                             </div>
                             <div class="form-group col">
                                 <label for="">Segundo Nombre
@@ -62,7 +63,7 @@
                                 </label>
                                 <input type="text" name="second_name" class="form-control"
                                        placeholder="Ingrese su segundo nombre"
-                                       value="{{auth()->user()->second_name}}">
+                                       id="second_name" value="{{auth()->user()->second_name}}">
                             </div>
                         </div>
                         <!-- Bloque -->
@@ -73,7 +74,7 @@
                                 </label>
                                 <input type="text" name="first_surname" class="form-control"
                                        placeholder="Ingrese su primer apellido"
-                                       value="{{auth()->user()->first_surname}}">
+                                       id="first_surname" value="{{auth()->user()->first_surname}}">
                             </div>
                             <div class="form-group col">
                                 <label for="">Segundo Apellido
@@ -81,7 +82,7 @@
                                 </label>
                                 <input type="text" name="second_surname" class="form-control"
                                        placeholder="Ingrese su segundo apellido"
-                                       value="{{auth()->user()->second_surname}}">
+                                       id="second_surname" value="{{auth()->user()->second_surname}}">
                             </div>
                         </div>
 
@@ -91,7 +92,7 @@
                                 <label for="">Estado Civil
 
                                 </label>
-                                <select class="form-control formulario" name="civil_status">
+                                <select class="form-control formulario" name="civil_status" id="civil_status">
                                     <option value="Una burrada">{{$value['civil_status']}}</option>
                                 </select>
                             </div>
@@ -100,14 +101,14 @@
 
                                 </label>
                                 <input type="text" name="identity" class="form-control"
-                                       value="{{auth()->user()->identity}}">
+                                       value="{{auth()->user()->identity}}" id="identity">
                             </div>
                             <div class="form-group col">
                                 <label for="">Fecha de Nacimiento
 
                                 </label>
                                 <input type="date" name="birthdate" class="form-control"
-                                       value="{{$value['birthdate']}}">
+                                       value="{{$value['birthdate']}}" id="birthdate">
                             </div>
                         </div>
 
@@ -118,14 +119,14 @@
 
                                 </label>
                                 <input type="text" name="address" class="form-control"
-                                       value="{{$value['address']}}">
+                                       value="{{$value['address']}}" id="address">
                             </div>
                             <div class="form-group col">
                                 <label for="">E-mail
 
                                 </label>
                                 <input type="text" name="email" class="form-control"
-                                       value="{{auth()->user()->email}}">
+                                       value="{{auth()->user()->email}}" id="email">
                             </div>
                         </div>
 
@@ -135,28 +136,28 @@
                                 <label for="">Telefono casa
 
                                 </label>
-                                <input type="text" class="form-control" name="number_home"
+                                <input type="text" class="form-control" name="telefono_casa"
                                        value="{{$personal_data->telefono_casa}}">
                             </div>
                             <div class="form-group col">
                                 <label for="">Telefono oficina
 
                                 </label>
-                                <input type="text" class="form-control" name="number_office"
+                                <input type="text" class="form-control" name="telefono_oficina"
                                        value="{{$personal_data->telefono_oficina}}">
                             </div>
                             <div class="form-group col">
                                 <label for="">Telefono otros
 
                                 </label>
-                                <input type="text" class="form-control" name="number_others"
+                                <input type="text" class="form-control" name="telefono_otro"
                                        value="{{$personal_data->telefono_otro}}">
                             </div>
                             <div class="form-group col">
                                 <label for="">Nacionalidad
 
                                 </label>
-                                <select class="form-control formulario" name="nacionalidad">
+                                <select class="form-control formulario" name="nacionalidad" id="nationality">
                                     <option>{{$value['nationality']}}</option>
                                 </select>
                             </div>
@@ -170,6 +171,7 @@
 
                                         </label>
                                         <input type="text" name="primary_education" class="form-control"
+                                               id="primary_education"
                                                value="{{$degrees->degree}}">
                                     </div>
                                 @endif
@@ -179,6 +181,7 @@
 
                                         </label>
                                         <input type="text" name="high_school_education" class="form-control"
+                                               id="high_school_education"
                                                value="{{$degrees->degree}}">
                                     </div>
                                 @endif
@@ -188,6 +191,7 @@
 
                                         </label>
                                         <input type="text" name="university_education" class="form-control"
+                                               id="university_education"
                                                value="{{$degrees->degree}}">
                                     </div>
                                 @endif
@@ -205,12 +209,12 @@
                         <div class="row">
                             <div class="form-group col">
                                 <label for="">IHSS</label>
-                                <input type="text" class="form-control" name="ihss"
+                                <input type="text" class="form-control" name="ihss" id="ihss"
                                        value="{{$value['ihss']}}">
                             </div>
                             <div class="form-group col">
                                 <label for="">RAP/FOSOVI</label>
-                                <input type="text" class="form-control" name="rap_fosovi"
+                                <input type="text" class="form-control" name="rap_fosovi" id="rap"
                                        value="{{$value['rap']}}">
                             </div>
                             <div class="form-group col">
@@ -362,8 +366,10 @@
                             <div class="form-group col">
                                 <label for="" data-toggle="modal" data-target="#modal_firma">Firma
                                 </label><br>
-                                <div class="form-control align-content-center" id="contenedor_firma" style="height: 100px">
-                                    <img src="{{asset('/uploades/' . $personal_data->signature_path)}}" alt="" id="img-firma"
+                                <div class="form-control align-content-center" id="contenedor_firma"
+                                     style="height: 100px">
+                                    <img src="{{asset('/uploades/' . $personal_data->signature_path)}}" alt=""
+                                         id="img-firma"
                                          width="100%" height="100%">
                                 </div>
                             </div>
@@ -381,9 +387,104 @@
                 </form>
             </div>
     </div>
-    <div class="card-body">
-        <button class="btn btn-success float-right">
-            Descargar <i class="fas fa-download"></i></button>&nbsp;&nbsp;&nbsp;&nbsp;
+    <div class="card-body" id="main" style="display: block; ">
+        <div class="float-right">
+            <a href="#" id="edit" class="btn btn-primary">
+                Editar <i class="fas fa-pen-square"></i></a>
+            <a href="{{asset('uploades/' . $path_personal_data_form)}}" target="_blank" class="btn btn-success">
+                Descargar <i class="fas fa-download"></i></a>
+        </div>
+    </div>
+    <div class="card-body" style="display: none" id="second">
+        <div class="float-right">
+            <a href="#" id="cancel" class="btn btn-secondary">
+                Cancelar </a>
+            <a href="#" class="btn btn-success" id="update">
+                Actualizar</a>
+        </div>
     </div>
 </div>
 @endforeach
+
+<script>
+    $(document).ready(function () {
+        $("#edit").click(function (e) {
+            e.preventDefault();
+            $("#main").css('display', 'none');
+            $("#second").css('display', 'block');
+            readonly();
+        });
+
+        $("#cancel").click(function (e) {
+            e.preventDefault();
+            $("#second").css('display', 'none');
+            $("#main").css('display', 'block');
+            removeReadonly();
+        });
+
+        $("#update").click(function (e) {
+            e.preventDefault();
+            update();
+        });
+
+        function readonly() {
+            $("#first_name").prop('readonly', true);
+            $("#second_name").prop('readonly', true);
+            $("#first_surname").prop('readonly', true);
+            $("#second_surname").prop('readonly', true);
+            $("#identity").prop('readonly', true);
+            $("#address").prop('readonly', true);
+            $("#civil_status").attr('readonly', true);
+            $("#email").prop('readonly', true);
+            $("#birthdate").prop('readonly', true);
+            $("#primary_education").prop('readonly', true);
+            $("#high_school_education").prop('readonly', true);
+            $("#university_education").prop('readonly', true);
+            $("#university_education").prop('readonly', true);
+            $("#nationality").attr('readonly', true);
+            $("#ihss").prop('readonly', true);
+            $("#rap").prop('readonly', true);
+        }
+
+        function removeReadonly() {
+            $("#first_name").removeAttr('readonly');
+            $("#second_name").removeAttr('readonly');
+            $("#first_surname").removeAttr('readonly');
+            $("#second_surname").removeAttr('readonly');
+            $("#identity").removeAttr('readonly');
+            $("#address").removeAttr('readonly');
+            $("#civil_status").removeAttr('readonly');
+            $("#email").removeAttr('readonly');
+            $("#birthdate").removeAttr('readonly');
+            $("#primary_education").removeAttr('readonly');
+            $("#high_school_education").removeAttr('readonly');
+            $("#university_education").removeAttr('readonly');
+            $("#university_education").removeAttr('readonly');
+            $("#nationality").removeAttr('readonly');
+            $("#ihss").removeAttr('readonly');
+            $("#rap").removeAttr('readonly');
+        }
+
+        function update() {
+            var path = '{{route('view_personal.store')}}';
+            var token = '{{csrf_token()}}';
+
+            $.ajax({
+                url: path,
+                headers: {'X-CSRF-TOKEN': token},
+                type: 'post',
+                dataType: 'json',
+                data: $("#formulario").serialize(),
+                success: function (data) {
+                    if (data['status'] == true) {
+                        $.notify("Fichas de datos personales actualizadas correctamente", "success");
+                        $("#contenido").load('{{route('view_personal.index')}}')
+
+                    } else {
+                        $.notify("Tienes que solucionar unos problemas", "error");
+                    }
+                }
+            });
+        }
+    })
+</script>

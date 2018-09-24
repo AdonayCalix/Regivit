@@ -11,45 +11,18 @@ class ScreenController extends Controller
 {
     public function saveJobForm(Request $request)
     {
-        $result = $this->validateIfExit(1);
-        if ($result->isEmpty()) {
-            $user_document = new UserDocument;
-            $user_document->document_id = $this->findJobFormId($this->findCoordinatorId());
-            $user_document->users_id = auth()->user()->id;
-            $user_document->path = $this->saveSignature($request->data_uri);
-            $user_document->status = 1;
+        $user_document = new UserDocument;
+        $user_document->document_id = $this->findJobFormId($this->findCoordinatorId());
+        $user_document->users_id = auth()->user()->id;
+        $user_document->path = $this->saveSignature($request->data_uri);
+        $user_document->status = 1;
 
-            if ($user_document->save()) {
-                $revision = new Revision;
-                $revision->form = 1;
-                $revision->status = 1;
-                $revision->users_id = auth()->user()->id;
-                return response()->json(['status' => $revision->save()]);
-            }
-
-        } else {
-            return response()->json(['status' => false]);
-        }
-    }
-
-    public function savePersonalData(Request $request)
-    {
-        $result = $this->validateIfExit(2);
-        if ($result->isEmpty()) {
-            $user_document = new UserDocument;
-            $user_document->document_id =$this->findCoordinatorId($this->findCoordinatorId());
-            $user_document->users_id = auth()->user()->id;
-            $user_document->path = $this->saveSignature($request->data_uri);
-            $user_document->status = 1;
-            if ($user_document->save()) {
-                $revision = new Revision;
-                $revision->form = 2;
-                $revision->status = 1;
-                $revision->users_id = auth()->user()->id;
-                return response()->json(['status' => $revision->save()]);
-            }
-        } else {
-            return response()->json(['status' => false]);
+        if ($user_document->save()) {
+            $revision = new Revision;
+            $revision->form = 1;
+            $revision->status = 1;
+            $revision->users_id = auth()->user()->id;
+            return response()->json(['status' => $revision->save()]);
         }
     }
 
@@ -64,13 +37,14 @@ class ScreenController extends Controller
         return $file_name;
     }
 
-    public function validateIfExit($form)
+    public function validateIfExit()
     {
-        return DB::table('revision')
+        $validate = DB::table('revision')
             ->where('users_id', '=', auth()->user()->id)
-            ->where('form', '=', $form)
+            ->where('form', '=', 1)
             ->where('status', '=', 1)
             ->get();
+        return response()->json(['status' => $validate->isNotEmpty()]);
     }
 
     public function findCoordinatorId()

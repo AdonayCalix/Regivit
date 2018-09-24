@@ -55,6 +55,7 @@ Route::middleware(['coordinator'])->group(function (){
     /*Routes to asign documents to candidate or teacher*/
     Route::resource('document_date', 'DocumentDateController')->only(['index', 'edit', 'store']);
     Route::get('report/{user_id}/edit', 'ReportController@showReport')->name('report');
+    Route::get('general_report', 'ReportController@showGeneralReport')->name('general_report');
     Route::get('/preview/{path}', 'ReportController@previewContent')->name('preview');
     /*Route's to upload date to upload documents*/
 });
@@ -63,16 +64,18 @@ Route::middleware(['candidate_or_teacher'])->group(function () {
     Route::resource('job_form', 'JobFormController')->only('index', 'store')->middleware('validate_job_form');
     Route::post('screen_save_job_form', 'ScreenController@saveJobForm')->name('screen_save');
     Route::post('screen_save_personal_data', 'ScreenFormController@savePersonalData')->name('screen_save_personal');
+    Route::get('screen_save_personal_data', 'ScreenController@validateIfExit')->name('check_if_exit_job_form');
     Route::resource('personal_data_form', 'PersonalDataFormController')->only(['index', 'store'])->middleware(['validate_personal', 'validate_personal_form']);
     Route::resource('tab_one', 'TabOneController')->only(['index', 'store', 'edit'])->middleware('tab_one');;
     Route::resource('tab_two', 'TabTwoController')->only(['index', 'store', 'edit'])->middleware('tab_two');;
-    Route::resource('view_job_form', 'ViewJobFormController')->only(['index']);
-    Route::resource('view_personal', 'ViewPersonalController')->only(['index']);
+    Route::resource('view_job_form', 'ViewJobFormController')->only(['index', 'store']);
+    Route::resource('view_personal', 'ViewPersonalController')->only(['index', 'store']);
     Route::get('error_personal', 'ViewPersonalController@error')->name('error_personal');
     Route::get('tab_one_disabled', 'TabDisabledController@index_tab_one')->name('tab_one_disabled');
     Route::get('tab_two_disabled', 'TabDisabledController@index_tab_two')->name('tab_two_disabled');
     Route::get('/preview_tab/{path}', 'ReportController@previewContentTab')->name('preview_tab');
     Route::post('save_file', 'SaveFileController@saveFile')->name('save_file');
+    Route::get('/preview/{path}', 'ReportController@previewContent')->name('download_form');
 });
 
 

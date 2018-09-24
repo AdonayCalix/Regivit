@@ -6,27 +6,10 @@ use http\Env\Response;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Http\File;
+use Carbon\Carbon;
 
 class ReportController extends Controller
 {
-    public function showReport(Request $request)
-    {
-        $count_uploades = $this->getCountFilesUpload($request->data_report);
-        $total_count = $this->getTotalCount();
-        $count_uploades2 = $this->getCountFilesUpload2($request->data_report);
-        $total_count2 = $this->getTotalCount2();
-        $list_document = $this->getListDOcuments($request->data_report);
-        $list_document_two = $this->getListDOcuments2($request->data_report);
-        $information_contact = $this->getInformationContact($request->data_report);
-        return response()->json(['information_personal' => $information_contact,
-            'list_document' => $list_document,
-            'list_document_two' => $list_document_two,
-            'count_uploades' => $count_uploades,
-            'total_count' => $total_count,
-            'count_uploades2' => $count_uploades2,
-            'total_count2' => $total_count2]);
-    }
-
     public function getCountFilesUpload($identity)
     {
         return DB::table('users_documents')
@@ -80,7 +63,6 @@ class ReportController extends Controller
         return response()->download(public_path() . '/uploades/' . $path);
     }
 
-
     public function getListDOcuments($identity)
     {
         return DB::table('users_documents')
@@ -90,6 +72,7 @@ class ReportController extends Controller
             ->where('documents.users_id', '=', auth()->user()->id)
             ->get();
     }
+
 
     public function getListDOcuments2($identity)
     {
@@ -133,5 +116,54 @@ where users.id = general_data.users_id
   and job_application.id = education.job_application_id
   and general_data.users_id = ? 
   and education.level = 'Universitaria';", [$identity]);
+    }
+
+    public function showReport(Request $request)
+    {
+        $total_count = $this->getTotalCount();
+        $count_uploades2 = $this->getCountFilesUpload2($request->data_report);
+        $total_count2 = $this->getTotalCount2();
+        $list_document = $this->getListDOcuments($request->data_report);
+        $count_uploades = $this->getCountFilesUpload($request->data_report);
+        $list_document_two = $this->getListDOcuments2($request->data_report);
+        $information_contact = $this->getInformationContact($request->data_report);
+        return response()->json(['information_personal' => $information_contact,
+            'list_document' => $list_document,
+            'list_document_two' => $list_document_two,
+            'count_uploades' => $count_uploades,
+            'total_count' => $total_count,
+            'count_uploades2' => $count_uploades2,
+            'total_count2' => $total_count2]);
+    }
+
+    public function showGeneralReport()
+    {
+        $list_users = $this->getListUsers();
+        return view('coordinator_user.general_report', compact('list_users'));
+    }
+
+    public function getListUsers()
+    {
+        return DB::select('
+            select users.id,
+            users.identity,
+       users.first_name,
+       users.second_name,
+       users.first_surname,
+       users.second_surname,
+       faculties.name as nombre_facultad,
+       round(((count(users_documents.id) / (select count(*) from documents where users_id = ?)) *
+              100)) as porcentaje
+from users_faculties,
+     users,
+     users_documents,
+     faculties
+where users.id = users_faculties.users_id
+  and users_faculties.coordinator_id = ?
+  and users.id = users_documents.users_id
+  and users_faculties.faculties_code = faculties.code
+  and faculties.code = ?
+group by users.id, faculties.name;
+        ', [auth()->user()->id, auth()->user()->id, 'IF01002']);
     }
 }

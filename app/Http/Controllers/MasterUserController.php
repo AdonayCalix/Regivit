@@ -39,7 +39,8 @@ class MasterUserController extends Controller
             $user->campus_id = $this->getCampus();
             $status = $user->save();
             if ($request->user_type == 2) {
-                for ($i= 0; $i < count($request->input('faculty')); $i++) {
+                for ($i = 0; $i < count($request->input('faculty')); $i++) {
+
                     $coordinator_faculties = new CoordinadorFaculties;
                     $coordinator_faculties->users_id = $this->getIdUser($request->identity);
                     $coordinator_faculties->faculties_code = $request->input('faculty')[$i];

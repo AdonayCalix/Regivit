@@ -19,7 +19,7 @@
                 </a>
                 <div class="dropdown-menu dropdown-menu-right">
                     <div class="dropdown-header text-center">
-                        <strong>Tiempo disponible</strong>
+                        <strong>Tiempo disponible para subir documentos</strong>
                     </div>
                     <a class="dropdown-item" href="#">
                         <div id="countdown"></div>

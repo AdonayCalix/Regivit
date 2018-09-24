@@ -3,8 +3,10 @@
 namespace App\Http\Controllers;
 
 use App\Campus;
+use App\Http\Requests\PersonalDataRequest;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
+use App\PersonalData;
 
 class ViewPersonalController extends Controller
 {
@@ -24,7 +26,45 @@ class ViewPersonalController extends Controller
         $campus = Campus::all();
         $personal_datas = $this->getPersonalData();
         $dependents = $this->getDependents();
-        return view('candidate.vista_datos_personales', compact('values', 'degree_education', 'campus', 'personal_datas', 'dependents'));
+        $path_personal_data_form = $this->getPathPersonalData($this->getIdJobFormDocuments($this->getIdCoordinator()));
+        return view('candidate.vista_datos_personales', compact('values', 'degree_education', 'campus', 'personal_datas', 'dependents', 'path_personal_data_form'));
+    }
+
+    public function store(PersonalDataRequest $request)
+    {
+        if ($request->ajax()) {
+            $personal_data = PersonalData::where('general_data_id', $this->getGeneralId())
+                ->update([
+                    'current_position' => $request->current_position,
+                    'personal_school_number' => $request->personal_school_number,
+                    'driver_license' => $request->driver_license,
+                    'job_card' => $request->job_card,
+                    'campus_job' => $request->campus_id,
+                    'bamer_account_numer' => $request->bamer_account_number,
+                    'spouse_name' => $request->spouse_name,
+                    'emergency' => $request->emergency,
+                    'emergency_number' => $request->emergency_number,
+                    'vehiculo' => $request->has_car,
+                    'marca_vehiculo' => $request->marca,
+                    'modelo_vehiculo' => $request->modelo,
+                    'anio_vehiculo' => $request->anio,
+                    'postgrado' => $request->postgrade_education,
+                    'telefono_casa' => $request->telefono_casa,
+                    'telefono_oficina' => $request->telefono_oficina,
+                    'telefono_otro' => $request->telefono_otro,
+                    'admission_date' => $request->admission_date
+                ]);
+
+            return response()->json(['status' => true]);
+
+        }
+    }
+
+    public function getGeneralId()
+    {
+        return DB::table('general_data')
+            ->where('users_id', auth()->user()->id)
+            ->value('id');
     }
 
     public function getEducation()
@@ -57,6 +97,29 @@ class ViewPersonalController extends Controller
     public function error()
     {
         return view('candidate.error_personal_data');
+    }
+
+    public function getIdCoordinator()
+    {
+        return DB::table('users_faculties')
+            ->where('users_id', auth()->user()->id)
+            ->value('coordinator_id');
+    }
+
+    public function getIdJobFormDocuments($coordinador_id)
+    {
+        return DB::table('documents')
+            ->where('users_id', '=', $coordinador_id)
+            ->where('name', '=', 'Ficha de datos personales RG-RH.120')
+            ->value('id');
+    }
+
+    public function getPathPersonalData($id_personal_data_form)
+    {
+        return DB::table('users_documents')
+            ->where('users_id', '=', auth()->user()->id)
+            ->where('document_id', '=', $id_personal_data_form)
+            ->value('path');
     }
 
 }

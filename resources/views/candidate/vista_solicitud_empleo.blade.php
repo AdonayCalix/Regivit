@@ -1,6 +1,6 @@
 <br>
 <div class="alert alert-secondary alert-dismissible fade show" role="alert">
-    <strong>Ya has llenado este formulario, no puedes editarlo nuevamente</strong>.
+    <strong>Ya has llenado este formulario</strong>.
     <button type="button" class="close" data-dismiss="alert" aria-label="Close">
         <span aria-hidden="true">&times;</span>
     </button>
@@ -34,7 +34,7 @@
                     </div>
                 </div>
                 <br>
-                <form>
+                <form id="formulario">
                     <div class="row">
                         <div class="form-group col-md-6">
                             <label for="">Puesto al que aspira</label>
@@ -57,12 +57,12 @@
                     <div class="row">
                         <div class="form-group col">
                             <label for="">Primer Nombre</label>
-                            <input type="text" name="first_name" class="form-control"
+                            <input type="text" name="first_name" class="form-control" id="first_name"
                                    value="{{auth()->user()->first_name}}">
                         </div>
                         <div class="form-group col">
                             <label for="">Segundo Nombre</label>
-                            <input type="text" name="second_name" class="form-control"
+                            <input type="text" name="second_name" class="form-control" id="second_name"
                                    value="{{auth()->user()->second_name}}">
                         </div>
                     </div>
@@ -70,12 +70,12 @@
                     <div class="row">
                         <div class="form-group col">
                             <label for="">Primer Apellido</label>
-                            <input type="text" name="first_surname" class="form-control"
+                            <input type="text" name="first_surname" class="form-control" id="first_surname"
                                    value="{{auth()->user()->first_surname}}">
                         </div>
                         <div class="form-group col">
                             <label for="">Segundo Apellido</label>
-                            <input type="text" name="second_surname" class="form-control"
+                            <input type="text" name="second_surname" class="form-control" id="second_surname"
                                    value="{{auth()->user()->second_surname}}">
                         </div>
                     </div>
@@ -96,17 +96,17 @@
                     <div class="row">
                         <div class="form-group col">
                             <label for="">Telefono</label>
-                            <input type="text" name="home_number" class="form-control"
+                            <input type="text" name="telefono" class="form-control"
                             value="{{$item->telefono}}">
                         </div>
                         <div class="form-group col">
                             <label for="">Celular</label>
-                            <input type="text" name="cellphone_number" class="form-control"
+                            <input type="text" name="celular" class="form-control"
                             value="{{$item->celular}}">
                         </div>
                         <div class="form-group col">
                             <label for="">E-mail</label>
-                            <input type="email" name="email" class="form-control"
+                            <input type="email" name="email" class="form-control" id="email"
                                    value="{{auth()->user()->email}}">
                         </div>
                     </div>
@@ -121,7 +121,7 @@
                         <div class="form-group col">
                             <label for="">Estado Civil</label>
                             <select class="form-control formulario" name="civil_status">
-                                <option value="">{{$item->civil_status}}</option>
+                                <option value="{{$item->tipo_estado_civil}}">{{$item->civil_status}}</option>
 
                             </select>
                         </div>
@@ -132,7 +132,7 @@
                         </div>
                         <div class="form-group col">
                             <label for="">Número de Identidad</label>
-                            <input type="text" name="identity" class="form-control"
+                            <input type="text" name="identity" class="form-control" id="identity"
                                    value="{{auth()->user()->identity}}">
                         </div>
                     </div>
@@ -156,7 +156,7 @@
                         <div class=" form-group col">
                             <label for="">Tipo de sangre</label>
                             <select class="form-control formulario" name="blood">
-                                <option value="">{{$item->blood_type}}</option>
+                                <option value="{{$item->tipo_sangre}}">{{$item->blood_type}}</option>
 
                             </select>
                         </div>
@@ -166,13 +166,13 @@
                         <div class="form-group col">
                             <label for="">Parroquia a la que pertenece</label>
                             <select class="form-control formulario" name="parish">
-                                <option value="">{{$item->parish_name}}</option>
+                                <option value="{{$item->id_parish}}">{{$item->parish_name}}</option>
                             </select>
                         </div>
                         <div class="form-group col">
                             <label for="">Nombre del párroco</label>
                             <select class="form-control formulario" name="priest">
-                                <option value="">{{$item->priest_name}}</option>
+                                <option value="{{$item->id_parish_priest}}">{{$item->priest_name}}</option>
                             </select>
                         </div>
                     </div>
@@ -352,7 +352,7 @@
                     <div class="row">
                         @foreach($knowledges as $knowledge)
                             <div class="form-group col-md-6">
-                                <input type="text" name="competence[]" class="form-control"
+                                <input type="text" name="knowledge[]" class="form-control"
                                        value="{{$knowledge->description}}">
                             </div>
                         @endforeach
@@ -366,7 +366,7 @@
                     <div class="row">
                         @foreach($skills as $skill)
                             <div class="form-group col-md-6">
-                                <input type="text" name="competence[]" class="form-control"
+                                <input type="text" name="skill[]" class="form-control"
                                        value="{{$skill->description}}">
                             </div>
                         @endforeach
@@ -427,13 +427,13 @@
                         <tbody>
                         @foreach($economics as $economic)
                             <tr>
-                                <td><input type="text" value="{{$economic->name}}" class="form-control"
+                                <td><input type="text" name="dependent_name[]" value="{{$economic->name}}" class="form-control"
                                     ></td>
-                                <td><input type="text" value="{{$economic->relationship}}" class="form-control"
+                                <td><input type="text" name="dependent_relationship[]" value="{{$economic->relationship}}" class="form-control"
                                     ></td>
-                                <td><input type="number" value="{{$economic->age}}" class="form-control"
+                                <td><input type="number" name="dependent_age[]" value="{{$economic->age}}" class="form-control"
                                     ></td>
-                                <td><input type="text" value="{{$economic->address}}" class="form-control"></td>
+                                <td><input type="text" name="dependent_address[]" value="{{$economic->address}}" class="form-control"></td>
                             </tr>
                         @endforeach
                         </tbody>
@@ -446,7 +446,7 @@
                             <span class="input-group-text">Lps</span>
                         </div>
                         <input type="number" class="form-control col-sm-4" name="minimun_salary"
-                               placeholder="{{$item->minimum_salary}}"
+                               value="{{$item->minimum_salary}}"
                         >
                         <div class="input-group-append">
                             <span class="input-group-text">.00</span>
@@ -464,6 +464,7 @@
                         </div>
                         <div class="form-group col">
                             <label>Firma</label><br>
+                            <input type="hidden" value="{{$item->signature_path}}" name="signature_paht">
                             <div class="form-control align-content-center" id="contenedor_firma" style="height: 100px">
                                 <img src="{{asset('/uploades/' . $path_siganture)}}" alt="" id="img-firma"
                                      width="100%" height="100%">
@@ -474,12 +475,140 @@
                 </form>
             </div>
         </div>
-        <div class="card-body">
-            <button class="btn btn-success float-right">
-                Descargar <i class="fas fa-download"></i></button>&nbsp;&nbsp;&nbsp;&nbsp;
+        <div class="card-body" id="main" style="display: block; ">
+            <div class="float-right">
+                <a href="#" id="edit" class="btn btn-primary">
+                    Editar <i class="fas fa-pen-square"></i></a>
+                <a href="{{asset('uploades/' . $path_job_form)}}" target="_blank" class="btn btn-success">
+                    Descargar <i class="fas fa-download"></i></a>
+            </div>
+        </div>
+        <div class="card-body" style="display: none" id="second">
+            <div class="float-right">
+                <a href="#" id="cancel" class="btn btn-secondary">
+                    Cancelar </a>
+                <a href="#" class="btn btn-success" id="update">
+                    Actualizar</a>
+            </div>
         </div>
     </div>
     @break
 @endforeach
+
+<script>
+    $(document).ready(function () {
+        $("#edit").click(function (e) {
+            e.preventDefault();
+            $("#main").css('display', 'none');
+            $("#second").css('display', 'block');
+            readonly();
+        });
+
+        $("#cancel").click(function (e) {
+            e.preventDefault();
+            $("#second").css('display', 'none');
+            $("#main").css('display', 'block');
+            removeReadonly();
+        });
+
+        $("#update").click(function (e) {
+            e.preventDefault();
+            update();
+        });
+
+        function readonly() {
+            $("#first_name").prop('readonly', true);
+            $("#second_name").prop('readonly', true);
+            $("#first_surname").prop('readonly', true);
+            $("#second_surname").prop('readonly', true);
+            $("#identity").prop('readonly', true);
+            $("#email").prop('readonly', true);
+        }
+
+        function removeReadonly() {
+            $("#first_name").removeAttr('readonly');
+            $("#second_name").removeAttr('readonly');
+            $("#first_surname").removeAttr('readonly');
+            $("#second_surname").removeAttr('readonly');
+            $("#identity").removeAttr('readonly');
+            $("#email").removeAttr('readonly');
+        }
+
+        function update() {
+            var path = '{{route('view_job_form.store')}}';
+            var token = '{{csrf_token()}}';
+
+            $.ajax({
+                url: path,
+                headers: {'X-CSRF-TOKEN': token},
+                type: 'post',
+                dataType: 'json',
+                data: $("#formulario").serialize(),
+                success: function (data) {
+                    if (data['status'] == true) {
+                        $.notify("Solicitud de empleo actualizada correctamente", "success");
+                        $("#contenido").load('{{route('view_job_form.index')}}')
+
+                    } else {
+                        $.notify("Tienes que solucionar unos problemas", "error");
+                    }
+                }
+            });
+        }
+    })
+</script>
+
+<script>
+    $(document).ready(function () {
+        checkIf();
+    });
+    
+    function checkIf() {
+        var path = '{{route('check_if_exit_job_form')}}';
+
+        $.ajax({
+            url: path,
+            type: 'get',
+            dataType: 'json',
+            success: function (data) {
+                if (data['status'] == true) {
+                    console.log("Ya existe un archivo");
+                } else {
+                   getScreen();
+                }
+            }
+        });
+    }
+
+    function addImageJobForm() {
+        getScreen();
+    }
+
+    function getScreen() {
+        var data_uri;
+        html2canvas(document.querySelector("#capture")).then(canvas => {
+            width: 1000,
+                console.log(canvas.toDataURL());
+            data_uri = canvas.toDataURL();
+            saveScreen(data_uri);
+        });
+    }
+
+    function saveScreen(data_uri) {
+        var token = '{{csrf_token()}}';
+        $.ajax({
+            url: '{{route('screen_save')}}',
+            headers: {'X-CSRF-TOKEN': token},
+            type: 'post',
+            dataType: 'json',
+            data: {'data_uri': data_uri},
+            success: function (data) {
+                console.log("Funciona");
+            },
+        });
+    }
+</script>
+
+
 
 

@@ -24,6 +24,5 @@ $(document).ready(function () {
                 "sortDescending": ": activate to sort column descending"
             }
         }
-
     });
 });

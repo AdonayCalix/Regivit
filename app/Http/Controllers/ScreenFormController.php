@@ -33,11 +33,12 @@ class ScreenFormController extends Controller
     }
     public function validateIfExit($form)
     {
-        return DB::table('revision')
+        $validate =  DB::table('revision')
             ->where('users_id', '=', auth()->user()->id)
             ->where('form', '=', $form)
             ->where('status', '=', 1)
             ->get();
+        return response()->json(['status' => $validate->isNotEmpty()]);
     }
 
     public function saveSignature($data_uri)

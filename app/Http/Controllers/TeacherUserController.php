@@ -43,6 +43,14 @@ and users_faculties.coordinator_id = ? and users.user_type = 4', [auth()->user()
             $users_faculties->coordinator_id  = auth()->user()->id;
             $users_faculties->save();
 
+            $limit_time = new UserLimitTime;
+            $start_date = Carbon::now();
+            $end_date = $start_date->copy()->addDays(14);
+            $limit_time->users_id = $this->getId($request->identity);
+            $limit_time->start_date = $start_date;
+            $limit_time->end_date = $end_date;
+            $limit_time->save();
+
             return response()->json(['status' => $status]);
         }
     }
@@ -67,9 +75,25 @@ and users_faculties.coordinator_id = ? and users.user_type = 4', [auth()->user()
 
     public function editUser(Request $request)
     {
-        return parent::editUser($request);
-    }
+        if ($request->ajax()) {
+            $user = User::where('identity', $request->identity)
+                ->update([
+                    'first_name' => $request->first_name,
+                    'second_name' => $request->second_name,
+                    'email' => $request->email,
+                    'first_surname' => $request->first_surname,
+                    'second_surname' => $request->second_surname,
+                    'user_type' => $request->user_type
+                ]);
 
+            $faculty = UserFaculty::where('users_id', $this->getId($request->identity))
+                ->update([
+                    'faculties_code' => $request->faculty
+                ]);
+
+            return response()->json(['status' => true]);
+        }
+    }
     public function edit(Request $request)
     {
         return parent::edit($request);

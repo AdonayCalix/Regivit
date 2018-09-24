@@ -35,6 +35,10 @@
             </ul>
         </li>
         <li class="nav-item">
+            <a class="nav-link ajax-request" href="{{asset('general_report')}}">
+                <i class="nav-icon fas fa-clipboard-list"></i> Reporte General</a>
+        </li>
+        <li class="nav-item">
             <a class="nav-link" target="_blank" href="{{asset('manuales/Manual de Usuario Coordinador.pdf')}}">
                 <i class="nav-icon fas fa-book"></i> Manual</a>
         </li>

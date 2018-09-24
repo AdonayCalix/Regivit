@@ -9,7 +9,7 @@
                 </button>
             </div>
             <div class="modal-body">
-                Tienes que llenar primero la solicitud de empleo!!!
+                ¡Tienes que llenar primero la solicitud de empleo!
             </div>
             <div class="modal-footer">
                 <button type="button" id="volver" class="btn btn-primary">Volver al menu principal</button>

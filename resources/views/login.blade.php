@@ -3,14 +3,14 @@
 
 @include('layouts.head')
 
-<body class="app flex-row align-items-center">
-<div class="container">
+<body class="app">
+<div class=container-fluid>
     <div class="row justify-content-center">
-        <div class="col-md-5">
+        <div class="col-md-4">
             <form action="{{route('login')}}" method="post">
                 {{csrf_field()}}
                 <div class="card-group">
-                    <div class="card p-3">
+                    <div class="card p-2">
                         @if(session()->has('flash'))
                             <div class="alert alert-success alert-dismissible fade show" role="alert">
                                 <strong>{{ session('flash')  }}</strong>
@@ -42,12 +42,14 @@
                         </div>
                     </div>
 
-                </div>
-            </form>
+                    </div>
+                </form>
+            </div>
         </div>
     </div>
 </div>
-
-@include('layouts.scripts')
+<footer class="footer-fixed">
+    @include('layouts.footer')
+</footer>
 </body>
 </html>

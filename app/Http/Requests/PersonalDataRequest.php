@@ -27,11 +27,11 @@ class PersonalDataRequest extends FormRequest
             'emergency_number' => 'required|alpha_num|min:8|max:15',
             'current_date' => 'required|date',
             'current_position' => 'required|string',
-            'signature_path' => 'required|string',
+            'signature_path' => 'string',
             'dependent_name.*' => 'nullable|string',
             'dependent_relationship.*' => 'nullable|string',
             'dependent_birthdate.*' => 'nullable|date',
-            'postgrado' => 'required|string'
+            'postgrade_education' => 'required|string'
         ];
     }
 
