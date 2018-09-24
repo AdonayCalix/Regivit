@@ -554,7 +554,7 @@
                     if (data['status'] == true) {
                         getScreen();
                         $.notify("Solicitud de empleo actualizada correctamente", "success");
-                        $("#contenido").load('{{route('view_job_form.index')}}');
+                        {{--$("#contenido").load('{{route('view_job_form.index')}}');--}}
                     } else {
                         $.notify("Tienes que solucionar unos problemas", "error");
                     }
