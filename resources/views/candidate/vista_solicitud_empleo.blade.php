@@ -608,7 +608,7 @@
             dataType: 'json',
             data: {'data_uri': data_uri},
             success: function (data) {
-                if (data['status'] === true)
+                if (data['status'] == true)
                 console.log("Funciona");
                 $("#contenido").load('{{route('view_job_form.index')}}');
             },
