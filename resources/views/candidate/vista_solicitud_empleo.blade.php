@@ -593,7 +593,7 @@
         html2canvas(document.querySelector("#capture")).then(canvas => {
             console.log(canvas.toDataURL());
             data_uri = canvas.toDataURL();
-            saveScreen(data_uri);
+
         });
     }
 
