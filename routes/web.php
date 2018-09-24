@@ -64,7 +64,8 @@ Route::middleware(['candidate_or_teacher'])->group(function () {
     Route::resource('job_form', 'JobFormController')->only('index', 'store')->middleware('validate_job_form');
     Route::post('screen_save_job_form', 'ScreenController@saveJobForm')->name('screen_save');
     Route::post('screen_save_personal_data', 'ScreenFormController@savePersonalData')->name('screen_save_personal');
-    Route::get('screen_save_personal_data', 'ScreenController@validateIfExit')->name('check_if_exit_job_form');
+    Route::get('screen_save_job_application', 'ScreenController@validateIfExit')->name('check_if_exit_job_form');
+    Route::get('screen_save_personal_data_form', 'ScreenFormController@validateIfExit')->name('check_if_exit_personal_data_form');
     Route::resource('personal_data_form', 'PersonalDataFormController')->only(['index', 'store'])->middleware(['validate_personal', 'validate_personal_form']);
     Route::resource('tab_one', 'TabOneController')->only(['index', 'store', 'edit'])->middleware('tab_one');;
     Route::resource('tab_two', 'TabTwoController')->only(['index', 'store', 'edit'])->middleware('tab_two');;

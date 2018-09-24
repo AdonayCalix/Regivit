@@ -406,6 +406,8 @@
 </div>
 @endforeach
 
+<script src="{{asset('js/html2canvas.js')}}"></script>
+
 <script>
     $(document).ready(function () {
         $("#edit").click(function (e) {
@@ -487,4 +489,57 @@
             });
         }
     })
+</script>
+
+<script>
+    $(document).ready(function () {
+        checkIf();
+    });
+
+    function checkIf() {
+        var path = '{{route('check_if_exit_personal_data_form')}}';
+
+        $.ajax({
+            url: path,
+            type: 'get',
+            dataType: 'json',
+            success: function (data) {
+                if (data['status'] == true) {
+                    console.log("Ya existe un archivo");
+                } else {
+                    getScreen();
+                }
+            }
+        });
+    }
+
+    function addImageJobForm() {
+        getScreen();
+    }
+
+    function getScreen() {
+        var data_uri;
+        html2canvas(document.querySelector("#capture")).then(canvas => {
+            width: 1000,
+                console.log(canvas.toDataURL());
+            data_uri = canvas.toDataURL();
+            saveScreen(data_uri);
+        });
+    }
+
+    function saveScreen(data_uri) {
+        var token = '{{csrf_token()}}';
+        $.ajax({
+            url: '{{route('screen_save_personal')}}',
+            headers: {'X-CSRF-TOKEN': token},
+            type: 'post',
+            dataType: 'json',
+            data: {'data_uri': data_uri},
+            success: function (data) {
+                if (data['status'] == true)
+                    console.log("Funciona");
+                $("#contenido").load('{{route('view_personal.index')}}');
+            },
+        });
+    }
 </script>

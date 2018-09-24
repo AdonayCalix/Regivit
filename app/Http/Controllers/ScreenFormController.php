@@ -12,30 +12,39 @@ class ScreenFormController extends Controller
 {
     public function savePersonalData(Request $request)
     {
-        $result = $this->validateIfExit(2);
-        if($result->isEmpty()){
+        $result = $this->validateFile();
+        if ($result->isNotEmpty()) {
+            $document_id =  $this->findJobFormId($this->findCoordinatorId());
+            $path = $this->getPathExit($document_id);
+            $user_document = UserDocument::where('document_id', $document_id)
+                ->update([
+                    'path' => $this->saveSignature($request->data_uri)
+                ]);
+            File::delete(public_path('/uploades/' . $path));
+
+            return response()->json(['status' => true]);
+
+        } else {
             $user_document = new UserDocument;
             $user_document->document_id = $this->findJobFormId($this->findCoordinatorId());
             $user_document->users_id = auth()->user()->id;
             $user_document->path = $this->saveSignature($request->data_uri);
             $user_document->status = 1;
-            if ($user_document->save()) {
-                $revision = new Revision;
-                $revision->form = 2;
-                $revision->status = 1;
-                $revision->users_id = auth()->user()->id;
-                return response()->json(['status' => $revision->save()]);
-            }
-        }else {
-            return response()->json(['status' => false]);
         }
 
+        if ($user_document->save()) {
+            $revision = new Revision;
+            $revision->form = 1;
+            $revision->status = 1;
+            $revision->users_id = auth()->user()->id;
+            return response()->json(['status' => $revision->save()]);
+        }
     }
-    public function validateIfExit($form)
+    public function validateIfExit()
     {
-        $validate =  DB::table('revision')
+        $validate = DB::table('revision')
             ->where('users_id', '=', auth()->user()->id)
-            ->where('form', '=', $form)
+            ->where('form', '=', 2)
             ->where('status', '=', 1)
             ->get();
         return response()->json(['status' => $validate->isNotEmpty()]);
@@ -65,5 +74,22 @@ class ScreenFormController extends Controller
             ->where('users_id', '=', $coordinator_id)
             ->where('name', '=', 'Ficha de datos personales RG-RH.120')
             ->value('id');
+    }
+
+    public function getPathExit($document_id)
+    {
+        return DB::table('users_documents')
+            ->where('users_id', '=', auth()->user()->id)
+            ->where('document_id', '=', $document_id)
+            ->value('path');
+    }
+
+    public function validateFile()
+    {
+        return DB::table('revision')
+            ->where('users_id', '=', auth()->user()->id)
+            ->where('form', '=', 2)
+            ->where('status', '=', 1)
+            ->get();
     }
 }
