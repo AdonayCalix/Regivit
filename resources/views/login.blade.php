@@ -3,14 +3,14 @@
 
 @include('layouts.head')
 
-<body class="app">
-<div class=container-fluid>
+<body class="app flex-row align-items-center">
+<div class="container">
     <div class="row justify-content-center">
-        <div class="col-md-4">
+        <div class="col-md-6">
             <form action="{{route('login')}}" method="post">
                 {{csrf_field()}}
                 <div class="card-group">
-                    <div class="card p-2">
+                    <div class="card p-4">
                         @if(session()->has('flash'))
                             <div class="alert alert-success alert-dismissible fade show" role="alert">
                                 <strong>{{ session('flash')  }}</strong>
@@ -21,7 +21,8 @@
                         @endif
 
                         <div class="card-body">
-                            <h2>Inicio de Sesión</h2>
+                            <h1>Login</h1>
+                            <p class="text-muted">Inicia sesion para acceder a tu cuenta</p>
                             <div class="form-group {{ $errors->has('identity') ? 'has-error' : ''}}">
                                 <div class="input-group-prepend">
                                 </div>
@@ -42,14 +43,12 @@
                         </div>
                     </div>
 
-                    </div>
-                </form>
-            </div>
+                </div>
+            </form>
         </div>
     </div>
 </div>
-<footer class="footer-fixed">
-    @include('layouts.footer')
-</footer>
+
+@include('layouts.scripts')
 </body>
 </html>
