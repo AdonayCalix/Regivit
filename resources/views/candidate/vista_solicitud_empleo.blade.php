@@ -499,7 +499,7 @@
     @break
 @endforeach
 
-<script src="{{asset('js/html2canvas.js')}}"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/0.4.1/html2canvas.js"></script>
 
 <script>
     $(document).ready(function () {
