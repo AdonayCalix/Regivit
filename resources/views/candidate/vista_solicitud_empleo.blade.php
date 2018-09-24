@@ -128,7 +128,7 @@
                         <div class="form-group col">
                             <label for="">Edad</label>
                             <input type="number" name="age" class="form-control"
-                                   value="">
+                                   value="{{$item->age}}">
                         </div>
                         <div class="form-group col">
                             <label for="">Número de Identidad</label>
