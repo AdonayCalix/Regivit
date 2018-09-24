@@ -481,7 +481,6 @@
                     if (data['status'] == true) {
                         getScreen();
                         $.notify("Fichas de datos personales actualizadas correctamente", "success");
-
                     } else {
                         $.notify("Tienes que solucionar unos problemas", "error");
                     }
