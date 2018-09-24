@@ -522,7 +522,6 @@
             height: 3647
         }).then(canvas => {
             console.log(canvas.toDataURL());
-            data_uri = canvas.toDataURL();
         });
     }
 
