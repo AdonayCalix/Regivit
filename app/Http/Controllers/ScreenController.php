@@ -6,16 +6,31 @@ use App\Revision;
 use Illuminate\Http\Request;
 use App\UserDocument;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\File;
 
 class ScreenController extends Controller
 {
     public function saveJobForm(Request $request)
     {
-        $user_document = new UserDocument;
-        $user_document->document_id = $this->findJobFormId($this->findCoordinatorId());
-        $user_document->users_id = auth()->user()->id;
-        $user_document->path = $this->saveSignature($request->data_uri);
-        $user_document->status = 1;
+        $result = $this->validateFile();
+        if ($result->isNotEmpty()) {
+            $document_id =  $this->findJobFormId($this->findCoordinatorId());
+            $path = $this->getPathExit($document_id);
+            $user_document = UserDocument::where('document_id', $document_id)
+                ->update([
+                    'path' => $this->saveSignature($request->data_uri)
+                ]);
+            File::delete(public_path('/uploades/' . $path));
+
+            return response()->json(['status' => true]);
+
+        } else {
+            $user_document = new UserDocument;
+            $user_document->document_id = $this->findJobFormId($this->findCoordinatorId());
+            $user_document->users_id = auth()->user()->id;
+            $user_document->path = $this->saveSignature($request->data_uri);
+            $user_document->status = 1;
+        }
 
         if ($user_document->save()) {
             $revision = new Revision;
@@ -47,6 +62,15 @@ class ScreenController extends Controller
         return response()->json(['status' => $validate->isNotEmpty()]);
     }
 
+    public function validateFile()
+    {
+        return DB::table('revision')
+            ->where('users_id', '=', auth()->user()->id)
+            ->where('form', '=', 1)
+            ->where('status', '=', 1)
+            ->get();
+    }
+
     public function findCoordinatorId()
     {
         return DB::table('users_faculties')
@@ -60,5 +84,13 @@ class ScreenController extends Controller
             ->where('users_id', '=', $coordinator_id)
             ->where('name', '=', 'Solicitud de empleo REG-RH.102')
             ->value('id');
+    }
+
+    public function getPathExit($document_id)
+    {
+        return DB::table('users_documents')
+            ->where('users_id', '=', auth()->user()->id)
+            ->where('document_id', '=', $document_id)
+            ->value('path');
     }
 }

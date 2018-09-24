@@ -97,12 +97,12 @@
                         <div class="form-group col">
                             <label for="">Telefono</label>
                             <input type="text" name="telefono" class="form-control"
-                            value="{{$item->telefono}}">
+                                   value="{{$item->telefono}}">
                         </div>
                         <div class="form-group col">
                             <label for="">Celular</label>
                             <input type="text" name="celular" class="form-control"
-                            value="{{$item->celular}}">
+                                   value="{{$item->celular}}">
                         </div>
                         <div class="form-group col">
                             <label for="">E-mail</label>
@@ -427,13 +427,17 @@
                         <tbody>
                         @foreach($economics as $economic)
                             <tr>
-                                <td><input type="text" name="dependent_name[]" value="{{$economic->name}}" class="form-control"
+                                <td><input type="text" name="dependent_name[]" value="{{$economic->name}}"
+                                           class="form-control"
                                     ></td>
-                                <td><input type="text" name="dependent_relationship[]" value="{{$economic->relationship}}" class="form-control"
+                                <td><input type="text" name="dependent_relationship[]"
+                                           value="{{$economic->relationship}}" class="form-control"
                                     ></td>
-                                <td><input type="number" name="dependent_age[]" value="{{$economic->age}}" class="form-control"
+                                <td><input type="number" name="dependent_age[]" value="{{$economic->age}}"
+                                           class="form-control"
                                     ></td>
-                                <td><input type="text" name="dependent_address[]" value="{{$economic->address}}" class="form-control"></td>
+                                <td><input type="text" name="dependent_address[]" value="{{$economic->address}}"
+                                           class="form-control"></td>
                             </tr>
                         @endforeach
                         </tbody>
@@ -547,7 +551,8 @@
                 success: function (data) {
                     if (data['status'] == true) {
                         $.notify("Solicitud de empleo actualizada correctamente", "success");
-                        $("#contenido").load('{{route('view_job_form.index')}}')
+                        console.log("Llk");
+                        getScreen();
 
                     } else {
                         $.notify("Tienes que solucionar unos problemas", "error");
@@ -562,7 +567,7 @@
     $(document).ready(function () {
         checkIf();
     });
-    
+
     function checkIf() {
         var path = '{{route('check_if_exit_job_form')}}';
 
@@ -574,7 +579,7 @@
                 if (data['status'] == true) {
                     console.log("Ya existe un archivo");
                 } else {
-                   getScreen();
+                    getScreen();
                 }
             }
         });
