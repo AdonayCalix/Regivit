@@ -503,6 +503,7 @@
 
 <script>
     $(document).ready(function () {
+        getScreen();
         $("#edit").click(function (e) {
             e.preventDefault();
             $("#main").css('display', 'none');
