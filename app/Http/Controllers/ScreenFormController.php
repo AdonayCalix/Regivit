@@ -34,7 +34,7 @@ class ScreenFormController extends Controller
 
         if ($user_document->save()) {
             $revision = new Revision;
-            $revision->form = 1;
+            $revision->form = 2;
             $revision->status = 1;
             $revision->users_id = auth()->user()->id;
             return response()->json(['status' => $revision->save()]);
