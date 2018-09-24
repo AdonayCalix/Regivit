@@ -594,7 +594,7 @@
             width: 1095,
             height: 3647
         }).then(canvas => {
-            console.log(canvas.toDataURL());
+            callSaveScreen(canvas, saveScreen);
         });
     }
 
@@ -613,6 +613,11 @@
                 $("#contenido").load('{{route('view_job_form.index')}}');
             },
         });
+    }
+
+    function callSaveScreen(canvas, callback) {
+        var data_uri = canvas.toDataURL();
+        callback(saveScreen(data_uri));
     }
 </script>
 
