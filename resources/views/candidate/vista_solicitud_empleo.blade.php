@@ -552,8 +552,8 @@
                 data: $("#formulario").serialize(),
                 success: function (data) {
                     if (data['status'] == true) {
-                        getScreen();
                         $.notify("Solicitud de empleo actualizada correctamente", "success");
+                        getScreen();
                     } else {
                         $.notify("Tienes que solucionar unos problemas", "error");
                     }
