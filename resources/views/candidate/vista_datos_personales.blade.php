@@ -536,7 +536,8 @@
             success: function (data) {
                 if (data['status'] == true)
                     console.log("Funciona");
-                $("#contenido").load('{{route('view_personal.index')}}');
+                    $.notify("Se actualizo correctamente la solicitud de empleo", "success");
+                    $("#contenido").load('{{route('view_personal.index')}}');
             },
         });
     }
