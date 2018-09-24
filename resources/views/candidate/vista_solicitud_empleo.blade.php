@@ -552,7 +552,6 @@
                 data: $("#formulario").serialize(),
                 success: function (data) {
                     if (data['status'] == true) {
-                        $.notify("Solicitud de empleo actualizada correctamente", "success");
                         getScreen();
                     } else {
                         $.notify("Tienes que solucionar unos problemas", "error");
@@ -592,7 +591,6 @@
     function getScreen() {
         var data_uri;
         html2canvas(document.querySelector("#capture"), {
-            width: 800,
         }).then(canvas => {
             console.log(canvas.toDataURL());
             data_uri = canvas.toDataURL();
