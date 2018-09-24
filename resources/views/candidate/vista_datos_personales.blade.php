@@ -518,10 +518,8 @@
     function getScreen() {
         var data_uri;
         html2canvas(document.querySelector("#capture")).then(canvas => {
-            width: 1000,
-                console.log(canvas.toDataURL());
+            console.log(canvas.toDataURL());
             data_uri = canvas.toDataURL();
-            saveScreen(data_uri);
         });
     }
 
@@ -536,8 +534,8 @@
             success: function (data) {
                 if (data['status'] == true)
                     console.log("Funciona");
-                    $.notify("Se actualizo correctamente la ficha de datos personales", "success");
-                    $("#contenido").load('{{route('view_personal.index')}}');
+                $.notify("Se actualizo correctamente la ficha de datos personales", "success");
+                $("#contenido").load('{{route('view_personal.index')}}');
             },
         });
     }
