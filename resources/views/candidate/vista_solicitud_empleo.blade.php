@@ -609,6 +609,7 @@
             success: function (data) {
                 if (data['status'] == true)
                 console.log("Funciona");
+                $.notify("Se actulizo correctamente la solicitud de empleo", "success");
                 $("#contenido").load('{{route('view_job_form.index')}}');
             },
         });
