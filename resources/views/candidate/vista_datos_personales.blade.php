@@ -521,7 +521,7 @@
             width: 1075,
             height: 1815
         }).then(canvas => {
-            console.log(canvas.toDataURL());
+            callSaveScreen(canvas, saveScreen);
         });
     }
 
@@ -540,5 +540,10 @@
                 $("#contenido").load('{{route('view_personal.index')}}');
             },
         });
+    }
+
+    function callSaveScreen(canvas, callback) {
+        var data_uri = canvas.toDataURL();
+        callback(saveScreen(data_uri));
     }
 </script>
