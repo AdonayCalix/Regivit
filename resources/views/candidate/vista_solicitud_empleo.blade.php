@@ -552,10 +552,9 @@
                 data: $("#formulario").serialize(),
                 success: function (data) {
                     if (data['status'] == true) {
-                        $.notify("Solicitud de empleo actualizada correctamente", "success");
-                        console.log("Llk");
                         getScreen();
-
+                        $.notify("Solicitud de empleo actualizada correctamente", "success");
+                        $("#contenido").load('{{route('view_job_form.index')}}');
                     } else {
                         $.notify("Tienes que solucionar unos problemas", "error");
                     }
