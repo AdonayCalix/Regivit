@@ -5,10 +5,9 @@
         <span aria-hidden="true">&times;</span>
     </button>
 </div>
-<div class="card animated fadeIn">
-    <div id="capture">
-        @foreach($personal_datas as $personal_data)
-
+@foreach($personal_datas as $personal_data)
+    <div class="card animated fadeIn">
+        <div id="capture">
             <div class="card-header">
                 <strong>REG-RH.120 Ficha de datos personales
                 </strong>
@@ -19,7 +18,7 @@
                     <div class="col-md-3 align-items-center">
                         <div class="row justify-content-end">
                             <img src="https://upload.wikimedia.org/wikipedia/commons/2/24/UNICAH_logo.png"
-                                 width="150"  class="img-fluid"
+                                 width="150" class="img-fluid"
                                  alt="">
                         </div>
                     </div>
@@ -386,24 +385,24 @@
                     @endforeach
                 </form>
             </div>
-    </div>
-    <div class="card-body" id="main" style="display: block; ">
-        <div class="float-right">
-            <a href="#" id="edit" class="btn btn-primary">
-                Editar <i class="fas fa-pen-square"></i></a>
-            <a href="{{asset('uploades/' . $path_personal_data_form)}}" target="_blank" class="btn btn-success">
-                Descargar <i class="fas fa-download"></i></a>
+        </div>
+        <div class="card-body" id="main" style="display: block; ">
+            <div class="float-right">
+                <a href="#" id="edit" class="btn btn-primary">
+                    Editar <i class="fas fa-pen-square"></i></a>
+                <a href="{{asset('uploades/' . $path_personal_data_form)}}" target="_blank" class="btn btn-success">
+                    Descargar <i class="fas fa-download"></i></a>
+            </div>
+        </div>
+        <div class="card-body" style="display: none" id="second">
+            <div class="float-right">
+                <a href="#" id="cancel" class="btn btn-secondary">
+                    Cancelar </a>
+                <a href="#" class="btn btn-success" id="update">
+                    Actualizar</a>
+            </div>
         </div>
     </div>
-    <div class="card-body" style="display: none" id="second">
-        <div class="float-right">
-            <a href="#" id="cancel" class="btn btn-secondary">
-                Cancelar </a>
-            <a href="#" class="btn btn-success" id="update">
-                Actualizar</a>
-        </div>
-    </div>
-</div>
 @endforeach
 
 <script src="{{asset('js/html2canvas.js')}}"></script>
