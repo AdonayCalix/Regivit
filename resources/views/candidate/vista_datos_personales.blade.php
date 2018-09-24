@@ -507,7 +507,7 @@
                 if (data['status'] == true) {
                     console.log("Ya existe un archivo");
                 } else {
-                    getScreen();
+                    console.log("alto");
                 }
             }
         });
