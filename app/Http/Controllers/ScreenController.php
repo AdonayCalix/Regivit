@@ -15,8 +15,12 @@ class ScreenController extends Controller
         $result = $this->validateFile();
         if ($result->isNotEmpty()) {
             $document_id =  $this->findJobFormId($this->findCoordinatorId());
+            $id = DB::table('users_documents')
+                ->where('document_id', '=', $document_id)
+                ->where('users_id', '=', auth()->user()->id)
+                ->value('id');
             $path = $this->getPathExit($document_id);
-            $user_document = UserDocument::where('document_id', $document_id)
+            $user_document = UserDocument::where('id', $id)
                 ->update([
                     'path' => $this->saveSignature($request->data_uri)
                 ]);
