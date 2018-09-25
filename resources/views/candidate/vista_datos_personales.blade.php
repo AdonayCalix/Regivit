@@ -251,7 +251,7 @@
                                 <select class="form-control formulario" name="campus_id">
                                     <option value="">[Seleccione]</option>
                                     @foreach($campus as $campu)
-                                        <option value="{{$campu->id}}">{{$campu->name}}</option>
+                                        <option selected value="{{$campu->id}}">{{$campu->name}}</option>
                                     @endforeach
                                 </select>
                             </div>
