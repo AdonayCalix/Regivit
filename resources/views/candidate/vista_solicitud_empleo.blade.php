@@ -499,8 +499,6 @@
     @break
 @endforeach
 
-<script src="{{asset('js/html2canvas.js')}}"></script>
-
 <script>
     $(document).ready(function () {
         $("#edit").click(function (e) {
