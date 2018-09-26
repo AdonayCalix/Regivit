@@ -1,5 +1,4 @@
 <?php
-
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -10,7 +9,6 @@
 | contains the "web" middleware group. Now create something great!
 |
 */
-
 /*Routes for main views of regivit*/
 Route::get('/', 'Auth\LoginController@showLoginForm')->name('show_login');
 Route::post('login', 'Auth\LoginController@login')->name('login');
@@ -18,7 +16,6 @@ Route::post('logout', 'Auth\LoginController@logout')->name('logout');
 Route::get('raiz', 'RedirectMenu@master_index')->name('master_index')->middleware('master');
 Route::get('coordinator_user', 'RedirectMenu@coordinator_index')->name('coordinator_index')->middleware('coordinator');
 Route::get('candidate', 'RedirectMenu@candidate_index')->name('candidate_index')->middleware('candidate_or_teacher');
-
 /*Route resource for controller and methods of regivit*/
 /*Resources Controller for Master User | Root*/
 Route::middleware(['master'])->group(function () {
@@ -40,7 +37,6 @@ Route::middleware(['master'])->group(function () {
     Route::resource('priest', 'PriestController')->only(['index', 'store', 'show', 'edit']);
     Route::post('edit_priest', 'PriestController@editPriest')->name('edit_priest');
 });
-
 /*Routes for cordinator*/
 Route::middleware(['coordinator'])->group(function (){
     Route::resource('candidate_user', 'CandidaterUserController')->only(['index', 'store', 'show', 'edit']);
@@ -59,7 +55,6 @@ Route::middleware(['coordinator'])->group(function (){
     Route::get('/preview/{path}', 'ReportController@previewContent')->name('preview');
     /*Route's to upload date to upload documents*/
 });
-
 Route::middleware(['candidate_or_teacher'])->group(function () {
     Route::resource('job_form', 'JobFormController')->only('index', 'store')->middleware('validate_job_form');
     Route::post('screen_save_job_form', 'ScreenController@saveJobForm')->name('screen_save');
@@ -77,7 +72,3 @@ Route::middleware(['candidate_or_teacher'])->group(function () {
     Route::get('/preview_tab_candidate/{path}', 'ReportController@previewContentTab')->name('preview_tab_candidate');
     Route::post('save_file', 'SaveFileController@saveFile')->name('save_file');
 });
-
-
-
-

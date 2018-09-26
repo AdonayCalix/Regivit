@@ -483,7 +483,7 @@
             <div class="float-right">
                 <a href="#" id="edit" class="btn btn-primary">
                     Editar <i class="fas fa-pen-square"></i></a>
-                <a href="{{asset('uploades/' . $path_job_form)}}" target="_blank" class="btn btn-success">
+                <a href="#" target="_blank" class="btn btn-success">
                     Descargar <i class="fas fa-download"></i></a>
             </div>
         </div>
@@ -552,7 +552,7 @@
                 data: $("#formulario").serialize(),
                 success: function (data) {
                     if (data['status'] == true) {
-                        getScreen();
+                        $.notify("Se actualizo correctamente la solicitud de empleo", "success");
                     } else {
                         $.notify("Tienes que solucionar unos problemas", "error");
                     }
@@ -561,66 +561,6 @@
         }
     })
 </script>
-
-<script>
-    $(document).ready(function () {
-        checkIf();
-    });
-
-    function checkIf() {
-        var path = '{{route('check_if_exit_job_form')}}';
-
-        $.ajax({
-            url: path,
-            type: 'get',
-            dataType: 'json',
-            success: function (data) {
-                if (data['status'] == true) {
-                    console.log("Ya existe un archivo");
-                } else {
-                    getScreen();
-                }
-            }
-        });
-    }
-
-    function addImageJobForm() {
-        getScreen();
-    }
-
-    function getScreen() {
-        var data_uri;
-        html2canvas(document.querySelector("#capture"), {
-            width: 1200,
-            height: 3647
-        }).then(canvas => {
-            callSaveScreen(canvas, saveScreen);
-        });
-    }
-
-    function saveScreen(data_uri) {
-        var token = '{{csrf_token()}}';
-        $.ajax({
-            url: '{{route('screen_save')}}',
-            headers: {'X-CSRF-TOKEN': token},
-            type: 'post',
-            dataType: 'json',
-            data: {'data_uri': data_uri},
-            success: function (data) {
-                if (data['status'] == true)
-                console.log("Funciona");
-                $.notify("Se actulizo correctamente la solicitud de empleo", "success");
-                $("#contenido").load('{{route('view_job_form.index')}}');
-            },
-        });
-    }
-
-    function callSaveScreen(canvas, callback) {
-        var data_uri = canvas.toDataURL();
-        callback(saveScreen(data_uri));
-    }
-</script>
-
 
 
 
