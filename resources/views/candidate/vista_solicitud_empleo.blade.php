@@ -551,6 +551,7 @@
                 success: function (data) {
                     if (data['status'] == true) {
                         $.notify("Se actualizo correctamente la solicitud de empleo", "success");
+                        $("#contenido").load('{{route('view_job_form.index')}}');
                     } else {
                         $.notify("Tienes que solucionar unos problemas", "error");
                     }
