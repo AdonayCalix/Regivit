@@ -217,7 +217,7 @@ class ViewJobFormController extends Controller
                     'place_date' => $request->place_date,
                     'telefono' => $request->telefono,
                     'celular' => $request->celular,
-                    'signature_path' => $this->saveSignature($request->signature_path)
+                    'signature_path' => $this->saveSignature($request->signature_paht)
                 ]);
 
             $job_form_id = $this->getJobFormId($this->getGeneralDataId());

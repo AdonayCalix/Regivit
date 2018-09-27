@@ -57,7 +57,7 @@ class JobFormController extends Controller
             $job_application->pastoral_activity = $request->pastoral_activity;
             $job_application->family_university = $request->family_university;
             $job_application->minimum_salary = $request->minimun_salary;
-            $job_application->signature_path = $this->saveSignature($request->signature_path);
+            $job_application->signature_path = $this->saveSignature($request->signature_paht);
             $job_application->married_surname = $request->married_surname;
             $job_application->aspire_position = $request->aspire_position;
             $job_application->general_data_id = $this->getGeneralDataId();
