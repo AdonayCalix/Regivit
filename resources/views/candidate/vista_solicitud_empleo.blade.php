@@ -128,6 +128,7 @@
                                     @else
                                         <option value="{{$statu_civil->id}}">{{$statu_civil->descripcion}}</option>
                                     @endif
+                                @endforeach
                             </select>
                         </div>
                         <div class="form-group col">
@@ -190,11 +191,12 @@
                             <select class="form-control formulario" name="priest">
                                 @foreach($priests as $priest)
                                     @if($priest->id == $item->id_parish_priest)
-                                        <option selected value="{{$item->id_parish_priest}}">{{$item->priest_name}}</option>
+                                        <option selected
+                                                value="{{$item->id_parish_priest}}">{{$item->priest_name}}</option>
                                     @else
                                         <option value="{{$priest->id}}">{{$priest->name}}</option>
-                                    @endif
-                                 @endforeach
+                                    @endif|
+                                @endforeach
                             </select>
                         </div>
                     </div>
