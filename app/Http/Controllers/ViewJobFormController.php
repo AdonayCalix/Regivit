@@ -216,7 +216,8 @@ class ViewJobFormController extends Controller
                     'blood_id' => $request->blood,
                     'place_date' => $request->place_date,
                     'telefono' => $request->telefono,
-                    'celular' => $request->celular
+                    'celular' => $request->celular,
+                    'signature_path' => $this->saveSignature($request->signature_path)
                 ]);
 
             $job_form_id = $this->getJobFormId($this->getGeneralDataId());
@@ -296,5 +297,23 @@ class ViewJobFormController extends Controller
             return response()->json(['status' => true]);
         }
     }
+    public function saveSignature($data_uri)
+    {
+        try {
+            $encoded_image = explode(",", $data_uri)[1];
+            $decoded_image = base64_decode($encoded_image);
+            $file_name = mt_rand() . time() . auth()->user()->id . '.png';
+            file_put_contents(public_path() . '/uploades/' . $file_name, $decoded_image);
+        } catch (\Exception $e) {
+            return 'No ok';
+        }
+        return $file_name;
+    }
 
+    public static function getGeneralData()
+    {
+        return DB::table('general_data')
+            ->where('users_id', '=', auth()->user()->id)
+            ->value('id');
+    }
 }
