@@ -248,7 +248,7 @@
                                 <label for="">Campus que labora
 
                                 </label>
-                                <select class="form-control formulario" name="campus_id">
+                                <select class="form-control formulario" name="campus_id" id="campus">
                                     <option value="">[Seleccione]</option>
                                     @foreach($campus as $campu)
                                         <option selected value="{{$campu->id}}">{{$campu->name}}</option>
@@ -315,21 +315,21 @@
                                 <label for="">Parroquia a la que asiste
 
                                 </label>
-                                <input type="text" class="form-control" name="parish"
+                                <input type="text" class="form-control" name="parish" id="parish"
                                        value="{{$value['parish']}}">
                             </div>
                             <div class="form-group col">
                                 <label for="">Nombre del Párroco
 
                                 </label>
-                                <input type="text" class="form-control" name="priest"
+                                <input type="text" class="form-control" name="priest" id="priest"
                                        value="{{$value['priest']}}">
                             </div>
                             <div class="form-group col">
                                 <label for="">Movimiento Cristiano
 
                                 </label>
-                                <input type="text" class="form-control" name="catholic_movement"
+                                <input type="text" class="form-control" name="catholic_movement" id="catholic_movement"
                                        value="{{$value['catholic_movement']}}">
                             </div>
                         </div>
@@ -445,6 +445,10 @@
             $("#nationality").attr('readonly', true);
             $("#ihss").prop('readonly', true);
             $("#rap").prop('readonly', true);
+            $("#campus").attr('readonly', true);
+            $("#parish").prop('readonly', true);
+            $("#priest").prop('readonly', true);
+            $("#catholic_movement").prop('readonly', true);
         }
 
         function removeReadonly() {
@@ -464,6 +468,10 @@
             $("#nationality").removeAttr('readonly');
             $("#ihss").removeAttr('readonly');
             $("#rap").removeAttr('readonly');
+            $("#campus").removeAttr('readonly');
+            $("#parish").removeAttr('readonly');
+            $("#priest").removeAttr('readonly');
+            $("#catholic_movement").removeAttr('readonly');
         }
 
         function update() {
