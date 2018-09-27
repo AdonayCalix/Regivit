@@ -367,10 +367,9 @@
                                 </label><br>
                                 <div class="form-control align-content-center" id="contenedor_firma"
                                      style="height: 100px">
-                                    <img src="{{asset('/uploades/' . $personal_data->signature_path)}}" alt=""
-                                         id="img-firma"
-                                         width="100%" height="100%">
+                                    <img src="" alt="" id="img-firma" width="" height="">
                                 </div>
+                                <input type="hidden" name="signature_path" id="firma" value="soylafirma">
                             </div>
                             <div class="form-group col">
                                 <label for="">Fecha
@@ -405,7 +404,56 @@
     </div>
 @endforeach
 
-<script src="{{asset('js/html2canvas.js')}}"></script>
+<div class="modal fade" id="modal_firma" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle"
+     aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered" role="document">
+        <div class="modal-content">
+            <div class="modal-header card-header">
+                <h5 class="modal-title" id="exampleModalCenterTitle">Firma</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <div class="col-xs-12">
+                    <div class="center-block">
+                        <canvas id="signature-pad" width=465 height=150></canvas>
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" id="borrar" class="btn btn-secondary">Borrar</button>
+                <button type="button" id="guardar-firma" class="btn btn-success">Guardar</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+    $(document).ready(function () {
+        var canvas = document.querySelector("canvas");
+        var firma = new SignaturePad(canvas, {
+            backgroundColor: "rgb(255, 255, 255)",
+            penColor: "rgb(010,010,010)",
+            minWidth: 0.4,
+            maxWidth: 1.5
+        });
+
+        document.getElementById('borrar').addEventListener("click", function () {
+            firma.clear();
+        });
+
+        $("#guardar-firma").click(function () {
+            var datos = firma.toDataURL();
+            $("#firma").attr("value", datos);
+            $("#contenedor_firma").removeAttr("style");
+            $("#img-firma").attr("src", datos);
+            $("#img-firma").attr("height", "100");
+            $("#img-firma").attr("width", "500");
+            $("#modal_firma").modal('hide');
+        });
+    })
+</script>
 
 <script>
     $(document).ready(function () {
