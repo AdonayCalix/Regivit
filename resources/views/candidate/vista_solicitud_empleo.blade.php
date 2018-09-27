@@ -491,8 +491,7 @@
                                    value="La Ceiba Atlantida, {{\Carbon\Carbon::now()->format('d \d\e m \d\e\l Y')}}">
                         </div>
                         <div class="form-group col">
-                            <label for="" data-toggle="modal" data-target="#modal_firma"><strong>Firma</strong>
-                                <small> *</small>
+                            <label for="" data-toggle="modal" data-target="#modal_firma">Firma
                             </label>
                             <div class="form-control align-content-center" id="contenedor_firma" style="height: 100px">
                                 <img src="" alt="" id="img-firma" width="" height="">
