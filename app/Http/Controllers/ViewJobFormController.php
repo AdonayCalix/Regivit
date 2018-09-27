@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use App\Activity;
+use App\Blood;
+use App\CivilStatus;
 use App\Competence;
 use App\Dependent;
 use App\Education;
@@ -10,6 +12,8 @@ use App\ExperienceJob;
 use App\GeneralData;
 use App\JobApplication;
 use App\Knowledge;
+use App\ParihPriest;
+use App\Parish;
 use App\Reference;
 use App\Skill;
 use Illuminate\Http\Request;
@@ -21,6 +25,10 @@ class ViewJobFormController extends Controller
 {
     public function index()
     {
+        $status_civil = CivilStatus::all();
+        $bloods = Blood::all();
+        $parishes = Parish::all();
+        $priests = ParihPriest::all();
         $general_id = $this->getGeneralDataId();
         $job_application = $this->getJobFormId($general_id);
         $educations = $this->getEducation($job_application);
@@ -37,7 +45,8 @@ class ViewJobFormController extends Controller
         $path_job_form = $this->getPathJobForm($this->getIdJobFormDocuments($this->getIdCoordinator()));
 
         return view('candidate.vista_solicitud_empleo', compact('job_applications', 'educations',
-            'competences', 'references', 'knowledges', 'skills', 'economics', 'experiences_job', 'activities', 'path_siganture', 'path_job_form', 'id_education'));
+            'competences', 'references', 'knowledges', 'skills', 'economics', 'experiences_job', 'activities', 'path_siganture', 'path_job_form', 'id_education',
+            'status_civil', 'bloods', 'parishes', 'priests'));
     }
 
     public function getJobForm()

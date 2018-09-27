@@ -121,8 +121,13 @@
                         <div class="form-group col">
                             <label for="">Estado Civil</label>
                             <select class="form-control formulario" name="civil_status">
-                                <option value="{{$item->tipo_estado_civil}}">{{$item->civil_status}}</option>
-
+                                @foreach($status_civil as $statu_civil)
+                                    @if($statu_civil->id == $item->tipo_estado_civil)
+                                        <option selected
+                                                value="{{$item->tipo_estado_civil}}">{{$item->civil_status}}</option>
+                                    @else
+                                        <option value="{{$statu_civil->id}}">{{$statu_civil->descripcion}}</option>
+                                    @endif
                             </select>
                         </div>
                         <div class="form-group col">
@@ -156,8 +161,13 @@
                         <div class=" form-group col">
                             <label for="">Tipo de sangre</label>
                             <select class="form-control formulario" name="blood">
-                                <option value="{{$item->tipo_sangre}}">{{$item->blood_type}}</option>
-
+                                @foreach($bloods as $blood)
+                                    @if($blood->id == $item->tipo_sangre)
+                                        <option selected value="{{$item->tipo_sangre}}">{{$item->blood_type}}</option>
+                                    @else
+                                        <option value="{{$blood->id}}">{{$blood->description}}</option>
+                                    @endif
+                                @endforeach
                             </select>
                         </div>
                     </div>
@@ -166,13 +176,25 @@
                         <div class="form-group col">
                             <label for="">Parroquia a la que pertenece</label>
                             <select class="form-control formulario" name="parish">
-                                <option value="{{$item->id_parish}}">{{$item->parish_name}}</option>
+                                @foreach($parishes as $parish)
+                                    @if($parish->id == $item->id_parish)
+                                        <option selected value="{{$item->id_parish}}">{{$item->parish_name}}</option>
+                                    @else
+                                        <option value="{{$parish->id}}">{{$parish->name}}</option>
+                                    @endif
+                                @endforeach
                             </select>
                         </div>
                         <div class="form-group col">
                             <label for="">Nombre del párroco</label>
                             <select class="form-control formulario" name="priest">
-                                <option value="{{$item->id_parish_priest}}">{{$item->priest_name}}</option>
+                                @foreach($priests as $priest)
+                                    @if($priest->id == $item->id_parish_priest)
+                                        <option selected value="{{$item->id_parish_priest}}">{{$item->priest_name}}</option>
+                                    @else
+                                        <option value="{{$priest->id}}">{{$priest->name}}</option>
+                                    @endif
+                                 @endforeach
                             </select>
                         </div>
                     </div>

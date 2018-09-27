@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use Maatwebsite\Excel\Facades\Excel;
 use App\UserDocument;
 use Illuminate\Http\Request;
 use App\UserFaculty;
