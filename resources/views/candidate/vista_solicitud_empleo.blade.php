@@ -494,7 +494,7 @@
                             <label for="" data-toggle="modal" data-target="#modal_firma">Firma
                             </label>
                             <div class="form-control align-items-center" id="contenedor_firma" style="height: 100px">
-                                <img src="{{asset('uploades/' . $item->signature_path)}}" alt="" id="img-firma" class="img-fluid">
+                                <img src="{{asset('uploades/' . $item->signature_path)}}" alt="" id="img-firma" width="100" height="70">
                             </div>
                             <input type="hidden" name="signature_paht" id="firma" value="">
                         </div>
