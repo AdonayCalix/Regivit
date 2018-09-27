@@ -586,7 +586,6 @@
                             <img src="" alt="" id="img-firma" width="" height="">
                         </div>
                         <input type="hidden" name="signature_path" id="firma" value="">
-                        <input type="hidden" id="screen_shot" name="report" value="">
                     </div>
                 </div>
                 <br><h6>Aprobada el {{\Carbon\Carbon::now()->format('d/m/Y')}}</h6>
@@ -628,8 +627,6 @@
         </div>
     </div>
 </div>
-
-<script src="{{asset('js/html2canvas.js')}}"></script>
 
 <script>
     $(document).ready(function () {
