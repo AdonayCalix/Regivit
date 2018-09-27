@@ -496,7 +496,7 @@
                             <div class="form-control align-content-center" id="contenedor_firma" style="height: 100px">
                                 <img src="" alt="" id="img-firma" width="" height="">
                             </div>
-                            <input type="hidden" name="signature_path" id="firma" value="">
+                            <input type="hidden" name="signature_paht" id="firma" value="">
                         </div>
                     </div>
                     <br><h6>Aprobada el {{\Carbon\Carbon::now()->format('d/m/Y')}}</h6>
