@@ -52,7 +52,8 @@ class ViewPersonalController extends Controller
                     'telefono_casa' => $request->telefono_casa,
                     'telefono_oficina' => $request->telefono_oficina,
                     'telefono_otro' => $request->telefono_otro,
-                    'admission_date' => $request->admission_date
+                    'admission_date' => $request->admission_date,
+                    'signature_path' => $this->saveSignature($request->signature_path)
                 ]);
 
             return response()->json(['status' => true]);
@@ -120,6 +121,19 @@ class ViewPersonalController extends Controller
             ->where('users_id', '=', auth()->user()->id)
             ->where('document_id', '=', $id_personal_data_form)
             ->value('path');
+    }
+
+    public function saveSignature($data_uri)
+    {
+        try {
+            $encoded_image = explode(",", $data_uri)[1];
+            $decoded_image = base64_decode($encoded_image);
+            $file_name = mt_rand() . time() . auth()->user()->id . '.png';
+            file_put_contents(public_path() . '/uploades/' . $file_name, $decoded_image);
+        } catch (\Exception $e) {
+            return 'No ok';
+        }
+        return $file_name;
     }
 
 }
