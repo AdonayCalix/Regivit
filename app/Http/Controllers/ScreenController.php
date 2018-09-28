@@ -236,11 +236,116 @@ class ScreenController extends Controller
 
         return $path;
     }
-
     public function getGeneralDataId()
     {
         return DB::table('general_data')
             ->where('users_id', '=', auth()->user()->id)
             ->value('id');
+    }
+
+    public function getJobFormId($general_data_id)
+    {
+        return DB::table('job_application')
+            ->where('general_data_id', '=', $general_data_id)
+            ->value('id');
+    }
+
+    public function getEducation($job_applicaton_id)
+    {
+        return DB::table('education')->where('job_application_id', $job_applicaton_id)->get();
+    }
+
+    public function getCompetences($job_applicaton_id)
+    {
+        return DB::table('competencies')->where('job_application_id', $job_applicaton_id)->get();
+    }
+
+    public function getKnowledges($job_applicaton_id)
+    {
+        return DB::table('knowledges')->where('job_application_id', $job_applicaton_id)->get();
+    }
+
+    public function getReferences($job_applicaton_id)
+    {
+        return DB::table('references')->where('job_application_id', $job_applicaton_id)->get();
+    }
+
+    public function getSkill($job_applicaton_id)
+    {
+        return DB::table('skills')->where('job_application_id', $job_applicaton_id)->get();
+    }
+
+    public function getEconomics($general_data)
+    {
+        return DB::table('dependents')
+            ->where('general_data_id', $general_data)
+            ->get();
+
+    }
+
+    public function getExperienceJob($job_application)
+    {
+        return DB::table('experiences_job')
+            ->where('job_application_id', $job_application)
+            ->get();
+    }
+
+    public function getExperienceJobId($job_application)
+    {
+        return DB::table('experiences_job')
+            ->where('job_application_id', $job_application)
+            ->value('id');
+    }
+
+    public function getActivities($experiences_job_id)
+    {
+        return DB::table('activities')
+            ->where('experiences_job_id', $experiences_job_id)
+            ->get();
+    }
+
+    public function getPathSignature($general_id)
+    {
+        return DB::table('job_application')
+            ->where('general_data_id', $general_id)
+            ->value('signature_path');
+    }
+
+    public function getIdCoordinator()
+    {
+        return DB::table('users_faculties')
+            ->where('users_id', auth()->user()->id)
+            ->value('coordinator_id');
+    }
+
+    public function getIdJobFormDocuments($coordinador_id)
+    {
+        return DB::table('documents')
+            ->where('users_id', '=', $coordinador_id)
+            ->where('name', '=', 'Solicitud de empleo REG-RH.102')
+            ->value('id');
+    }
+
+    public function getPathJobForm($id_job_form)
+    {
+        return DB::table('users_documents')
+            ->where('users_id', '=', auth()->user()->id)
+            ->where('document_id', '=', $id_job_form)
+            ->value('path');
+    }
+
+    public function getExperiencesJobId($job_application_id)
+    {
+        return DB::table('experiences_job')
+            ->where('job_application_id', '=', $job_application_id)
+            ->value('id');
+    }
+
+    public function getActivitiesId($experiences_id)
+    {
+        return DB::table('activities')
+            ->where('experiences_job_id', $experiences_id)
+            ->get()
+            ->toArray();
     }
 }
