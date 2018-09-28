@@ -439,12 +439,12 @@ class ViewJobFormController extends Controller
                 $contador++;
             }
 
-            $sheet->setCellValue('E96', $item->minimun_salary);
+            $sheet->setCellValue('E96', $item->minimum_salary);
             $sheet->setCellValue('A106',Carbon::now()->format('d \d\e m \d\e\l Y'));
 
         }
 
         $writer = new Xlsx($spreadsheet);
-        $writer->save(public_path('uploades/' . uniqid() . auth()->user()->id));
+        $writer->save(public_path('uploades/' . uniqid() . auth()->user()->id) . 'xlsx');
     }
 }
