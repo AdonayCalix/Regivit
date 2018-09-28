@@ -234,7 +234,7 @@ class ScreenController extends Controller
         $writer = new Xlsx($spreadsheet);
         $writer->save(public_path('uploades/' . uniqid() . $path) . '.xlsx');
 
-        return $path . 'xlsx';
+        return $path . '.xlsx';
     }
     public function getGeneralDataId()
     {
