@@ -422,6 +422,7 @@ class ViewJobFormController extends Controller
                 if($contador > 73) {
                     $sheet->setCellValue('B' . $contador, $skill->description);
                     $sheet->setCellValue('H' . $contador, $skill->description);
+
                 }
                 $contador++;
             }
