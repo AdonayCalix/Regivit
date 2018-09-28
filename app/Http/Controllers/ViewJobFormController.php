@@ -338,7 +338,7 @@ class ViewJobFormController extends Controller
 
         $sheet = $spreadsheet->getActiveSheet();
         foreach ($job_applications as $item) {
-            $sheet->setCellValue('C8:G8', $item->aspire_position);
+            $sheet->setCellValue('C8', $item->aspire_position);
             $sheet->setCellValue('A14', auth()->user()->first_surname);
             $sheet->setCellValue('D14', auth()->user()->second_surnname);
             $sheet->setCellValue('G14', auth()->user()->first_name);
