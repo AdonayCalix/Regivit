@@ -232,7 +232,7 @@ class ScreenController extends Controller
 
         $path = uniqid() . auth()->user()->id;
         $writer = new Xlsx($spreadsheet);
-        $writer->save(public_path('uploades/' . uniqid() . $path) . '.xlsx');
+        $writer->save(public_path('uploades/' . $path) . '.xlsx');
 
         return $path . '.xlsx';
     }
