@@ -321,6 +321,7 @@ class ViewJobFormController extends Controller
 
     public function createExcel()
     {
+        $general_id = $this->getGeneralDataId();
         $job_application = $this->getJobFormId($general_id);
         $educations = $this->getEducation($job_application);
         $references = $this->getReferences($job_application);
