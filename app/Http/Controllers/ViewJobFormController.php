@@ -432,10 +432,10 @@ class ViewJobFormController extends Controller
 
             $contador = 93;
             foreach ($economics as $economic) {
-                $sheet->setCellValue('A' . $economic, $knowledge->name);
-                $sheet->setCellValue('D' . $economic, $knowledge->relationship);
-                $sheet->setCellValue('F' . $economic, $knowledge->age);
-                $sheet->setCellValue('H' . $economic, $knowledge->address);
+                $sheet->setCellValue('A' . $contador, $economic->name);
+                $sheet->setCellValue('D' . $contador, $economic->relationship);
+                $sheet->setCellValue('F' . $contador, $economic->age);
+                $sheet->setCellValue('H' . $contador, $economic->address);
                 $contador++;
             }
 
