@@ -153,7 +153,7 @@ class ViewPersonalController extends Controller
         $personal_datas = $this->getPersonalData();
         $dependents = $this->getDependents();
 
-        $spreadsheet = \PhpOffice\PhpSpreadsheet\IOFactory::load(public_path('Excel/SolicitudEmpleo.xlsx'));
+        $spreadsheet = \PhpOffice\PhpSpreadsheet\IOFactory::load(public_path('excel/SolicitudEmpleo.xlsx'));
 
         $sheet = $spreadsheet->getActiveSheet();
 

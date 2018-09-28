@@ -11,13 +11,13 @@ class PruebaExcel extends Controller
 {
     public function doExcel()
     {
-        $spreadsheet = \PhpOffice\PhpSpreadsheet\IOFactory::load(public_path('Excel/SolicitudEmpleo.xlsx'));
+        $spreadsheet = \PhpOffice\PhpSpreadsheet\IOFactory::load(public_path('excel/SolicitudEmpleo.xlsx'));
 
         $sheet = $spreadsheet->getActiveSheet();
         $sheet->setCellValue('A14', 'Veamos si se cambia');
         $sheet->setCellValue('D14', 'Veamos si se cambia');
 
         $writer = new Xlsx($spreadsheet);
-        $writer->save(public_path('Excel/moose_mejorado.xlsx'));
+        $writer->save(public_path('excel/moose_mejorado.xlsx'));
    }
 }

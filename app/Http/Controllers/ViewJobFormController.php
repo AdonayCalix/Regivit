@@ -333,7 +333,7 @@ class ViewJobFormController extends Controller
         $experiences_job_id = $this->getExperienceJobId($job_application);
         $activities = $this->getActivities($experiences_job_id);
 
-        $spreadsheet = \PhpOffice\PhpSpreadsheet\IOFactory::load(public_path('Excel/SolicitudEmpleo.xlsx'));
+        $spreadsheet = \PhpOffice\PhpSpreadsheet\IOFactory::load(public_path('excel/SolicitudEmpleo.xlsx'));
 
         $sheet = $spreadsheet->getActiveSheet();
         foreach ($job_applications as $item) {
