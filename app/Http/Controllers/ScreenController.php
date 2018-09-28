@@ -348,4 +348,27 @@ class ScreenController extends Controller
             ->get()
             ->toArray();
     }
+
+    public function getJobForm()
+    {
+        return DB::select("
+            select job_application.*, general_data.*, blood.description as blood_type, blood.id as tipo_sangre, 
+              civil_status.descripcion as civil_status, civil_status.id as tipo_estado_civil, parish.name as parish_name, parish.id as id_parish,
+              parish_priest.name as priest_name, parish_priest.id as id_parish_priest
+        from users,
+            general_data,
+            job_application,
+            civil_status,
+            blood,
+            parish_priest,
+            parish
+        where general_data.users_id = users.id
+              and general_data.civil_status_id = civil_status.id
+              and general_data.priest_id = parish_priest.id
+              and general_data.parish_id = parish.id
+              and general_data.id = job_application.general_data_id
+              and job_application.blood_id = blood.id
+              and users.id = ?;
+        ", [auth()->user()->id]);
+    }
 }
