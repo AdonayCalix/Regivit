@@ -517,7 +517,7 @@
                     Cancelar </a>
                 <a href="#" class="btn btn-success" id="update">
                     Actualizar</a>
-            </div> {{r}}
+            </div>
         </div>
     </div>
     @break
