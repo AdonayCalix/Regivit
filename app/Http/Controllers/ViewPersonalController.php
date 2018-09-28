@@ -158,7 +158,7 @@ class ViewPersonalController extends Controller
         $sheet = $spreadsheet->getActiveSheet();
 
         foreach ($personal_datas as $personal_data) {
-            $sheet->setCellValue('C8:G8', $item->aspire_position);
+            $sheet->setCellValue('C8', $item->aspire_position);
         }
 
         $writer = new Xlsx($spreadsheet);
