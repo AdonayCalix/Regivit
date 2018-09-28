@@ -421,7 +421,7 @@ class ViewJobFormController extends Controller
             foreach ($experiences_job as $experience) {
                 $sheet->setCellValue('A78', $experience->company_name);
                 $sheet->setCellValue('D78', $experience->position);
-                $sheet->setCellValue('D78', $experience->age);
+                $sheet->setCellValue('D78', $experience->experience_age);
             }
 
             $contador = 78;
