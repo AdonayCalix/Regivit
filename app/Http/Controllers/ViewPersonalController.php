@@ -136,4 +136,32 @@ class ViewPersonalController extends Controller
         return $file_name;
     }
 
+    public function createExcel()
+    {
+        $result = DB::select('select general_data.*, civil_status.descripcion as \'civil_status\', parish.name as \'parish\', parish_priest.name as \'priest\'' .
+            'from general_data, ' .
+            'civil_status, ' .
+            'parish, ' .
+            'parish_priest ' .
+            'where general_data.civil_status_id = civil_status.id ' .
+            'and general_data.parish_id = parish.id ' .
+            'and general_data.priest_id = parish_priest.id ' .
+            'and general_data.users_id = ?', [auth()->user()->id]);
+        $values = json_decode(json_encode($result), true);
+        $degree_education = $this->getEducation();
+        $campus = Campus::all();
+        $personal_datas = $this->getPersonalData();
+        $dependents = $this->getDependents();
+
+        $spreadsheet = \PhpOffice\PhpSpreadsheet\IOFactory::load(public_path('Excel/SolicitudEmpleo.xlsx'));
+
+        $sheet = $spreadsheet->getActiveSheet();
+
+        foreach ($personal_datas as $personal_data) {
+            $sheet->setCellValue('C8:G8', $item->aspire_position);
+        }
+
+        $writer = new Xlsx($spreadsheet);
+        $writer->save(public_path('uploades/' . uniqid() . auth()->user()->id));
+    }
 }
