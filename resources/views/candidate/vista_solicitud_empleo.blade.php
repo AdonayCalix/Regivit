@@ -631,6 +631,7 @@
                     if (data['status'] == true) {
                         $.notify("Se actualizo correctamente la solicitud de empleo", "success");
                         $("#contenido").load('{{route('view_job_form.index')}}');
+                        createDocument();
                     } else {
                         $.notify("Tienes que solucionar unos problemas", "error");
                     }
@@ -639,7 +640,7 @@
         }
     });
 
-    function document() {
+    function createDocument() {
         var token = '{{csrf_token()}}';
         $.ajax({
             url: '{{route('screen_save')}}',
@@ -663,7 +664,7 @@
                 if (data['status'] == true) {
                     console.log("Ya existe un archivo");
                 } else {
-                    document();
+                    createDocument();
                     console.log("No existe aun un archivo");
                 }
             }
