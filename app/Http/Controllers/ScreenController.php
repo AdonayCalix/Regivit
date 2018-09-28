@@ -236,4 +236,11 @@ class ScreenController extends Controller
 
         return $path;
     }
+
+    public function getGeneralDataId()
+    {
+        return DB::table('general_data')
+            ->where('users_id', '=', auth()->user()->id)
+            ->value('id');
+    }
 }
