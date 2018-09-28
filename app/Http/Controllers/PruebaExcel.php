@@ -16,7 +16,7 @@ class PruebaExcel extends Controller
         $sheet->setCellValue('A1', 'Hello World !');
 
         $writer = new Xlsx($spreadsheet);
-        $writer->save('hello world.xlsx');
+        $writer->save(public_path('/uploades/moose.xls'));
 /*
 //load spreadsheet
         $spreadsheet = \PhpOffice\PhpSpreadsheet\IOFactory::load(public_path('Excel/SolicitudEmpleo.xlsx'));
