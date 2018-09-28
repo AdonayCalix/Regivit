@@ -454,7 +454,7 @@ class ViewJobFormController extends Controller
             $drawing = new \PhpOffice\PhpSpreadsheet\Worksheet\Drawing();
             $drawing->setName('Firma');
             $drawing->setDescription('Firma');
-            $drawing->setPath('https://regi-vit.com/uploades/234592292153805596918.png');
+            $drawing->setPath(public_path('uploades/73153809153805622618.png'));
             $drawing->setCoordinates('H98');
             $drawing->setWorksheet($sheet);
         }
