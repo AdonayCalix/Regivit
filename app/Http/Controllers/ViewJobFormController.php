@@ -342,7 +342,7 @@ class ViewJobFormController extends Controller
         foreach ($job_applications as $item) {
             $sheet->setCellValue('C8', $item->aspire_position);
             $sheet->setCellValue('A14', auth()->user()->first_surname);
-            $sheet->setCellValue('D14', auth()->user()->second_surnname);
+            $sheet->setCellValue('D14', auth()->user()->second_surname);
             $sheet->setCellValue('G14', auth()->user()->first_name);
             $sheet->setCellValue('J14', auth()->user()->second_name);
             $sheet->setCellValue('B20', $item->telefono);
