@@ -383,8 +383,10 @@ class ViewJobFormController extends Controller
 
             $contador = 54;
             foreach ($competences as $competence) {
-                $sheet->setCellValue('B' . $contador, $competence->description);
-                $sheet->setCellValue('H' . $contador, $competence->description);
+                if($contador < 57) {
+                    $sheet->setCellValue('B' . $contador, $competence->description);
+                    $sheet->setCellValue('H' . $contador, $competence->description);
+                }
                 $contador++;
             }
 
@@ -408,15 +410,19 @@ class ViewJobFormController extends Controller
 
             $contador = 66;
             foreach ($knowledges as $knowledge) {
-                $sheet->setCellValue('B' . $contador, $knowledge->description);
-                $sheet->setCellValue('H' . $contador, $knowledge->description);
+                if($contador > 68) {
+                    $sheet->setCellValue('B' . $contador, $knowledge->description);
+                    $sheet->setCellValue('H' . $contador, $knowledge->description);
+                }
                 $contador++;
             }
 
             $contador = 71;
             foreach ($skills as $skill) {
-                $sheet->setCellValue('B' . $contador, $skill->description);
-                $sheet->setCellValue('H' . $contador, $skill->description);
+                if($contador > 73) {
+                    $sheet->setCellValue('B' . $contador, $skill->description);
+                    $sheet->setCellValue('H' . $contador, $skill->description);
+                }
                 $contador++;
             }
 
