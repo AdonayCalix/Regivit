@@ -316,4 +316,35 @@ class ViewJobFormController extends Controller
             ->where('users_id', '=', auth()->user()->id)
             ->value('id');
     }
+
+    public function createExcel()
+    {
+        $job_application = $this->getJobFormId($general_id);
+        $educations = $this->getEducation($job_application);
+        $references = $this->getReferences($job_application);
+        $competences = $this->getCompetences($job_application);
+        $knowledges = $this->getKnowledges($job_application);
+        $skills = $this->getSkill($job_application);
+        $job_applications = $this->getJobForm();
+        $economics = $this->getEconomics($general_id);
+        $experiences_job = $this->getExperienceJob($job_application);
+        $experiences_job_id = $this->getExperienceJobId($job_application);
+        $activities = $this->getActivities($experiences_job_id);
+
+        $spreadsheet = \PhpOffice\PhpSpreadsheet\IOFactory::load(public_path('Excel/SolicitudEmpleo.xlsx'));
+
+        $sheet = $spreadsheet->getActiveSheet();
+
+        $sheet->setCellValue('C8:G8', );
+        $sheet->setCellValue('A14', auth()->user()->first_surname);
+        $sheet->setCellValue('D14', auth()->user()->second_surnname);
+        $sheet->setCellValue('G14', auth()->user()->first_name);
+        $sheet->setCellValue('J14', auth()->user()->second_name);
+        $sheet->setCellValue('J14', auth()->user()->second_name);
+        $sheet->setCellValue('J14', auth()->user()->second_name);
+        $sheet->setCellValue('J14', auth()->user()->second_name);
+
+        $writer = new Xlsx($spreadsheet);
+        $writer->save(public_path('Excel/moose_mejorado.xlsx'));
+    }
 }
