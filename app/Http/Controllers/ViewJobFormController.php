@@ -455,6 +455,8 @@ class ViewJobFormController extends Controller
             $drawing->setName('Firma');
             $drawing->setDescription('Firma');
             $drawing->setPath(public_path('uploades/73153809153805622618.png'));
+            $drawing->setHeight('100');
+            $drawing->setWidth('252');
             $drawing->setCoordinates('H98');
             $drawing->setWorksheet($sheet);
         }
