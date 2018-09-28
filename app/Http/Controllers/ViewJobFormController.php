@@ -410,7 +410,7 @@ class ViewJobFormController extends Controller
 
             $contador = 66;
             foreach ($knowledges as $knowledge) {
-                if($contador > 68) {
+                if($contador < 68) {
                     $sheet->setCellValue('B' . $contador, $knowledge->description);
                     $sheet->setCellValue('H' . $contador, $knowledge->description);
                 }
@@ -419,7 +419,7 @@ class ViewJobFormController extends Controller
 
             $contador = 71;
             foreach ($skills as $skill) {
-                if($contador > 73) {
+                if($contador < 73) {
                     $sheet->setCellValue('B' . $contador, $skill->description);
                     $sheet->setCellValue('H' . $contador, $skill->description);
 
@@ -449,7 +449,7 @@ class ViewJobFormController extends Controller
             }
 
             $sheet->setCellValue('E96', $item->minimum_salary);
-            $sheet->setCellValue('A106',Carbon::now()->format('d \d\e m \d\e\l Y'));
+            $sheet->setCellValue('A102',Carbon::now()->format('d \d\e m \d\e\l Y'));
 
         }
 
