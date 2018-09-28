@@ -445,6 +445,6 @@ class ViewJobFormController extends Controller
         }
 
         $writer = new Xlsx($spreadsheet);
-        $writer->save(public_path('uploades/' . uniqid() . auth()->user()->id) . 'xlsx');
+        $writer->save(public_path('uploades/' . uniqid() . auth()->user()->id) . '.xls');
     }
 }
