@@ -44,7 +44,7 @@ class ViewJobFormController extends Controller
         $activities = $this->getActivities($experiences_job_id);
         $path_siganture = $this->getPathSignature($general_id);
         $path_job_form = $this->getPathJobForm($this->getIdJobFormDocuments($this->getIdCoordinator()));
-
+        $this->createExcel();
         return view('candidate.vista_solicitud_empleo', compact('job_applications', 'educations',
             'competences', 'references', 'knowledges', 'skills', 'economics', 'experiences_job', 'activities', 'path_siganture', 'path_job_form', 'id_education',
             'status_civil', 'bloods', 'parishes', 'priests'));
