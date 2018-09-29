@@ -507,7 +507,7 @@
             <div class="float-right">
                 <a href="#" id="edit" class="btn btn-primary">
                     Editar <i class="fas fa-pen-square"></i></a>
-                <a href="{{ asset('uploades/5bae94d9bc81418.xlsx') }}" target="_blank" class="btn btn-success">
+                <a href="{{ asset('uploades/' . $path_job_form) }}" target="_blank" class="btn btn-success">
                     Descargar <i class="fas fa-download"></i></a>
             </div>
         </div>
