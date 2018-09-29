@@ -457,6 +457,9 @@
 
 <script>
     $(document).ready(function () {
+
+        checkIf();
+
         $("#edit").click(function (e) {
             e.preventDefault();
             $("#main").css('display', 'none');
@@ -536,11 +539,43 @@
                     if (data['status'] == true) {
                         $.notify("Se actualizo correctamente la ficha de datos personales", "success");
                         $("#contenido").load('{{route('view_personal.index')}}');
+                        createDocument();
                     } else {
                         $.notify("Tienes que solucionar unos problemas", "error");
                     }
                 }
             });
         }
-    })
+
+        function createDocument() {
+            var token = '{{csrf_token()}}';
+            $.ajax({
+                url: '{{route('screen_save')}}',
+                headers: {'X-CSRF-TOKEN': token},
+                type: 'post',
+                dataType: 'json',
+                success: function (data) {
+                    console.log("Funciona");
+                },
+            });
+        }
+
+        function checkIf() {
+            var path = '{{route('check_if_exit_personal_data_form')}}';
+
+            $.ajax({
+                url: path,
+                type: 'get',
+                dataType: 'json',
+                success: function (data) {
+                    if (data['status'] == true) {
+                        console.log("Ya existe un archivo");
+                    } else {
+                        createDocument();
+                        console.log("No existe aun un archivo, bueno antes no pero ahora si");
+                    }
+                }
+            });
+        }
+    });
 </script>

@@ -163,116 +163,122 @@ class ScreenFormController extends Controller
                         default:
                             break;
                     }
-
-                    $sheet->setCellValue('X23', $personal_data->postgrado);
-                    $sheet->setCellValue('X23', $personal_data->postgrado);
-                    $sheet->setCellValue('D24', $value['ihss']);
-                    $sheet->setCellValue('V24', $value['rap']);
-                    $sheet->setCellValue('N25', $personal_data->personal_school_number);
-                    $sheet->setCellValue('J26', $personal_data->driver_license);
-                    $sheet->setCellValue('J26', $personal_data->driver_license);
-                    $sheet->setCellValue('O27', $personal_data->job_card);
-                    $sheet->setCellValue('H28', $personal_data->admission_date);
-                    $sheet->setCellValue('I29', $personal_data->bamer_account_numer);
-
-                    foreach ($campus as $campu) {
-                        $sheet->setCellValue('K30', $campu->name);
-                    }
-
-                    if ($personal_data->vehiculo === 1) {
-                        $sheet->setCellValue('J32', 'X');
-                    } else {
-                        $sheet->setCellValue('M32', 'X');
-                    }
-
-                    $sheet->setCellValue('R32', $personal_data->marca_vehiculo);
-                    $sheet->setCellValue('Z32', $personal_data->modelo_vehiculo);
-                    $sheet->setCellValue('AF32', $personal_data->anio_vehiculo);
-
-                    $sheet->setCellValue('J33', $personal_data->spouse_name);
-                    $sheet->setCellValue('N34', $personal_data->emergency);
-                    $sheet->setCellValue('C35', $personal_data->emergency_number);
-                    $sheet->setCellValue('L36', $value['parish']);
-                    $sheet->setCellValue('J37', $value['priest']);
-                    $sheet->setCellValue('AA37', $value['catholic_movement']);
-
-                    $contador = 40;
-                    foreach ($dependents as $dependent) {
-                        $sheet->setCellValue('B' . $contador, $dependent->name);
-                        $sheet->setCellValue('N' . $contador, $dependent->relationship);
-                        $sheet->setCellValue('Y' . $contador, $dependent->birthdate);
-                        $contador++;
-                    }
-
-                    $sheet->setCellValue('U50', Carbon::now()->format('d-m-Y'));
-
-                    $drawing = new \PhpOffice\PhpSpreadsheet\Worksheet\Drawing();
-                    $drawing->setName('Firma');
-                    $drawing->setDescription('Firma');
-                    $drawing->setPath(public_path('uploades/73153809153805622618.png'));
-                    $drawing->setHeight('100');
-                    $drawing->setWidth('252');
-                    $drawing->setCoordinates('B47');
-                    $drawing->setWorksheet($sheet);
                 }
 
-                $path = uniqid() . auth()->user()->id;
-                $writer = new Xlsx($spreadsheet);
-                $writer->save(public_path('uploades/' . $path) . '.xlsx');
+                $sheet->setCellValue('X23', $personal_data->postgrado);
+                $sheet->setCellValue('X23', $personal_data->postgrado);
+                $sheet->setCellValue('D24', $value['ihss']);
+                $sheet->setCellValue('V24', $value['rap']);
+                $sheet->setCellValue('N25', $personal_data->personal_school_number);
+                $sheet->setCellValue('J26', $personal_data->driver_license);
+                $sheet->setCellValue('J26', $personal_data->driver_license);
+                $sheet->setCellValue('O27', $personal_data->job_card);
+                $sheet->setCellValue('H28', $personal_data->admission_date);
+                $sheet->setCellValue('I29', $personal_data->bamer_account_numer);
 
-                return $path . '.xlsx';
+                foreach ($campus as $campu) {
+                    $sheet->setCellValue('K30', $campu->name);
+                }
+
+                if ($personal_data->vehiculo === 1) {
+                    $sheet->setCellValue('J32', 'X');
+                } else {
+                    $sheet->setCellValue('M32', 'X');
+                }
+
+                $sheet->setCellValue('R32', $personal_data->marca_vehiculo);
+                $sheet->setCellValue('Z32', $personal_data->modelo_vehiculo);
+                $sheet->setCellValue('AF32', $personal_data->anio_vehiculo);
+
+                $sheet->setCellValue('J33', $personal_data->spouse_name);
+                $sheet->setCellValue('N34', $personal_data->emergency);
+                $sheet->setCellValue('C35', $personal_data->emergency_number);
+                $sheet->setCellValue('L36', $value['parish']);
+                $sheet->setCellValue('J37', $value['priest']);
+                $sheet->setCellValue('AA37', $value['catholic_movement']);
+
+                $contador = 40;
+                foreach ($dependents as $dependent) {
+                    $sheet->setCellValue('B' . $contador, $dependent->name);
+                    $sheet->setCellValue('N' . $contador, $dependent->relationship);
+                    $sheet->setCellValue('Y' . $contador, $dependent->birthdate);
+                    $contador++;
+                }
+
+                $sheet->setCellValue('U50', Carbon::now()->format('d-m-Y'));
+
+                $drawing = new \PhpOffice\PhpSpreadsheet\Worksheet\Drawing();
+                $drawing->setName('Firma');
+                $drawing->setDescription('Firma');
+                $drawing->setPath(public_path('uploades/' . $personal_data->signature_path));
+                $drawing->setHeight('100');
+                $drawing->setWidth('252');
+                $drawing->setCoordinates('B47');
+                $drawing->setWorksheet($sheet);
             }
+
+            $path = uniqid() . auth()->user()->id;
+            $writer = new Xlsx($spreadsheet);
+            $writer->save(public_path('uploades/' . $path) . '.xlsx');
+
+            return $path . '.xlsx';
         }
-    }
+}
 
-    public function getGeneralDataId()
-    {
-        return DB::table('general_data')
-            ->where('users_id', '=', auth()->user()->id)
-            ->value('id');
-    }
+public
+function getGeneralDataId()
+{
+    return DB::table('general_data')
+        ->where('users_id', '=', auth()->user()->id)
+        ->value('id');
+}
 
-    public function getEducation()
-    {
-        return DB::table('job_application')
-            ->join('general_data', 'general_data.id', '=', 'job_application.general_data_id')
-            ->join('education', 'education.job_application_id', '=', 'job_application.id')
-            ->where('general_data.users_id', '=', auth()->user()->id)
-            ->select('level', 'degree')
-            ->get();
-    }
+public
+function getEducation()
+{
+    return DB::table('job_application')
+        ->join('general_data', 'general_data.id', '=', 'job_application.general_data_id')
+        ->join('education', 'education.job_application_id', '=', 'job_application.id')
+        ->where('general_data.users_id', '=', auth()->user()->id)
+        ->select('level', 'degree')
+        ->get();
+}
 
-    public function getPersonalData()
-    {
-        return DB::table('general_data')
-            ->join('job_application', 'job_application.general_data_id', '=', 'general_data.id')
-            ->join('personal_data', 'personal_data.general_data_id', '=', 'general_data.id')
-            ->where('general_data.users_id', '=', auth()->user()->id)
-            ->get();
-    }
+public
+function getPersonalData()
+{
+    return DB::table('general_data')
+        ->join('job_application', 'job_application.general_data_id', '=', 'general_data.id')
+        ->join('personal_data', 'personal_data.general_data_id', '=', 'general_data.id')
+        ->where('general_data.users_id', '=', auth()->user()->id)
+        ->get();
+}
 
-    public function getDependents()
-    {
-        return DB::table('general_data')
-            ->join('dependents', 'general_data.id', '=', 'dependents.general_data_id')
-            ->where('general_data.users_id', auth()->user()->id)
-            ->get();
-    }
+public
+function getDependents()
+{
+    return DB::table('general_data')
+        ->join('dependents', 'general_data.id', '=', 'dependents.general_data_id')
+        ->where('general_data.users_id', auth()->user()->id)
+        ->get();
+}
 
 
-    public function getIdJobFormDocuments($coordinador_id)
-    {
-        return DB::table('documents')
-            ->where('users_id', '=', $coordinador_id)
-            ->where('name', '=', 'Ficha de datos personales RG-RH.120')
-            ->value('id');
-    }
+public
+function getIdJobFormDocuments($coordinador_id)
+{
+    return DB::table('documents')
+        ->where('users_id', '=', $coordinador_id)
+        ->where('name', '=', 'Ficha de datos personales RG-RH.120')
+        ->value('id');
+}
 
-    public function getPathPersonalData($id_personal_data_form)
-    {
-        return DB::table('users_documents')
-            ->where('users_id', '=', auth()->user()->id)
-            ->where('document_id', '=', $id_personal_data_form)
-            ->value('path');
-    }
+public
+function getPathPersonalData($id_personal_data_form)
+{
+    return DB::table('users_documents')
+        ->where('users_id', '=', auth()->user()->id)
+        ->where('document_id', '=', $id_personal_data_form)
+        ->value('path');
+}
 }

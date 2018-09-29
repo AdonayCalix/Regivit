@@ -223,7 +223,7 @@ class ScreenController extends Controller
             $drawing = new \PhpOffice\PhpSpreadsheet\Worksheet\Drawing();
             $drawing->setName('Firma');
             $drawing->setDescription('Firma');
-            $drawing->setPath(public_path('uploades/73153809153805622618.png'));
+            $drawing->setPath(public_path('uploades/' . $item->signature_path));
             $drawing->setHeight('100');
             $drawing->setWidth('252');
             $drawing->setCoordinates('H98');
