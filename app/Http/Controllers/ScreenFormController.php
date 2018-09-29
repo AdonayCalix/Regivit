@@ -116,6 +116,7 @@ class ScreenFormController extends Controller
         foreach ($personal_datas as $personal_data) {
             foreach ($values as $value) {
                 $sheet->setCellValue('F6', $personal_data->current_position);
+
                 $sheet->setCellValue('B8', auth()->user()->first_name);
                 $sheet->setCellValue('J8', auth()->user()->second_name);
                 $sheet->setCellValue('T8', auth()->user()->first_surname);
