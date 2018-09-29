@@ -263,9 +263,9 @@
                                 <label for="">Posee movil</label>
                                 <select class="form-control formulario" id="has_car" name="has_car">
                                     @if($personal_data->vehiculo === 1)
-                                        <option value="">Si</option>
+                                        <option value="1">Si</option>
                                     @else
-                                        <option value="">No</option>
+                                        <option value="2">No</option>
                                     @endif
                                 </select>
 
