@@ -140,7 +140,7 @@ class ScreenFormController extends Controller
                 $sheet->setCellValue('F13', auth()->user()->identity);
 
                 $fecha = explode('/', $value['birthdate']);
-
+                dd($fecha);
                 $sheet->setCellValue('V13', $fecha[0]);
                 $sheet->setCellValue('AA13', $fecha[1]);
                 $sheet->setCellValue('AE13', $fecha[2]);
