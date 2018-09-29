@@ -550,7 +550,7 @@
         function createDocument() {
             var token = '{{csrf_token()}}';
             $.ajax({
-                url: '{{route('screen_save')}}',
+                url: '{{route('screen_save_personal')}}',
                 headers: {'X-CSRF-TOKEN': token},
                 type: 'post',
                 dataType: 'json',
