@@ -111,6 +111,7 @@ class ScreenFormController extends Controller
 
         $sheet = $spreadsheet->getActiveSheet();
 
+        dd($personal_datas);
         foreach ($personal_datas as $personal_data) {
             foreach ($values as $value) {
                 $sheet->setCellValue('F6', $personal_data->current_position);
