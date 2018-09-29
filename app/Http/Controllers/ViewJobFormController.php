@@ -20,9 +20,6 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Collection;
 use App\Http\Requests\JobFormRequest;
-use Carbon\Carbon;
-use PhpOffice\PhpSpreadsheet\Spreadsheet;
-use PhpOffice\PhpSpreadsheet\Writer\Xlsx;
 
 class ViewJobFormController extends Controller
 {
@@ -46,6 +43,7 @@ class ViewJobFormController extends Controller
         $activities = $this->getActivities($experiences_job_id);
         $path_siganture = $this->getPathSignature($general_id);
         $path_job_form = $this->getPathJobForm($this->getIdJobFormDocuments($this->getIdCoordinator()));
+
         return view('candidate.vista_solicitud_empleo', compact('job_applications', 'educations',
             'competences', 'references', 'knowledges', 'skills', 'economics', 'experiences_job', 'activities', 'path_siganture', 'path_job_form', 'id_education',
             'status_civil', 'bloods', 'parishes', 'priests'));
@@ -219,7 +217,7 @@ class ViewJobFormController extends Controller
                     'place_date' => $request->place_date,
                     'telefono' => $request->telefono,
                     'celular' => $request->celular,
-                    'signature_path' => $this->saveSignature($request->signature_paht)
+                    'signature_path' => $this->saveSignature($request->signature_path)
                 ]);
 
             $job_form_id = $this->getJobFormId($this->getGeneralDataId());
@@ -299,7 +297,6 @@ class ViewJobFormController extends Controller
             return response()->json(['status' => true]);
         }
     }
-
     public function saveSignature($data_uri)
     {
         try {
@@ -319,5 +316,4 @@ class ViewJobFormController extends Controller
             ->where('users_id', '=', auth()->user()->id)
             ->value('id');
     }
-
 }
