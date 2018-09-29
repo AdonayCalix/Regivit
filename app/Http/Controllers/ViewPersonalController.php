@@ -7,6 +7,9 @@ use App\Http\Requests\PersonalDataRequest;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use App\PersonalData;
+use Carbon\Carbon;
+use PhpOffice\PhpSpreadsheet\Spreadsheet;
+use PhpOffice\PhpSpreadsheet\Writer\Xlsx;
 
 class ViewPersonalController extends Controller
 {
@@ -123,45 +126,4 @@ class ViewPersonalController extends Controller
             ->value('path');
     }
 
-    public function saveSignature($data_uri)
-    {
-        try {
-            $encoded_image = explode(",", $data_uri)[1];
-            $decoded_image = base64_decode($encoded_image);
-            $file_name = mt_rand() . time() . auth()->user()->id . '.png';
-            file_put_contents(public_path() . '/uploades/' . $file_name, $decoded_image);
-        } catch (\Exception $e) {
-            return 'No ok';
-        }
-        return $file_name;
-    }
-
-    public function createExcel()
-    {
-        $result = DB::select('select general_data.*, civil_status.descripcion as \'civil_status\', parish.name as \'parish\', parish_priest.name as \'priest\'' .
-            'from general_data, ' .
-            'civil_status, ' .
-            'parish, ' .
-            'parish_priest ' .
-            'where general_data.civil_status_id = civil_status.id ' .
-            'and general_data.parish_id = parish.id ' .
-            'and general_data.priest_id = parish_priest.id ' .
-            'and general_data.users_id = ?', [auth()->user()->id]);
-        $values = json_decode(json_encode($result), true);
-        $degree_education = $this->getEducation();
-        $campus = Campus::all();
-        $personal_datas = $this->getPersonalData();
-        $dependents = $this->getDependents();
-
-        $spreadsheet = \PhpOffice\PhpSpreadsheet\IOFactory::load(public_path('excel/SolicitudEmpleo.xlsx'));
-
-        $sheet = $spreadsheet->getActiveSheet();
-
-        foreach ($personal_datas as $personal_data) {
-            $sheet->setCellValue('C8', $item->aspire_position);
-        }
-
-        $writer = new Xlsx($spreadsheet);
-        $writer->save(public_path('uploades/' . uniqid() . auth()->user()->id));
-    }
 }

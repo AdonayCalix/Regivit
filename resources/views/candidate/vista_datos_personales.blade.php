@@ -92,10 +92,10 @@
 
                                 </label>
                                 <select class="form-control formulario" name="civil_status" id="civil_status">
-                                    <option value="Una burrada">{{$value['civil_status']}}</option>
+                                    <option value="">{{$value['civil_status']}}</option>
                                 </select>
                             </div>
-                            <div class="form-group col">
+                            <div class="|form-group col">
                                 <label for="">Identidad
 
                                 </label>
@@ -262,7 +262,7 @@
                             <div class="form-group col">
                                 <label for="">Posee movil</label>
                                 <select class="form-control formulario" id="has_car" name="has_car">
-                                    @if($personal_data->vehiculo == 1)
+                                    @if($personal_data->vehiculo === 1)
                                         <option value="">Si</option>
                                     @else
                                         <option value="">No</option>
