@@ -116,7 +116,7 @@ class ScreenFormController extends Controller
         foreach ($personal_datas as $personal_data) {
             foreach ($values as $value) {
                 $sheet->setCellValue('F6', $personal_data->current_position);
-                $sheet->setCellValue('A8', auth()->user()->first_name);
+                $sheet->setCellValue('B8', auth()->user()->first_name);
                 $sheet->setCellValue('J8', auth()->user()->second_name);
                 $sheet->setCellValue('T8', auth()->user()->first_surname);
                 $sheet->setCellValue('AA8', auth()->user()->second_surname);
@@ -137,13 +137,13 @@ class ScreenFormController extends Controller
                         break;
                 }
 
-                $sheet->setCellValue('F13', auth()->user()->id);
+                $sheet->setCellValue('F13', auth()->user()->identity);
 
-                $fecha = $value['birthdate'];
+                $fecha = explode('/', $value['birthdate']);
 
                 $sheet->setCellValue('V13', $fecha[0]);
                 $sheet->setCellValue('AA13', $fecha[1]);
-                $sheet->setCellValue('AE3', $fecha[2]);
+                $sheet->setCellValue('AE13', $fecha[2]);
 
                 $sheet->setCellValue('H16', $value['address']);
                 $sheet->setCellValue('V17', auth()->user()->email);
