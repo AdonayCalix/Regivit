@@ -122,10 +122,10 @@ class ScreenFormController extends Controller
                 $sheet->setCellValue('T8', auth()->user()->first_surname);
                 $sheet->setCellValue('AA8', auth()->user()->second_surname);
                 switch ($value['civil_status']) {
-                    case 'Soltero (a)':
+                    case 'Soltero(a)':
                         $sheet->setCellValue('L11', 'X');
                         break;
-                    case 'Casado (a)':
+                    case 'Casado(a)':
                         $sheet->setCellValue('R11', 'X');
                         break;
                     case 'Union libre':
