@@ -129,7 +129,6 @@ class ViewPersonalController extends Controller
     public function saveSignature($data_uri)
     {
         try {
-
             $encoded_image = explode(",", $data_uri)[1];
             $decoded_image = base64_decode($encoded_image);
             $file_name = mt_rand() . time() . auth()->user()->id . '.png';
