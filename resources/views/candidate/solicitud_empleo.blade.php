@@ -578,15 +578,16 @@
                                value="La Ceiba Atlantida, {{\Carbon\Carbon::now()->format('d \d\e m \d\e\l Y')}}">
                     </div>
                     <div class="form-group col">
-                        <label for="" data-toggle="modal" data-target="#modal_firma"><strong>Firma (De click
-                                aqui)</strong>
-                            <small> *</small>
-                        </label>
-                        <div class="form-control align-content-center" id="contenedor_firma" style="height: 100px">
-                            <img src="" alt="" id="img-firma" width="" height="">
+                        <label for="" data-toggle="modal" data-target="#modal_firma"><strong>Firma (De click aqui)
+                                <small> *</small>
+                            </strong></label><br>
+                        <div class="form-control align-content-center" id="contenedor_firma"
+                             style="height: 100px">
+                            <img src="" alt="" id="img-firma" width="100%" height="100%">
                         </div>
-                        <input type="hidden" name="signature_path" id="firma" value="">
+                        <input type="hidden" name="signature_paht" id="firma" value="soylafirma">
                     </div>
+
                 </div>
                 <br><h6>Aprobada el {{\Carbon\Carbon::now()->format('d/m/Y')}}</h6>
                 <div>
