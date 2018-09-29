@@ -107,7 +107,7 @@ class ScreenFormController extends Controller
         $dependents = $this->getDependents();
         $path_personal_data_form = $this->getPathPersonalData($this->getIdJobFormDocuments($this->getIdCoordinator()));
 
-        $spreadsheet = \PhpOffice\PhpSpreadsheet\IOFactory::load(public_path('excel/SolicitudEmpleo.xlsx'));
+        $spreadsheet = \PhpOffice\PhpSpreadsheet\IOFactory::load(public_path('excel/FichaDatosPersonales.xlsx'));
 
         $sheet = $spreadsheet->getActiveSheet();
 
