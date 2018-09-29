@@ -222,62 +222,69 @@ class ScreenFormController extends Controller
 
             return $path . '.xlsx';
         }
-}
+    }
 
-public
-function getGeneralDataId()
-{
-    return DB::table('general_data')
-        ->where('users_id', '=', auth()->user()->id)
-        ->value('id');
-}
+    public
+    function getGeneralDataId()
+    {
+        return DB::table('general_data')
+            ->where('users_id', '=', auth()->user()->id)
+            ->value('id');
+    }
 
-public
-function getEducation()
-{
-    return DB::table('job_application')
-        ->join('general_data', 'general_data.id', '=', 'job_application.general_data_id')
-        ->join('education', 'education.job_application_id', '=', 'job_application.id')
-        ->where('general_data.users_id', '=', auth()->user()->id)
-        ->select('level', 'degree')
-        ->get();
-}
+    public function getIdCoordinator()
+    {
+        return DB::table('users_faculties')
+            ->where('users_id', auth()->user()->id)
+            ->value('coordinator_id');
+    }
 
-public
-function getPersonalData()
-{
-    return DB::table('general_data')
-        ->join('job_application', 'job_application.general_data_id', '=', 'general_data.id')
-        ->join('personal_data', 'personal_data.general_data_id', '=', 'general_data.id')
-        ->where('general_data.users_id', '=', auth()->user()->id)
-        ->get();
-}
+    public
+    function getEducation()
+    {
+        return DB::table('job_application')
+            ->join('general_data', 'general_data.id', '=', 'job_application.general_data_id')
+            ->join('education', 'education.job_application_id', '=', 'job_application.id')
+            ->where('general_data.users_id', '=', auth()->user()->id)
+            ->select('level', 'degree')
+            ->get();
+    }
 
-public
-function getDependents()
-{
-    return DB::table('general_data')
-        ->join('dependents', 'general_data.id', '=', 'dependents.general_data_id')
-        ->where('general_data.users_id', auth()->user()->id)
-        ->get();
-}
+    public
+    function getPersonalData()
+    {
+        return DB::table('general_data')
+            ->join('job_application', 'job_application.general_data_id', '=', 'general_data.id')
+            ->join('personal_data', 'personal_data.general_data_id', '=', 'general_data.id')
+            ->where('general_data.users_id', '=', auth()->user()->id)
+            ->get();
+    }
+
+    public
+    function getDependents()
+    {
+        return DB::table('general_data')
+            ->join('dependents', 'general_data.id', '=', 'dependents.general_data_id')
+            ->where('general_data.users_id', auth()->user()->id)
+            ->get();
+    }
 
 
-public
-function getIdJobFormDocuments($coordinador_id)
-{
-    return DB::table('documents')
-        ->where('users_id', '=', $coordinador_id)
-        ->where('name', '=', 'Ficha de datos personales RG-RH.120')
-        ->value('id');
-}
+    public
+    function getIdJobFormDocuments($coordinador_id)
+    {
+        return DB::table('documents')
+            ->where('users_id', '=', $coordinador_id)
+            ->where('name', '=', 'Ficha de datos personales RG-RH.120')
+            ->value('id');
+    }
 
-public
-function getPathPersonalData($id_personal_data_form)
-{
-    return DB::table('users_documents')
-        ->where('users_id', '=', auth()->user()->id)
-        ->where('document_id', '=', $id_personal_data_form)
-        ->value('path');
-}
+    public
+    function getPathPersonalData($id_personal_data_form)
+    {
+        return DB::table('users_documents')
+            ->where('users_id', '=', auth()->user()->id)
+            ->where('document_id', '=', $id_personal_data_form)
+            ->value('path');
+    }
 }
