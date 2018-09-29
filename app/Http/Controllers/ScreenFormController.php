@@ -110,7 +110,6 @@ class ScreenFormController extends Controller
         $spreadsheet = \PhpOffice\PhpSpreadsheet\IOFactory::load(public_path('excel/FichaDatosPersonales.xlsx'));
 
         $sheet = $spreadsheet->getActiveSheet();
-
         dd($personal_datas);
         foreach ($personal_datas as $personal_data) {
             foreach ($values as $value) {
