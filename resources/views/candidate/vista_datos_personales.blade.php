@@ -369,7 +369,7 @@
                                      style="height: 100px">
                                     <img src="{{asset('uploades/' . $personal_data->signature_path)}}" alt="" id="img-firma" width="100%" height="100%">
                                 </div>
-                                <input type="hidden" name="signature_path" id="firma" value="{{$personal_data->signature_path}}">
+                                <input type="hidden" name="signature_path" id="firma" value="">
                             </div>
                             <div class="form-group col">
                                 <label for="">Fecha

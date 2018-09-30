@@ -30,7 +30,7 @@ class JobFormRequest extends FormRequest
             'catholic_movement' => 'string',
             'pastoral_activity' => 'required|alpha_num',
             'family_university' => 'required|alpha_num',
-            'signature_paht' => 'required|string',
+            'signature_paht' => 'string',
             'aspire_position' => 'required|string',
             'knowledge.*' => 'required|string',
             'competence.*' => 'required|string',

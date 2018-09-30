@@ -10,7 +10,6 @@
 |
 */
 /*Routes for main views of regivit*/
-Route::get('excel', 'PruebaExcel@doExcel');
 Route::get('/', 'Auth\LoginController@showLoginForm')->name('show_login');
 Route::post('login', 'Auth\LoginController@login')->name('login');
 Route::post('logout', 'Auth\LoginController@logout')->name('logout');
