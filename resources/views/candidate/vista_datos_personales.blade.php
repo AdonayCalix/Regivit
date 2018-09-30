@@ -389,7 +389,7 @@
             <div class="float-right">
                 <a href="#" id="edit" class="btn btn-primary">
                     Editar <i class="fas fa-pen-square"></i></a>
-                <a href="{{ $path_personal_data_form }}" target="_blank" class="btn btn-success">
+                <a href="{{ asset('uploades/') . $path_personal_data_form }}" target="_blank" class="btn btn-success">
                     Descargar <i class="fas fa-download"></i></a>
             </div>
         </div>
