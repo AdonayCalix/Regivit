@@ -46,7 +46,7 @@
                                 </label>
                                 <input type="text" name="current_position" class="form-control"
                                        value="{{$personal_data->current_position}}">
-                            </div>
+                            </div>ma
                         </div>
                         <div class="row">
                             <div class="form-group col">
@@ -369,7 +369,7 @@
                                      style="height: 100px">
                                     <img src="{{asset('uploades/' . $personal_data->signature_path)}}" alt="" id="img-firma" width="100%" height="100%">
                                 </div>
-                                <input type="hidden" name="signature_path" id="firma" value="">
+                                <input type="hidden" name="signature_path" id="firma" value="default">
                             </div>
                             <div class="form-group col">
                                 <label for="">Fecha

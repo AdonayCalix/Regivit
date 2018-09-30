@@ -497,7 +497,7 @@
                                 <img src="{{asset('uploades/' . $item->signature_path)}}" alt="" id="img-firma"
                                      width="100%" height="100%">
                             </div>
-                            <input type="hidden" name="signature_paht" id="firma" value="">
+                            <input type="hidden" name="signature_paht" id="firma" value="default">
                         </div>
                     </div>
                     <br><h6>Aprobada el {{\Carbon\Carbon::now()->format('d/m/Y')}}</h6>

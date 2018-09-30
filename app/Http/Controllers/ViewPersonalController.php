@@ -128,6 +128,10 @@ class ViewPersonalController extends Controller
 
     public function saveSignature($data_uri)
     {
+        if ($data_uri === 'default') {
+            return $path_personal_data_form = $this->getPathPersonalData($this->getIdJobFormDocuments($this->getIdCoordinator()));
+        }
+
         try {
             $encoded_image = explode(",", $data_uri)[1];
             $decoded_image = base64_decode($encoded_image);
