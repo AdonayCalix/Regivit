@@ -649,6 +649,7 @@
             type: 'post',
             dataType: 'json',
             success: function (data) {
+                console.log("FUNCIONA");
                 return true;
             },
         });
