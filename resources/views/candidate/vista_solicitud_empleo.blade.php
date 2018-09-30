@@ -632,7 +632,10 @@
                     if (data['status'] == true) {
                         $.notify("Se actualizo correctamente la solicitud de empleo", "success");
                         if (createDocument()) {
+                            console.log("LLEGO ACA");
                             $("#contenido").load('{{route('view_job_form.index')}}');
+                        } else {
+                            console.log("NO LLEGO ACA");
                         }
                     } else {
                         $.notify("Tienes que solucionar unos problemas", "error");
