@@ -84,7 +84,7 @@
                     <div class="form-group col">
                         <label for="">Apellido de casada</label>
                         <input type="text" name="married_surname" class="form-control"
-                               placeholder="Ingrese su apellido de casada" onkeypress="return letras(event)">
+                               placeholder="Ingrese su apellido de casada" >
                     </div>
                     <div class="form-group col">
                         <label for="">Direccion de domicilio</label>
@@ -99,13 +99,13 @@
                         <label for="">Telefono</label>
                         <small> *</small>
                         <input type="text" name="telefono" class="form-control"
-                               placeholder="Ingrese su telefono" onkeypress="return valida(event)">
+                               placeholder="Ingrese su telefono" >
                     </div>
                     <div class="form-group col">
                         <label for="">Celular</label>
                         <small> *</small>
                         <input type="text" name="celular" class="form-control"
-                               placeholder="celular" onkeypress="return valida(event)">
+                               placeholder="celular" >
                     </div>
                     <div class="form-group col">
                         <label for="">E-mail</label>
@@ -138,7 +138,7 @@
                         <label for="">Edad</label>
                         <small> *</small>
                         <input type="number" name="age" class="form-control"
-                               placeholder="Ingrese su edad" onkeypress="return valida(event)"
+                               placeholder="Ingrese su edad" 
                                min="1" max="100">
                     </div>
                     <div class="form-group col">
@@ -206,7 +206,7 @@
                         <label for="">¿Activo en algun movimiento católico?</label>
                         <small> *</small>
                         <textarea name="catholic_movement" id="" cols="30" rows="5" class="form-control"
-                                  placeholder="Ingrese los detalles" onkeypress="return letras(event)"
+                                  placeholder="Ingrese los detalles" 
                         ></textarea>
                     </div>
                 </div>
@@ -268,26 +268,26 @@
                     <tbody>
                     <tr>
                         <td><input type="text" name="reference_name[]" class="form-control"
-                                   onkeypress="return letras(event)"></td>
+                                   ></td>
                         <td><input type="text" name="reference_address[]" class="form-control"></td>
                         <td><input type="text" name="reference_relationship[]" class="form-control"
-                                   onkeypress="return letras(event)"></td>
+                                   ></td>
                         <td><input type="text" name="reference_number[]" class="form-control"></td>
                     </tr>
                     <tr>
                         <td><input type="text" name="reference_name[]" class="form-control"
-                                   onkeypress="return letras(event)"></td>
+                                   ></td>
                         <td><input type="text" name="reference_address[]" class="form-control"></td>
                         <td><input type="text" name="reference_relationship[]" class="form-control"
-                                   onkeypress="return letras(event)"></td>
+                                   ></td>
                         <td><input type="text" name="reference_number[]" class="form-control"></td>
                     </tr>
                     <tr>
                         <td><input type="text" name="reference_name[]" class="form-control"
-                                   onkeypress="return letras(event)"></td>
+                                   ></td>
                         <td><input type="text" name="reference_address[]" class="form-control"></td>
                         <td><input type="text" name="reference_relationship[]" class="form-control"
-                                   onkeypress="return letras(event)"></td>
+                                   ></td>
                         <td><input type="text" name="reference_number[]" class="form-control"></td>
                     </tr>
 
@@ -310,33 +310,33 @@
                 <div class="row">
                     <div class="form-group col">
                         <input type="text" name="competence[]" class="form-control"
-                               placeholder="Primer Atributo..." onkeypress="return letras(event)">
+                               placeholder="Primer Atributo..." >
                     </div>
                     <div class="form-group col">
                         <input type="text" name="competence[]" class="form-control"
-                               placeholder="Segundo Atributo..." onkeypress="return letras(event)">
-                    </div>
-                </div>
-                <!-- BLOQUE -->
-                <div class="row">
-                    <div class="form-group col">
-                        <input type="text" name="competence[]" class="form-control"
-                               placeholder="Tercer Atributo..." onkeypress="return letras(event)">
-                    </div>
-                    <div class="form-group col">
-                        <input type="text" name="competence[]" class="form-control"
-                               placeholder="Cuarto Atributo..." onkeypress="return letras(event)">
+                               placeholder="Segundo Atributo..." >
                     </div>
                 </div>
                 <!-- BLOQUE -->
                 <div class="row">
                     <div class="form-group col">
                         <input type="text" name="competence[]" class="form-control"
-                               placeholder="Quinto Atributo..." onkeypress="return letras(event)">
+                               placeholder="Tercer Atributo..." >
                     </div>
                     <div class="form-group col">
                         <input type="text" name="competence[]" class="form-control"
-                               placeholder="Sexto Atributo..." onkeypress="return letras(event)">
+                               placeholder="Cuarto Atributo..." >
+                    </div>
+                </div>
+                <!-- BLOQUE -->
+                <div class="row">
+                    <div class="form-group col">
+                        <input type="text" name="competence[]" class="form-control"
+                               placeholder="Quinto Atributo..." >
+                    </div>
+                    <div class="form-group col">
+                        <input type="text" name="competence[]" class="form-control"
+                               placeholder="Sexto Atributo..." >
                     </div>
                 </div>
 
@@ -365,26 +365,26 @@
                     <tr>
                         <td>Primaria</td>
                         <td><input type="text" class="form-control date" name="education_years[]"
-                                   onkeypress="return valida(event)"></td>
+                                   ></td>
                         <td><input type="text" class="form-control" name="education_school_name[]"></td>
                         <td><input type="text" class="form-control" name="education_degree[]"
-                                   onkeypress="return letras(event)"></td>
+                                   ></td>
                     </tr>
                     <tr>
                         <td>Secundaria</td>
                         <td><input type="text" class="form-control date" name="education_years[]"
-                                   onkeypress="return valida(event)"></td>
+                                   ></td>
                         <td><input type="text" class="form-control" name="education_school_name[]"></td>
                         <td><input type="text" class="form-control" name="education_degree[]"
-                                   onkeypress="return letras(event)"></td>
+                                   ></td>
                     </tr>
                     <tr>
                         <td>Universitaria</td>
                         <td><input type="text" class="form-control date" name="education_years[]"
-                                   onkeypress="return valida(event)"></td>
+                                   ></td>
                         <td><input type="text" class="form-control" name="education_school_name[]"></td>
                         <td><input type="text" class="form-control" name="education_degree[]"
-                                   onkeypress="return letras(event)"></td>
+                                   ></td>
                     </tr>
                     </tbody>
                 </table>
@@ -400,33 +400,33 @@
                 <div class="row">
                     <div class="form-group col">
                         <input type="text" name="knowledge[]" class="form-control"
-                               placeholder="Primer Conocimiento..." onkeypress="return letras(event)">
+                               placeholder="Primer Conocimiento..." >
                     </div>
                     <div class="form-group col">
                         <input type="text" name="knowledge[]" class="form-control"
-                               placeholder="Segundo Conocimiento..." onkeypress="return letras(event)">
-                    </div>
-                </div>
-                <!-- BLOQUE -->
-                <div class="row">
-                    <div class="form-group col">
-                        <input type="text" name="knowledge[]" class="form-control"
-                               placeholder="Tercer Conocimiento..." onkeypress="return letras(event)">
-                    </div>
-                    <div class="form-group col">
-                        <input type="text" name="knowledge[]" class="form-control"
-                               placeholder="Cuarto Conocimiento..." onkeypress="return letras(event)">
+                               placeholder="Segundo Conocimiento..." >
                     </div>
                 </div>
                 <!-- BLOQUE -->
                 <div class="row">
                     <div class="form-group col">
                         <input type="text" name="knowledge[]" class="form-control"
-                               placeholder="Quinto Conocimiento..." onkeypress="return letras(event)">
+                               placeholder="Tercer Conocimiento..." >
                     </div>
                     <div class="form-group col">
                         <input type="text" name="knowledge[]" class="form-control"
-                               placeholder="Sexto Conocimiento..." onkeypress="return letras(event)">
+                               placeholder="Cuarto Conocimiento..." >
+                    </div>
+                </div>
+                <!-- BLOQUE -->
+                <div class="row">
+                    <div class="form-group col">
+                        <input type="text" name="knowledge[]" class="form-control"
+                               placeholder="Quinto Conocimiento..." >
+                    </div>
+                    <div class="form-group col">
+                        <input type="text" name="knowledge[]" class="form-control"
+                               placeholder="Sexto Conocimiento..." >
                     </div>
                 </div>
 
@@ -441,33 +441,33 @@
                 <div class="row">
                     <div class="form-group col">
                         <input type="text" name="skill[]" class="form-control"
-                               placeholder="Primer Habilidad..." onkeypress="return letras(event)">
+                               placeholder="Primer Habilidad..." >
                     </div>
                     <div class="form-group col">
                         <input type="text" name="skill[]" class="form-control"
-                               placeholder="Segunda Habilidad..." onkeypress="return letras(event)">
-                    </div>
-                </div>
-                <!-- BLOQUE -->
-                <div class="row">
-                    <div class="form-group col">
-                        <input type="text" name="skill[]" class="form-control"
-                               placeholder="Tercera Habilidad..." onkeypress="return letras(event)">
-                    </div>
-                    <div class="form-group col">
-                        <input type="text" name="skill[]" class="form-control"
-                               placeholder="Cuarta Habilidad..." onkeypress="return letras(event)">
+                               placeholder="Segunda Habilidad..." >
                     </div>
                 </div>
                 <!-- BLOQUE -->
                 <div class="row">
                     <div class="form-group col">
                         <input type="text" name="skill[]" class="form-control"
-                               placeholder="Quinta Habilidad..." onkeypress="return letras(event)">
+                               placeholder="Tercera Habilidad..." >
                     </div>
                     <div class="form-group col">
                         <input type="text" name="skill[]" class="form-control"
-                               placeholder="Sexta Habilidad..." onkeypress="return letras(event)">
+                               placeholder="Cuarta Habilidad..." >
+                    </div>
+                </div>
+                <!-- BLOQUE -->
+                <div class="row">
+                    <div class="form-group col">
+                        <input type="text" name="skill[]" class="form-control"
+                               placeholder="Quinta Habilidad..." >
+                    </div>
+                    <div class="form-group col">
+                        <input type="text" name="skill[]" class="form-control"
+                               placeholder="Sexta Habilidad..." >
                     </div>
                 </div>
 
@@ -488,19 +488,19 @@
                         <td rowspan="4"><input type="text" class="form-control" name="company_name"></td>
                         <td rowspan="4"><input type="text" class="form-control" name="position"></td>
                         <td rowspan="4"><input type="text" class="form-control" name="worked_years"
-                                               onkeypress="return valida(event)">
+                                               >
                         </td>
                     <tr>
                         <td><input type="text" class="form-control" name="activity[]"
-                                   onkeypress="return letras(event)"></td>
+                                   ></td>
                     </tr>
                     <tr>
                         <td><input type="text" class="form-control" name="activity[]"
-                                   onkeypress="return letras(event)"></td>
+                                   ></td>
                     </tr>
                     <tr>
                         <td><input type="text" class="form-control" name="activity[]"
-                                   onkeypress="return letras(event)"></td>
+                                   ></td>
                     </tr>
                     <tr>
 
@@ -528,31 +528,31 @@
                     <tbody>
                     <tr>
                         <td><input type="text" name="dependent_name[]" class="form-control"
-                                   placeholder="" onkeypress="return letras(event)"></td>
+                                   placeholder="" ></td>
                         <td><input type="text" name="dependent_relationship[]" class="form-control"
                                    placeholder=""></td>
                         <td><input type="number" name="dependent_age[]" class="form-control"
-                                   placeholder="" onkeypress="return valida(event)"></td>
+                                   placeholder="" ></td>
                         <td><input type="text" name="dependent_address[]" class="form-control"
                                    placeholder=""></td>
                     </tr>
                     <tr>
                         <td><input type="text" name="dependent_name[]" class="form-control"
-                                   placeholder="" onkeypress="return letras(event)"></td>
+                                   placeholder="" ></td>
                         <td><input type="text" name="dependent_relationship[]" class="form-control"
                                    placeholder=""></td>
                         <td><input type="number" name="dependent_age[]" class="form-control"
-                                   placeholder="" onkeypress="return valida(event)"></td>
+                                   placeholder="" ></td>
                         <td><input type="text" name="dependent_address[]" class="form-control"
                                    placeholder=""></td>
                     </tr>
                     <tr>
                         <td><input type="text" name="dependent_name[]" class="form-control"
-                                   placeholder="" onkeypress="return letras(event)"></td>
+                                   placeholder="" ></td>
                         <td><input type="text" name="dependent_relationship[]" class="form-control"
                                    placeholder=""></td>
                         <td><input type="number" name="dependent_age[]" class="form-control"
-                                   placeholder="" onkeypress="return valida(event)"></td>
+                                   placeholder="" ></td>
                         <td><input type="text" name="dependent_address[]" class="form-control"
                                    placeholder=""></td>
                     </tr>
@@ -566,7 +566,7 @@
                 </h6>
                 <input type="number" class="form-control col-sm-4" name="minimun_salary"
                        placeholder="Ingrese el sueldo mínimo que aceptaria"
-                       onkeypress="return valida(event)">
+                       >
                 <br>
 
                 <div class="row">
