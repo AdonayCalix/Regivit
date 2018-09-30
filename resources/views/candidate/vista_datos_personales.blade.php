@@ -389,7 +389,7 @@
             <div class="float-right">
                 <a href="#" id="edit" class="btn btn-primary">
                     Editar <i class="fas fa-pen-square"></i></a>
-                <a href="#" target="_blank" class="btn btn-success">
+                <a href="{{ $personal_data->signature_path }}" target="_blank" class="btn btn-success">
                     Descargar <i class="fas fa-download"></i></a>
             </div>
         </div>
