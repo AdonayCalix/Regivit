@@ -537,9 +537,9 @@
                 data: $("#formulario").serialize(),
                 success: function (data) {
                     if (data['status'] == true) {
+                        createDocument();
                         $.notify("Se actualizo correctamente la ficha de datos personales", "success");
                         $("#contenido").load('{{route('view_personal.index')}}');
-                        createDocument();
                     } else {
                         $.notify("Tienes que solucionar unos problemas", "error");
                     }
