@@ -647,6 +647,7 @@
 
     function createDocument() {
         var token = '{{csrf_token()}}';
+        var status = false;
         $.ajax({
             url: '{{route('screen_save')}}',
             headers: {'X-CSRF-TOKEN': token},
@@ -654,9 +655,11 @@
             dataType: 'json',
             success: function (data) {
                 console.log("FUNCIONA");
-                return true;
+                status = true;
             },
         });
+
+        return status;
     }
 
     function checkIf() {
