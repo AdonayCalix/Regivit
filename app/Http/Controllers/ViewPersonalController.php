@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Campus;
+use App\Dependent;
 use App\Http\Requests\PersonalDataRequest;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
@@ -58,6 +59,13 @@ class ViewPersonalController extends Controller
                     'admission_date' => $request->admission_date,
                     'signature_path' => $this->saveSignature($request->signature_path)
                 ]);
+            $dependent = $this->getDependents();
+            foreach ($dependent as $value => $i) {
+                $dependents = Dependent::where('general_data_id', $this->getGeneralId())
+                    ->update([
+                        'birthdate' => $request->input('fecha_nacimiento_parentesco')[$value]
+                    ]);
+            }
 
             return response()->json(['status' => true]);
 
@@ -103,7 +111,8 @@ class ViewPersonalController extends Controller
         return DB::table('general_data')
             ->join('dependents', 'general_data.id', '=', 'dependents.general_data_id')
             ->where('general_data.users_id', auth()->user()->id)
-            ->get();
+            ->get()
+            ->toArray();
     }
 
     public function error()
