@@ -297,10 +297,17 @@ class ViewJobFormController extends Controller
             return response()->json(['status' => true]);
         }
     }
+
+    public function getSignaturePath($general_id)
+    {
+        return DB::table('job_application')
+            ->where('general_data_id', '=', $general_id)
+            ->value('signature_path');
+    }
     public function saveSignature($data_uri)
     {
         if ($data_uri === 'default') {
-            return $path_job_form = $this->getPathJobForm($this->getIdJobFormDocuments($this->getIdCoordinator()));
+            return $this->getSignaturePath($this->getGeneralDataId());
         }
         try {
             $encoded_image = explode(",", $data_uri)[1];

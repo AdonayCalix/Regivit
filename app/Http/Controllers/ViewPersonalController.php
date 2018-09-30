@@ -71,6 +71,14 @@ class ViewPersonalController extends Controller
             ->value('id');
     }
 
+
+    public function getSignaturePath($genenal_id)
+    {
+        return DB::table('personal_data')
+            ->where('general_data_id', '=', $genenal_id)
+            ->value('signature_path');
+    }
+
     public function getEducation()
     {
         return DB::table('job_application')
@@ -129,7 +137,7 @@ class ViewPersonalController extends Controller
     public function saveSignature($data_uri)
     {
         if ($data_uri === 'default') {
-            return $path_personal_data_form = $this->getPathPersonalData($this->getIdJobFormDocuments($this->getIdCoordinator()));
+            return $this->getSignaturePath($this->getGeneralId());
         }
 
         try {
