@@ -631,7 +631,7 @@
                 success: function (data) {
                     if (data['status'] == true) {
                         $.notify("Se actualizo correctamente la solicitud de empleo", "success");
-                        if (createDocument()) {
+                        if (createDocument(doExcel)) {
                             console.log("LLEGO ACA");
                             $("#contenido").load('{{route('view_job_form.index')}}');
                         } else {
@@ -645,8 +645,8 @@
         }
     });
 
-    function createDocument(callback) {
-        if (callback()) {
+    function createDocument(func) {
+        if (func()) {
             return true;
         } else {
             return false;
