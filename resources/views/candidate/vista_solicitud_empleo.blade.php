@@ -645,21 +645,28 @@
         }
     });
 
-    function createDocument() {
+    function createDocument(callback) {
+        if (callback()) {
+            return true;
+        } else {
+            return false;
+        }
+    }
+
+    function doExcel() {
         var token = '{{csrf_token()}}';
-        var status = false;
         $.ajax({
             url: '{{route('screen_save')}}',
             headers: {'X-CSRF-TOKEN': token},
             type: 'post',
             dataType: 'json',
             success: function (data) {
-                console.log("FUNCIONA");
-                status = true;
+                return true;
             },
+            error: function (data) {
+                return false;
+            }
         });
-
-        return status;
     }
 
     function checkIf() {
