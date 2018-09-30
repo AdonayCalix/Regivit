@@ -630,7 +630,9 @@
                 success: function (data) {
                     if (data['status'] == true) {
                         $.notify("Se actualizo correctamente la solicitud de empleo", "success");
-                        createDocument();
+                        if(createDocument()) {
+                            $("#contenido").load('{{route('view_job_form.index')}}');
+                        }
                     } else {
                         $.notify("Tienes que solucionar unos problemas", "error");
                     }
@@ -647,7 +649,7 @@
             type: 'post',
             dataType: 'json',
             success: function (data) {
-                console.log("Funciona");
+                return true;
             },
         });
     }
