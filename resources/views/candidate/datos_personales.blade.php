@@ -353,7 +353,6 @@
                     <div class="row">
                         <div class="form-group col">
                             <label for="" data-toggle="modal" data-target="#modal_firma"><strong>Firma (De click aqui)
-                                    <small> *</small>
                                 </strong></label><br>
                             <div class="form-control align-content-center" id="contenedor_firma"
                                  style="height: 100px">
@@ -441,25 +440,6 @@
 <script>
     $(document).ready(function () {
         $("#crear").click(function () {
-            html2canvas(document.querySelector("#capture")).then(canvas => {
-                data_uri = canvas.toDataURL();
-                saveScreen(data_uri);
-            });
-
-            function saveScreen(data_uri) {
-                var token1 = $("#token").val();
-                $.ajax({
-                    url: '{{route('screen_save')}}',
-                    headers: {'X-CSRF-TOKEN': token1},
-                    type: 'post',
-                    dataType: 'json',
-                    data: {'data_uri': data_uri},
-                    success: function (data) {
-                        console.log("Funciona");
-                    },
-                });
-            }
-
             var ruta = '{{route('personal_data_form.store')}}';
             var token = $("#token").val();
 

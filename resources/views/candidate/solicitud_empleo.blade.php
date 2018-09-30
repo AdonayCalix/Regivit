@@ -579,7 +579,6 @@
                     </div>
                     <div class="form-group col">
                         <label for="" data-toggle="modal" data-target="#modal_firma"><strong>Firma (De click aqui)
-                                <small> *</small>
                             </strong></label><br>
                         <div class="form-control align-content-center" id="contenedor_firma"
                              style="height: 100px">
