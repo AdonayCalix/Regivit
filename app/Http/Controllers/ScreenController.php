@@ -114,9 +114,9 @@ class ScreenController extends Controller
             $sheet->setCellValue('D14', auth()->user()->second_surname);
             $sheet->setCellValue('G14', auth()->user()->first_name);
             $sheet->setCellValue('J14', auth()->user()->second_name);
+            $sheet->setCellValue('D17', $item->address);
             $sheet->setCellValue('B20', $item->telefono);
             $sheet->setCellValue('E20', $item->celular);
-            $sheet->setCellValue('H20', auth()->user()->email);
             $sheet->setCellValue('H20', auth()->user()->email);
             $sheet->setCellValue('A22', 'Honduras');
             $sheet->setCellValue('D22', $item->civil_status);
