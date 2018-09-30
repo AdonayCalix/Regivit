@@ -208,7 +208,7 @@ class ScreenFormController extends Controller
                 }
 
                 $sheet->setCellValue('U50', Carbon::now()->format('d-m-Y'));
-                if (!($personal_data->signature_path === 'No Ok')) {
+                if ($personal_data->signature_path !== 'No Ok') {
                     $drawing = new \PhpOffice\PhpSpreadsheet\Worksheet\Drawing();
                     $drawing->setName('Firma');
                     $drawing->setDescription('Firma');

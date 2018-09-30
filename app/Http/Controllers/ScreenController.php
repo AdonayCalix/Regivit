@@ -220,7 +220,7 @@ class ScreenController extends Controller
             $sheet->setCellValue('E96', $item->minimum_salary);
             $sheet->setCellValue('A102', 'La Ceiba Atlantida ' . Carbon::now()->format('d \d\e m \d\e\l Y'));
 
-            if (!($item->signature_path === 'No Ok')) {
+            if ($item->signature_path !== 'No Ok') {
                 $drawing = new \PhpOffice\PhpSpreadsheet\Worksheet\Drawing();
                 $drawing->setName('Firma');
                 $drawing->setDescription('Firma');
