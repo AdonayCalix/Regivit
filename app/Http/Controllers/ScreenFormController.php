@@ -208,15 +208,16 @@ class ScreenFormController extends Controller
                 }
 
                 $sheet->setCellValue('U50', Carbon::now()->format('d-m-Y'));
-
-                $drawing = new \PhpOffice\PhpSpreadsheet\Worksheet\Drawing();
-                $drawing->setName('Firma');
-                $drawing->setDescription('Firma');
-                $drawing->setPath(public_path('uploades/' . $personal_data->signature_path));
-                $drawing->setHeight('100');
-                $drawing->setWidth('252');
-                $drawing->setCoordinates('B47');
-                $drawing->setWorksheet($sheet);
+                if (!($personal_data->signature_path === 'No Ok')) {
+                    $drawing = new \PhpOffice\PhpSpreadsheet\Worksheet\Drawing();
+                    $drawing->setName('Firma');
+                    $drawing->setDescription('Firma');
+                    $drawing->setPath(public_path('uploades/' . $personal_data->signature_path));
+                    $drawing->setHeight('100');
+                    $drawing->setWidth('252');
+                    $drawing->setCoordinates('B47');
+                    $drawing->setWorksheet($sheet);
+                }
             }
 
             $path = uniqid() . auth()->user()->id;

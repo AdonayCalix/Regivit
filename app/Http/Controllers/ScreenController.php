@@ -220,14 +220,16 @@ class ScreenController extends Controller
             $sheet->setCellValue('E96', $item->minimum_salary);
             $sheet->setCellValue('A102', 'La Ceiba Atlantida ' . Carbon::now()->format('d \d\e m \d\e\l Y'));
 
-            $drawing = new \PhpOffice\PhpSpreadsheet\Worksheet\Drawing();
-            $drawing->setName('Firma');
-            $drawing->setDescription('Firma');
-            $drawing->setPath(public_path('uploades/' . $item->signature_path));
-            $drawing->setHeight('100');
-            $drawing->setWidth('252');
-            $drawing->setCoordinates('H98');
-            $drawing->setWorksheet($sheet);
+            if (!($item->signature_path === 'No Ok')) {
+                $drawing = new \PhpOffice\PhpSpreadsheet\Worksheet\Drawing();
+                $drawing->setName('Firma');
+                $drawing->setDescription('Firma');
+                $drawing->setPath(public_path('uploades/' . $item->signature_path));
+                $drawing->setHeight('100');
+                $drawing->setWidth('252');
+                $drawing->setCoordinates('H98');
+                $drawing->setWorksheet($sheet);
+            }
         }
 
         $path = uniqid() . auth()->user()->id;
