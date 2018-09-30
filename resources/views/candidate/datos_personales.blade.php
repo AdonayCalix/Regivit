@@ -409,8 +409,6 @@
     </div>
 </div>
 
-<script src="{{asset('js/html2canvas.js')}}"></script>
-
 <script>
     $(document).ready(function () {
         var canvas = document.querySelector("canvas");
