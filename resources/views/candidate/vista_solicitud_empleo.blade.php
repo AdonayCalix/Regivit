@@ -645,8 +645,8 @@
         }
     });
 
-    function createDocument(func) {
-        if (func()) {
+    function createDocument(callback) {
+        if (callback()) {
             return true;
         } else {
             return false;
