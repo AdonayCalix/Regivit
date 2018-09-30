@@ -242,7 +242,7 @@
                         </div>
                         <div class="form-group col">
                             <label for="">¿Tiene familiares que laboren en la UNIVERSIDAD CATOLICA?</label><br>
-                            @if($item->family_university == 1)
+                            @if($item->family_university === 'Si')
                                 <div class="form-check form-check-inline">
                                     <input type="radio" name="family_university" value="1" class="form-check-input"
                                            id="si_familiar" checked>
