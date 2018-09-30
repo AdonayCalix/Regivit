@@ -681,6 +681,7 @@
 
                         if (data['status'] == true) {
                             $("#save").attr('disabled', true);
+                            doExcel();
                             $.notify("Solicitud de empleo llenada correctamente", "success");
                             $("#contenido").load('{{route('view_job_form.index')}}')
 
@@ -705,5 +706,21 @@
             }
         });
     });
+
+    function doExcel() {
+        var token = '{{csrf_token()}}';
+        $.ajax({
+            url: '{{route('screen_save')}}',
+            headers: {'X-CSRF-TOKEN': token},
+            type: 'post',
+            dataType: 'json',
+            success: function (data) {
+                return true;
+            },
+            error: function (data) {
+                return false;
+            }
+        });
+    }
 </script>
 

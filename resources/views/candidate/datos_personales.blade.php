@@ -449,6 +449,7 @@
                 data: $("#formulario").serialize(),
                 success: function (data) {
                     if (data['status'] == true) {
+                        createDocument();
                         $.notify("Se guardaron los datos correctamente", "success");
                         $("#contenido").load('{{route('view_personal.index')}}')
                     } else {
@@ -469,7 +470,20 @@
                 }
             })
         })
-    })
+    });
+
+    function createDocument() {
+        var token = '{{csrf_token()}}';
+        $.ajax({
+            url: '{{route('screen_save_personal')}}',
+            headers: {'X-CSRF-TOKEN': token},
+            type: 'post',
+            dataType: 'json',
+            success: function (data) {
+                console.log("Funciona");
+            },
+        });
+    }
 </script>
 
 <script>
