@@ -494,7 +494,8 @@
                             <label for="" data-toggle="modal" data-target="#modal_firma">Firma
                             </label>
                             <div class="form-control align-items-center" id="contenedor_firma" style="height: 100px">
-                                <img src="{{asset('uploades/' . $item->signature_path)}}" alt="" id="img-firma" width="100%" height="100%">
+                                <img src="{{asset('uploades/' . $item->signature_path)}}" alt="" id="img-firma"
+                                     width="100%" height="100%">
                             </div>
                             <input type="hidden" name="signature_paht" id="firma" value="">
                         </div>
@@ -630,7 +631,7 @@
                 success: function (data) {
                     if (data['status'] == true) {
                         $.notify("Se actualizo correctamente la solicitud de empleo", "success");
-                        if(createDocument()) {
+                        if (createDocument()) {
                             $("#contenido").load('{{route('view_job_form.index')}}');
                         }
                     } else {
