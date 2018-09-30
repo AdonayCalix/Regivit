@@ -215,7 +215,7 @@
                             <label for="">De ser contratado, esta dispuesto a participar en las actividades de
                                 la pastoral
                                 universitaria de la institución</label>
-                            @if($item->pastoral_activity == 1)
+                            @if($item->pastoral_activity === 'Si')
                                 <div class="form-check form-check-inline">
                                     <input type="radio" name="pastoral_activity" value="1" class="form-check-input"
                                            id="si_pastoral" checked>
