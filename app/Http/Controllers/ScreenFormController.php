@@ -213,8 +213,8 @@ class ScreenFormController extends Controller
                     $drawing->setName('Firma');
                     $drawing->setDescription('Firma');
                     $drawing->setPath(public_path('uploades/' . $personal_data->signature_path));
-                    $drawing->setHeight('100');
-                    $drawing->setWidth('252');
+                    $drawing->setHeight('90');
+                    $drawing->setWidth('242');
                     $drawing->setCoordinates('B47');
                     $drawing->setWorksheet($sheet);
                 }
