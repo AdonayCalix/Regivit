@@ -6,9 +6,6 @@
 <body>
 <div class="app flex-row align-items-center">
     <div class="container">
-        <div class="fixed-top">
-            <img src="{{asset('imagenes/logo.png')}}" width="230" height="80" alt="Logo de Regivit">
-        </div>
         <div class="row justify-content-center">
             <div class="col-md-5">
                 <form action="{{route('login')}}" method="post">
@@ -25,6 +22,10 @@
                             @endif
 
                             <div class="card-body">
+                                <div class="align-items-center">
+                                    <img src="{{asset('imagenes/logo.png')}}" width="230" height="80" alt="Logo de Regivit">
+                                </div>
+                                <br>
                                 <h2>Inicio de Sesión</h2>
                                 <div class="form-group {{ $errors->has('identity') ? 'has-error' : ''}}">
                                     <div class="input-group-prepend">
