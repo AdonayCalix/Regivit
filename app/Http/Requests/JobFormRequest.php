@@ -68,7 +68,7 @@ class JobFormRequest extends FormRequest
             'birthdate.required' => 'Debes de incluir tu fecha de nacimiento',
             'pastoral_activity.required' => 'Debes elegir si deseas participar en pastoral',
             'family_university.required' => 'Debes que decirnos si tienes familia en la universidad',
-            'aspire_position.required' => 'Debes de incluir tu posición actual',
+            'aspire_position.required' => 'Debes de incluir el puesto al que aspiras!',
             'blood.required' => 'Debes de indicar que tipo de sangre tienes',
             'civil_status.required' => 'Debes de indicar tu estado civil',
             'age.required' => 'Debes de indicar tu edad',
