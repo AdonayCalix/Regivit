@@ -17,6 +17,7 @@
                 <div class="row">
                     <div class="col-md-3 align-items-center">
                         <div class="row justify-content-end">
+                            <br>
                             <img src="https://upload.wikimedia.org/wikipedia/commons/2/24/UNICAH_logo.png"
                                 height="80%" width="50%" alt="">
                         </div>
