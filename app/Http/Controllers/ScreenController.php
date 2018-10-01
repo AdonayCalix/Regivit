@@ -151,11 +151,20 @@ class ScreenController extends Controller
             }
 
             $contador = 54;
+            $iterador = 0;
             foreach ($competences as $competence) {
-                if ($contador < 57) {
-                    $sheet->setCellValue('B' . $contador, $competence->description);
-                    $sheet->setCellValue('H' . $contador, $competence->description);
+
+                if ($iterador == 2 || $iterador == 4) {
+                    $contador++;
                 }
+                if ($iterador < 6) {
+                    if ($iterador == 0 || $iterador == 2 || $iterador == 4) {
+                        $sheet->setCellValue('B' . $contador, $competence->description);
+                    } else {
+                        $sheet->setCellValue('H' . $contador, $competence->description);
+                    }
+                }
+                $iterador++;
                 $contador++;
             }
 
@@ -178,106 +187,133 @@ class ScreenController extends Controller
             }
 
             $contador = 66;
+            $iterador = 0;
             foreach ($knowledges as $knowledge) {
-                if ($contador < 69) {
-                    $sheet->setCellValue('B' . $contador, $knowledge->description);
-                    $sheet->setCellValue('H' . $contador, $knowledge->description);
+
+                if ($iterador == 2 || $iterador == 4) {
+                    $contador++;
+                }
+
+                if ($iterador < 6) {
+                    if ($iterador == 0 || $iterador == 2 || $iterador == 4) {
+                        $sheet->setCellValue('B' . $contador, $knowledge->description);
+                    } else {
+                        $sheet->setCellValue('H' . $contador, $knowledge->description);
+                    }
                 }
                 $contador++;
+                $iterador++;
             }
 
             $contador = 71;
+            $iterador = 0;
             foreach ($skills as $skill) {
-                if ($contador < 74) {
-                    $sheet->setCellValue('B' . $contador, $skill->description);
-                    $sheet->setCellValue('H' . $contador, $skill->description);
 
+                if ($iterador == 2 || $iterador == 4) {
+                    $contador++;
+                }
+
+                if ($iterador < 6) {
+                    if ($iterador == 0 || $iterador == 2 || $iterador == 4) {
+                        $sheet->setCellValue('B' . $contador, $skill->description);
+                    } else {
+                        $sheet->setCellValue('H' . $contador, $skill->description);
+                    }
                 }
                 $contador++;
+                $iterador++;
             }
 
-            foreach ($experiences_job as $experience) {
-                $sheet->setCellValue('A78', $experience->company_name);
-                $sheet->setCellValue('D78', $experience->position);
-                $sheet->setCellValue('D78', $experience->experience_age);
-            }
-
-            $contador = 78;
-            foreach ($activities as $activity) {
-                $sheet->setCellValue('H' . $contador, $activity->description);
-                $contador++;
-            }
-
-            $contador = 93;
-            foreach ($economics as $economic) {
-                $sheet->setCellValue('A' . $contador, $economic->name);
-                $sheet->setCellValue('D' . $contador, $economic->relationship);
-                $sheet->setCellValue('F' . $contador, $economic->age);
-                $sheet->setCellValue('H' . $contador, $economic->address);
-                $contador++;
-            }
-
-            $sheet->setCellValue('E96', $item->minimum_salary);
-            $sheet->setCellValue('A102', 'La Ceiba Atlantida ' . Carbon::now()->format('d \d\e m \d\e\l Y'));
-
-            if ($item->signature_path !== 'No ok') {
-                $drawing = new \PhpOffice\PhpSpreadsheet\Worksheet\Drawing();
-                $drawing->setName('Firma');
-                $drawing->setDescription('Firma');
-                $drawing->setPath(public_path('uploades/' . $item->signature_path));
-                $drawing->setHeight('100');
-                $drawing->setWidth('252');
-                $drawing->setCoordinates('H98');
-                $drawing->setWorksheet($sheet);
-            }
         }
 
+        foreach ($experiences_job as $experience) {
+            $sheet->setCellValue('A78', $experience->company_name);
+            $sheet->setCellValue('D78', $experience->position);
+            $sheet->setCellValue('F78', $experience->experience_age);
+        }
+
+        $contador = 78;
+        foreach ($activities as $activity) {
+            $sheet->setCellValue('H' . $contador, $activity->description);
+            $contador++;
+        }
+
+        $contador = 93;
+        foreach ($economics as $economic) {
+            $sheet->setCellValue('A' . $contador, $economic->name);
+            $sheet->setCellValue('D' . $contador, $economic->relationship);
+            $sheet->setCellValue('F' . $contador, $economic->age);
+            $sheet->setCellValue('H' . $contador, $economic->address);
+            $contador++;
+        }
+
+        $sheet->setCellValue('E96', $item->minimum_salary);
+        $sheet->setCellValue('A102', 'La Ceiba Atlantida ' . Carbon::now()->format('d \d\e m \d\e\l Y'));
+
+        if ($item->signature_path !== 'No ok') {
+            $drawing = new \PhpOffice\PhpSpreadsheet\Worksheet\Drawing();
+            $drawing->setName('Firma');
+            $drawing->setDescription('Firma');
+            $drawing->setPath(public_path('uploades/' . $item->signature_path));
+            $drawing->setHeight('100');
+            $drawing->setWidth('251');
+            $drawing->setCoordinates('H99');
+            $drawing->setWorksheet($sheet);
+        }
         $path = uniqid() . auth()->user()->id;
         $writer = new Xlsx($spreadsheet);
         $writer->save(public_path('uploades/' . $path) . '.xlsx');
 
         return $path . '.xlsx';
     }
-    public function getGeneralDataId()
+
+    function getGeneralDataId()
     {
         return DB::table('general_data')
             ->where('users_id', '=', auth()->user()->id)
             ->value('id');
     }
 
-    public function getJobFormId($general_data_id)
+    public
+    function getJobFormId($general_data_id)
     {
         return DB::table('job_application')
             ->where('general_data_id', '=', $general_data_id)
             ->value('id');
     }
 
-    public function getEducation($job_applicaton_id)
+    public
+    function getEducation($job_applicaton_id)
     {
         return DB::table('education')->where('job_application_id', $job_applicaton_id)->get();
     }
 
-    public function getCompetences($job_applicaton_id)
+    public
+    function getCompetences($job_applicaton_id)
     {
         return DB::table('competencies')->where('job_application_id', $job_applicaton_id)->get();
     }
 
-    public function getKnowledges($job_applicaton_id)
+    public
+    function getKnowledges($job_applicaton_id)
     {
         return DB::table('knowledges')->where('job_application_id', $job_applicaton_id)->get();
     }
 
-    public function getReferences($job_applicaton_id)
+    public
+    function getReferences($job_applicaton_id)
     {
         return DB::table('references')->where('job_application_id', $job_applicaton_id)->get();
     }
 
-    public function getSkill($job_applicaton_id)
+    public
+    function getSkill($job_applicaton_id)
     {
         return DB::table('skills')->where('job_application_id', $job_applicaton_id)->get();
     }
 
-    public function getEconomics($general_data)
+    public
+    function getEconomics($general_data)
     {
         return DB::table('dependents')
             ->where('general_data_id', $general_data)
@@ -285,42 +321,48 @@ class ScreenController extends Controller
 
     }
 
-    public function getExperienceJob($job_application)
+    public
+    function getExperienceJob($job_application)
     {
         return DB::table('experiences_job')
             ->where('job_application_id', $job_application)
             ->get();
     }
 
-    public function getExperienceJobId($job_application)
+    public
+    function getExperienceJobId($job_application)
     {
         return DB::table('experiences_job')
             ->where('job_application_id', $job_application)
             ->value('id');
     }
 
-    public function getActivities($experiences_job_id)
+    public
+    function getActivities($experiences_job_id)
     {
         return DB::table('activities')
             ->where('experiences_job_id', $experiences_job_id)
             ->get();
     }
 
-    public function getPathSignature($general_id)
+    public
+    function getPathSignature($general_id)
     {
         return DB::table('job_application')
             ->where('general_data_id', $general_id)
             ->value('signature_path');
     }
 
-    public function getIdCoordinator()
+    public
+    function getIdCoordinator()
     {
         return DB::table('users_faculties')
             ->where('users_id', auth()->user()->id)
             ->value('coordinator_id');
     }
 
-    public function getIdJobFormDocuments($coordinador_id)
+    public
+    function getIdJobFormDocuments($coordinador_id)
     {
         return DB::table('documents')
             ->where('users_id', '=', $coordinador_id)
@@ -328,7 +370,8 @@ class ScreenController extends Controller
             ->value('id');
     }
 
-    public function getPathJobForm($id_job_form)
+    public
+    function getPathJobForm($id_job_form)
     {
         return DB::table('users_documents')
             ->where('users_id', '=', auth()->user()->id)
@@ -336,14 +379,16 @@ class ScreenController extends Controller
             ->value('path');
     }
 
-    public function getExperiencesJobId($job_application_id)
+    public
+    function getExperiencesJobId($job_application_id)
     {
         return DB::table('experiences_job')
             ->where('job_application_id', '=', $job_application_id)
             ->value('id');
     }
 
-    public function getActivitiesId($experiences_id)
+    public
+    function getActivitiesId($experiences_id)
     {
         return DB::table('activities')
             ->where('experiences_job_id', $experiences_id)
@@ -351,7 +396,8 @@ class ScreenController extends Controller
             ->toArray();
     }
 
-    public function getJobForm()
+    public
+    function getJobForm()
     {
         return DB::select("
             select job_application.*, general_data.*, blood.description as blood_type, blood.id as tipo_sangre, 
