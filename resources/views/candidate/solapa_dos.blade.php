@@ -109,7 +109,7 @@
                     } else {
                         showLink(data);
                         $("#path").html(data['status'][0]['path'] + ' <i class="far fa-file-pdf"></i>');
-                        $("#path").attr('href', 'preview_tab/' + data['status'][0]['path']);
+                        $("#path").attr('href', 'preview_tab_candidate/' + data['status'][0]['path']);
                     }
                 }
 
