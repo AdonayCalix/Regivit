@@ -130,12 +130,12 @@ class ScreenController extends Controller
             $sheet->setCellValue('H29', $item->priest_name);
             $sheet->setCellValue('F32', $item->catholic_movement);
 
-            if ($item->pastoral_activity == 1) {
+            if ($item->pastoral_activity === 'Si') {
                 $sheet->setCellValue('D35', 'X');
             } else {
                 $sheet->setCellValue('G35', 'X');
             }
-            if ($item->family_university == 1) {
+            if ($item->family_university === 'Si') {
                 $sheet->setCellValue('D38', 'X');
             } else {
                 $sheet->setCellValue('G38', 'X');
