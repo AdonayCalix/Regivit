@@ -77,8 +77,8 @@ class JobFormRequest extends FormRequest
             'minimun_salary' => 'Debes de indicar el salario minimo',
             'celular.required' => 'Debe de incluir tu número de celular',
             'celular.alpha_num' => 'El número de telefono no debe incluir letras',
-            'telefono.alpha_num' => 'El número de telefono no debe incluir letras'
-
+            'telefono.alpha_num' => 'El número de telefono no debe incluir letras',
+            'knowledge.0.required' => 'Debes de incluir el primer concocimiento'
         ];
     }
 }
