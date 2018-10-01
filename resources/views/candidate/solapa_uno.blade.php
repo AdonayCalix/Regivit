@@ -78,7 +78,8 @@
                     Nombre archivo subido: <a href="" id="path"></a>
                 </div>
 
-                <span class="d-inline-block" tabindex="0" data-toggle="tooltip" title="Si desea sustituir el documento subido, solo cargue uno nuevo y sera reemplazado por el mas reciente">
+                <span class="d-inline-block" tabindex="0" data-toggle="tooltip"
+                      title="Si desea sustituir el documento subido, solo cargue uno nuevo y sera reemplazado por el mas reciente">
                         <i class="fas fa-question-circle"></i>
                     </span>
             </div>
@@ -146,9 +147,9 @@
                 $("#modal_formulario").modal('hide');
                 myAwesomeDropzone.removeAllFiles(true);
                 $.notify("Archivo subido correctamente", "success");
-                window.setTimeout(function(){
+                window.setTimeout(function () {
                     location.reload();
-                } ,200);
+                }, 200);
 
             });
         }
