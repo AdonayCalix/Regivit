@@ -46,7 +46,7 @@
                                 </label>
                                 <input type="text" name="current_position" class="form-control"
                                        value="{{$personal_data->current_position}}">
-                            </div>ma
+                            </div>
                         </div>
                         <div class="row">
                             <div class="form-group col">
