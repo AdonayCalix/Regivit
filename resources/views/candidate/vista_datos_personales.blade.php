@@ -17,8 +17,8 @@
                 <div class="row">
                     <div class="col-md-3 align-items-center">
                         <div class="row justify-content-end">
-                            <img src="https://upload.wikimedia.org/wikipedia/commons/2/24/UNICAH_logo.png" class="img-fluid"
-                                height="80%" alt="">
+                            <img src="https://upload.wikimedia.org/wikipedia/commons/2/24/UNICAH_logo.png"
+                                height="80%" width="50%" alt="">
                         </div>
                     </div>
                     <div class="col-md-6 text-center font-weight-bold">
