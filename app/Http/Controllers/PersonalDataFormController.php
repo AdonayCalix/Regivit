@@ -48,6 +48,7 @@ class PersonalDataFormController extends Controller
             $personal_data->campus_job = $request->campus_id;
             $personal_data->bamer_account_numer = $request->bamer_account_number;
             $personal_data->spouse_name = $request->spouse_name;
+            $personal_data->admission_date = $request->admission_date;
             $personal_data->emergency = $request->emergency;
             $personal_data->emergency_number = $request->emergency_number;
             $personal_data->signature_path = $this->saveSignature($request->signature_path);
