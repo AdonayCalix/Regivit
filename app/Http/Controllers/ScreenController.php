@@ -165,7 +165,6 @@ class ScreenController extends Controller
                     }
                 }
                 $iterador++;
-                $contador++;
             }
 
             foreach ($educations as $education) {
@@ -201,7 +200,6 @@ class ScreenController extends Controller
                         $sheet->setCellValue('H' . $contador, $knowledge->description);
                     }
                 }
-                $contador++;
                 $iterador++;
             }
 
@@ -220,8 +218,6 @@ class ScreenController extends Controller
                         $sheet->setCellValue('H' . $contador, $skill->description);
                     }
                 }
-
-                $contador++;
                 $iterador++;
             }
 
