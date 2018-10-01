@@ -78,7 +78,24 @@ class JobFormRequest extends FormRequest
             'celular.required' => 'Debe de incluir tu número de celular',
             'celular.alpha_num' => 'El número de telefono no debe incluir letras',
             'telefono.alpha_num' => 'El número de telefono no debe incluir letras',
-            'knowledge.0.required' => 'Debes de incluir el primer concocimiento'
+            'knowledge.0.required' => 'Debes de incluir el primer concocimiento!',
+            'knowledge.1.required' => 'Debes de incluir el segundo concocimiento!',
+            'knowledge.2.required' => 'Debes de incluir el tercer concocimiento!',
+            'knowledge.3.required' => 'Debes de incluir el cuarto concocimiento!',
+            'knowledge.4.required' => 'Debes de incluir el quinto concocimiento!',
+            'knowledge.5.required' => 'Debes de incluir el sexto concocimiento!',
+            'skill.0.required' => 'Debes de incluir la primer habilidad!',
+            'skill.1.required' => 'Debes de incluir la segunda habilidad!',
+            'skill.2.required' => 'Debes de incluir la tercera habilidad!',
+            'skill.3.required' => 'Debes de incluir la cuarta habilidad!',
+            'skill.4.required' => 'Debes de incluir la quinta habilidad!',
+            'skill.5.required' => 'Debes de incluir la sexta habilidad!',
+            'competence.0.required' => 'Debes de incluir la primer competencia!',
+            'competence.1.required' => 'Debes de incluir la primer competencia!',
+            'competence.2.required' => 'Debes de incluir la primer competencia!',
+            'competence.3.required' => 'Debes de incluir la primer competencia!',
+            'competence.4.required' => 'Debes de incluir la primer competencia!',
+            'competence.5.required' => 'Debes de incluir la primer competencia!'
         ];
     }
 }
