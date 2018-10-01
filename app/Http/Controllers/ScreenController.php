@@ -220,6 +220,7 @@ class ScreenController extends Controller
                         $sheet->setCellValue('H' . $contador, $skill->description);
                     }
                 }
+
                 $contador++;
                 $iterador++;
             }
